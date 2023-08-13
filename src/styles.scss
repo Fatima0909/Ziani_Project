@@ -1,0 +1,976 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    overflow-x : hidden;
+    background-color: #f4f4f4;
+  
+  }
+  
+  body.swal2-height-auto.mat-typography {
+    height: 100% !important;
+  }
+  
+  .swal2-popup{
+    width:330px !important;
+  }
+  
+  .swal2-content {
+    padding: 0!important;
+  }
+  
+  .swal2-actions {
+    padding: 0 0.6em !important;
+  }
+  .swal2-cancel, .swal2-confirm {
+    min-width: 100px;
+  }
+  .swal2-cancel.swal2-styled:focus {
+    box-shadow: unset !important;
+   }
+  .p-r-0{
+    padding-right: 0px !important;
+  }
+  .p-l-0{
+    padding-left: 0px !important;
+  }
+  .p-l-40{
+    padding-inline-start : 40px !important;
+  }
+  .p-l-10{
+    padding-left: 10px !important;
+  }
+  .p-l-5{
+    padding-left: 5px !important;
+  }
+  .p-t-5{
+    padding-top: 5px !important;
+  }
+  .p-r-5{
+    padding-right: 5px !important;
+  }
+  .p-b-0 {
+    padding-bottom: 0 !important;
+  }
+  .width-100{
+    width : 100% !important;
+  }
+  .width-96 {
+    width: 96% !important;
+  }
+  .width-50{
+    width : 50% !important ;
+  }
+  .width-48{
+    width : 48% !important ;
+  }
+  .p-i-s-15 {
+    padding-inline-start: 15px;
+  }
+  .m-l-0{
+    margin-left : 0px;
+  }
+  .m-r-0{
+    margin-right : 0px;
+  }
+  .m-t-20{
+    margin-top : 20px;
+  }
+  .m-l-5{
+    margin-left : 5px;
+  }
+  .m-l-10{
+    margin-left : 10px !important;
+  }
+  .m-b-0 {
+    margin-bottom: 0 !important;
+  }
+  .m-b-5{
+    margin-bottom: 5px;
+  }
+  .m-b-3{
+    margin-bottom: 3px;
+  }
+  .m-t-5{
+    margin-top: 5px;
+  }
+  .m-t-14{
+    margin-top: 14px !important;
+  }
+  .height-100{
+    height: 100% !important;
+  }
+  
+  .auth-form-btn.mat-button-disabled {
+    background-color: rgba(13, 141, 243, 0.44);
+    color: white;
+  }
+  .ellipsis-class{
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .success-snackbar{
+    background : white;
+    color : green;
+  }
+  .danger-snackbar{
+    background : white;
+    color : red;
+  }
+  .cdk-global-scrollblock{
+    overflow-y : unset;
+  }
+  .flexClass{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .whiteClass{
+    background-color: white !important;
+  }
+  
+  .commentMenu+* .cdk-overlay-pane {
+    margin-top: 11px;
+  }
+  .commentMenu+* .cdk-overlay-pane:before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-style: solid;
+    border-width: 0 10px 12px 10px;
+    border-color: transparent transparent #ffffff transparent;
+  }
+  
+  .notificationsMenu+* .cdk-overlay-pane .mat-menu-panel{
+    width: 350px !important;
+    max-width: unset !important;
+    overflow: hidden;
+  
+  }
+  .groupSettingMenu+* .cdk-overlay-pane .mat-menu-panel{
+    padding: 10px;
+    font-size: 12px;
+  }
+  .groupSettingMenu+* .cdk-overlay-pane .mat-menu-panel .mat-slide-toggle-bar{
+    width: 30px;
+    height: 10px;
+  }
+  .groupSettingMenu+* .cdk-overlay-pane .mat-menu-panel .mat-slide-toggle-thumb{
+    width: 15px;
+    height: 15px;
+  }
+  
+  .notificationsMenu+* .cdk-overlay-pane .mat-menu-panel .mat-menu-content{
+    padding-top: 0px !important;
+    height: 90%;
+  }
+  
+  .notificationsMenu+* .cdk-overlay-pane {
+    margin-top: 10px !important;
+  
+  }
+  .notificationsMenu+* .cdk-overlay-pane:before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    border-style: solid;
+    border-width: 0 10px 12px 10px;
+    border-color: transparent transparent #ffffff transparent;
+  }
+  
+  .noNotificationMenu+* .cdk-overlay-pane .mat-menu-panel{
+    width: 305px !important;
+    max-width: unset !important;
+    overflow: hidden;
+  
+  }
+  
+  .noNotificationMenu+* .cdk-overlay-pane .mat-menu-panel .mat-menu-content{
+    padding-top: 0px !important;
+    height: 100%;
+    padding-bottom: 0!important;
+  }
+  
+  .noNotificationMenu+* .message {
+    box-shadow: unset!important;
+  }
+  
+  .noNotificationMenu+* .cdk-overlay-pane {
+    margin-top: 10px !important;
+  
+  }
+  .noNotificationMenu+* .mat-menu-content:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    border-style: solid;
+    border-width: 0 10px 12px 10px;
+    border-color: transparent transparent #eae7ff transparent;
+  }
+  
+  .notification-text p{
+  
+    word-break: break-word;
+    white-space: pre-line;
+    line-height: 20px;
+    padding-top: 9px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 0px;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* autoprefixer: off */
+    -webkit-box-orient: vertical;
+  
+    height: 51px;
+  
+  }
+  .notifications-header{
+  
+    color: gray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    padding-left: 12px;
+    border-bottom: 1px solid gray;
+  
+  }
+  .notifications-listing{
+    height:100%;
+    overflow-y: scroll;
+  }
+  .notificationsItem {
+    border-bottom: 1px solid #8080804d !important;
+  }
+  .notificationsItem.notSeen{
+  
+    background-color: #efefef !important;
+    height: 57px !important;
+    line-height: 19px !important;
+    font-size: 12px;
+  
+  }
+  .notificationsItem img{
+    width: 30px;
+    border-radius: 50%;
+    height: 30px;
+  }
+  
+  .updateSettingModal mat-dialog-container{
+    padding: 10px !important;
+  }
+  .largeModal{
+  
+    max-width: 100% !important;
+    height: 98% !important;
+    width: 98%;
+  
+  }
+  mat-dialog-container{
+    overflow: unset !important;
+    position: relative;
+  }
+  .largeModal mat-dialog-container{
+  
+    padding: 0px !important;
+    overflow-x: hidden;
+  
+  }
+  
+  .mediumModal{
+    max-width: 100% !important;
+    height: 60% !important;
+    width: 60%;
+  }
+  .mediumModal , .autoModal mat-dialog-container{
+  
+    padding: 0px !important;
+    overflow-x: hidden;
+  
+  }
+  
+  .autoModal{
+    width: 450px !important;
+  }
+  
+  .uploadFiles{
+    max-width: 500px !important;
+    width: 500px;
+    overflow-y: scroll;
+  }
+  .uploadFiles mat-dialog-container{
+    padding: 0px !important;
+    overflow-x: hidden;
+  }
+  
+  .whiteIcon{
+    color: #dddcdc;
+    margin-right: 15px;
+    cursor: pointer;
+  
+  }
+  .whiteIcon:hover{
+    color: #ffffff;
+  }
+  .display-none{
+    display: none !important;
+  }
+  .flex-display{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .centerAlign{
+    display: flex;
+    align-items: center;
+  }
+  
+  .two-tabs{
+    width: 100%;
+  }
+  .two-tabs .mat-tab-label{
+    width: 48%;
+    max-width: unset !important;
+    min-width: unset !important;
+  }
+  .cdk-overlay-container{
+    z-index: 99999;
+  }
+  .creatPostModal{
+    padding: 0px;
+  }
+  .largeMessengerModal{
+    max-width: 100% !important;
+    height: 80% !important;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  .largeMessengerModal mat-dialog-container{
+  
+    padding: 0px !important;
+    overflow-x: hidden;
+  
+  }
+  
+  .member_tab .mat-tab-label {
+    width: 100%;
+  }
+  
+  .member_tab .mat-ink-bar{
+    width: 100% !important;
+  }
+  .friendsTab .mat-tab-label{
+    min-width: unset;
+    width: 48%;
+    font-size: 13px;
+  }
+  .friendsTab .mat-tab-body.mat-tab-body-active{
+    height: 100%;
+  }
+  
+  .mat-card-header .mat-card-title {
+    font-size: 14px !important;
+  }
+  
+  .centerContent{
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* ------------ custom scroll bar  */
+  
+  .custom-scroll-bar::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+  }
+  
+  .custom-scroll-bar::-webkit-scrollbar
+  {
+    width: 6px;
+    background-color: #F5F5F5;
+  }
+  
+  .custom-scroll-bar::-webkit-scrollbar-thumb
+  {
+    background-color: #4f2894;
+  }
+  
+  .text-area mat-form-field .mat-form-field-flex{
+  
+    border-top: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+    border-radius: 3px;
+    padding-left: 10px;
+  
+  }
+  
+  
+  /* --------- end custom scroll bar --------------- */
+  
+  
+  
+  
+  /* -------------   ngu carousel  ---------------- */
+  
+  .tile {
+    min-height: 100px;
+    background-size: cover !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12) !important;
+    border-radius: 3px;
+  }
+  
+  /* --------- ngu carousel phone --------- */
+  
+  .images_uploads .tile {
+  
+    width: unset;
+    min-height: unset;
+    height: 63px !important;
+  }
+  .leftRs {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
+    border-radius: 999px;
+    left: 0;
+  }
+  
+  .rightRs {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
+    border-radius: 999px;
+    right: 0;
+  }
+  
+  
+  .myPoint {
+    list-style-type: none;
+    text-align: center;
+    padding: 12px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: auto;
+    box-sizing: border-box;
+  }
+  .myPoint  li {
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.55);
+    padding: 4px;
+    margin: 0 3px;
+    transition-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    transition: 0.4s;
+  }
+  .myPoint  li.active {
+    background: #6b6b6b;
+    transform: scale(1.2);
+  }
+  .images_upload .ngucarousel-items {
+    margin-left: 31px;
+    margin-right: 9px;
+  }
+  .last_item {
+    cursor: pointer;
+  }
+  .last_item .tile {
+    border: 2px dotted#dddfe2;
+    box-shadow: unset !important;
+  }
+  /* ----------- end ngu carousel -------------*/
+  
+  
+  @media (max-width: 800px) {
+    .mediumModal{
+      max-width: 100% !important;
+      height: 98% !important;
+      width: 98%;
+    }
+  }
+  
+  @media (max-width: 600px) {
+  
+    .largeMessengerModal{
+      width: 98% !important;
+      height: 98% !important;
+    }
+  
+  }
+  
+  
+  /* ----- ngu carousel post images ------------*/
+  .images_area .tile {
+    min-height:unset !important; ;
+    background-size: unset !important;
+    display: unset !important;
+    align-items: unset !important;
+    justify-content: unset !important;
+    width: unset !important;
+    text-align: unset !important;
+    height: unset !important;
+    box-shadow: unset !important;
+    border-radius: unset !important;
+  }
+  
+  .images_area ngu-tile {
+    padding: unset !important;
+  }
+  
+  /* ------------ end of ngu carousel post images -------------- */
+  
+  .noPaddinModal mat-dialog-container{
+    padding: 0px !important;
+    overflow-x: hidden !important;
+  }
+  .noPaddinModal mat-dialog-container app-post-detail app-post mat-card{
+    margin-bottom: 0px !important;
+  }
+  
+  
+  /* ---------------- this partie for dialogue of memberes groups ---------------- */
+  
+  .cdk-overlay-pane.membersDialog {
+    transform: scale3d(0,0,0);
+    transition: all 1s;
+  }
+  
+  @-webkit-keyframes scale {
+    0% {
+      -webkit-transform: scale(0);
+    }
+    50% {
+      -webkit-transform: scale(1);
+    }
+  }
+  .cdk-overlay-pane.add_membere {
+    -webkit-animation: scale 1s ease-out;
+    position: relative !important;
+  }
+  
+  .postModel {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  
+  .white-text{
+    color: white !important;
+  }
+  
+  ngx-spinner.loader > div {
+      background-color: unset !important;
+  }
+  
+  .p-child-b-0 .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+  }
+  .family-info .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+  }
+  
+  
+  .mat-dialog-container {
+    padding-top: 10px !important;
+    padding-bottom: 0 !important;
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+  }
+  
+  .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #3f51b5 !important ;
+  }
+  
+  .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+    color: #f44336 !important;
+  }
+  app-signin, app-signup {
+    height: 100%;
+  }
+  
+  .custom-dialog > mat-dialog-container {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  
+  .mat-tab-body-content {
+    overflow: hidden !important;
+  }
+  
+  
+  .space .clinic-booking .button-native {
+    background-color: red !important;
+  }
+  @media (max-width: 453px){
+    ion-select .select-text {
+      font-size: small;
+    }
+    .select-icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  
+  
+  /* --------------- VISIO --------------------*/
+  .toggle-voice-video ion-item.item-native {
+    border-bottom: 0 !important;
+  }
+  
+  .visio-tarif .mat-form-field-wrapper {
+    padding-bottom: 0;
+    padding-top: 5px;
+  }
+  
+  /* ------------------------------------------------- Shared Form -------------------------*/
+  
+  .form-dialog .mat-form-field-wrapper {
+    padding-bottom: 35px !important;
+    .mat-form-field-subscript-wrapper {
+      top:calc(100% - 3em);
+      margin-top: 0;
+    }
+  
+  }
+  .order-form .mat-form-field-wrapper {
+    padding-bottom: 3px !important;
+  }
+  .form-dialog-relay .mat-form-field-wrapper {
+    padding-bottom: 1px !important;
+  }
+  .form-dialog :where(.ng-invalid.ng-untouched, .ng-valid.ng-touched, .ng-untouched.mat-form-field-disabled, .ng-untouched.ng-valid) .mat-form-field-wrapper {
+    padding-bottom: 1px !important;
+  }
+  
+  
+  /* --------------------------------- MAP SEARCH -----------------------------------------*/
+  
+  
+  .gm-style-iw.gm-style-iw-c {
+    max-width: unset !important;
+    padding-right: 4px !important;
+    padding-left: 4px !important;
+    padding-top: 0 !important;
+    .gm-style-iw-d {
+      overflow: unset !important;
+    }
+  }
+  .map-card {
+  
+    .gm-style-iw-d {
+      overflow: auto;
+    }
+    .clinic-services span {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      display: inline-block;
+      font-size: 11.5px;
+      padding: 3px 1px;
+      margin-inline-start: 1.5px;
+      color: black;
+      flex: 0 0 32% !important;
+      max-width: 33% !important;
+      &.active {
+        background-color: transparent;
+        color: #20c0f3;
+        border: 1px solid #20c0f3;
+      }
+    }
+  }
+  
+  .map-button-container {
+    .col-4 {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+      .button-inner {
+        font-size: x-small !important;
+      }
+    }
+  }
+  // ************************************** SWAL POPUP Style ************************************//
+  .popup-swal-three {
+    .actions-three {
+      padding: 0 !important;
+      button {
+        width: 90px !important;
+        min-width: 90px !important;
+        font-size: 11px !important;
+      }
+    }
+  }
+  
+  .cancel-btn-swal {
+    color: black !important;
+    border: 1px solid !important;
+    background: transparent !important;
+  }
+  .close-btn {
+    font-size: 30px !important;
+    color: black;
+    &:focus {
+      box-shadow: unset !important;
+    }
+  }
+  .signal-btn-swal {
+    color: orangered !important;
+    border: 1px solid !important;
+  }
+  .deny-btn-swal {
+    color: red !important;
+    border: 1px solid !important;
+  }
+  .red_swal {
+    color: red !important;
+    border: 1px solid !important;
+  }
+  .orange_swal {
+    color: orange !important;
+    border: 1px solid!important;
+    background: transparent !important;
+  }
+  
+  .primary_swal {
+    color: #3f51b5 !important;
+    border: 1px solid !important;
+    &:focus {
+      box-shadow: unset !important;
+    }
+    &:hover{
+      background-image: unset !important;
+    }
+  
+  }
+  .confirm-btn-swal {
+    color: rgb(63, 81, 181) !important;
+    border: 1px solid !important;
+    background-color: transparent !important;
+    &:focus {
+      box-shadow: unset !important;
+    }
+  }
+  
+  // *************************************** PRO AGENDA *************************************
+  
+  .popUpDetailsContainer {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  .popUpDetailsLabel {
+    font-weight: bold;
+  }
+  
+  .famillyRdvContainer {
+    .header,.content {
+      padding-inline-start: 15px;
+      padding-top: 4px;
+    }
+  }
+  
+  
+  .mat-tab-label {
+      min-width: 50% !important;
+  }
+  app-folder .mat-tab-label {
+    min-width: unset !important;
+  }
+  app-monitoring .mat-tab-label {
+    min-width: 25% !important;
+  }
+  app-new-appointment .mat-tab-label {
+    padding: 0 24px !important;
+  }
+  .width-100 .mat-tab-label {
+    width: 100% !important;
+  }
+  
+  .mat-button-focus-overlay {
+    background-color: transparent !important;
+  }
+  
+  .dialogForm {
+    overflow: scroll;
+  }
+  app-dyn-consultation-table .mat-tab-label {
+    min-width: 33% !important;
+    width: 33% !important;
+  }
+  /****************************** MAT PAGINATOR *************************************/
+  ::ng-deep .mat-paginator {
+    .mat-paginator-container {
+      justify-content: center;
+    }
+  
+    // override material paginator page switch
+    .mat-paginator-range-label {
+      order: 2;
+    }
+  
+    .mat-paginator-navigation-previous {
+      order: 1;
+    }
+    .mat-paginator-navigation-next {
+      order: 3;
+    }
+  }
+  
+  
+  .covid_test .mat-radio-label-content {
+    padding-inline-start: 8px !important;
+  }
+  
+  
+  
+  
+  .red-tooltip {
+    color: black !important;
+  }
+  
+  @media (max-width: 550px) {
+    .room-popup {
+      max-width: 88vw !important;
+    }
+    .rdvPopup {
+      max-width: 88vw !important;
+    }
+  }
+  
+  .popUpDetailsLabel.underline {
+    text-decoration: underline;
+    color: #3f51b5;
+  }
+  
+  .sign_phone_swal {
+    box-shadow: unset !important;
+  }
+  
+  
+  @media (prefers-color-scheme: dark) {
+    html {
+      background: #000000;
+      color: #ffffff;
+    }
+  }
+  
+  .isIos {
+    background-color: white;
+    ion-router-outlet {
+      margin-top: 50px !important;
+    }
+    nav {
+      margin-top: var(--ion-safe-area-top);
+    }
+  }
+  
+  @media (min-width: 780px) {
+    .roomPopup {
+      min-width: 30vw !important;
+    }
+  }
+  
+  
+  
+  ///////////////////////////////// CSS POPUP MAP PARTNER ACCOUNT ////////////////
+  
+  
+  .popup-map-container {
+    margin: 0;
+    max-width: 370px;
+    box-shadow: unset;
+    .col-md-4 {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      img {
+        flex: 2;
+      }
+  
+      .icons-container {
+        flex: 1;
+        text-align: center;
+        ion-icon {
+          font-size: x-large;
+          padding-inline: 3px;
+          padding-top: 23px;
+        }
+      }
+    }
+    .col-md-8 {
+      padding: 0;
+      .ion-item {
+        height: 30px;
+        color: black;
+        &.icons-container {
+          text-align: center;
+        }
+        ion-icon {
+          font-size: x-large;
+          padding-inline: 3px;
+        }
+      }
+      ion-card-content {
+        padding: 0;
+        padding-inline-start: 15px;
+        padding-inline-end: 15px;
+      }
+      ion-label {
+        margin-block: 0;
+        font-size: smaller;
+      }
+      h4 {
+        font-weight: 500;
+        display: inline;
+        font-size: small;
+        &.title {
+          font-weight: bold;
+        }
+      }
+    }
+    @media (max-width: 450px) {
+      .col-md-8 {
+        padding-inline-start: 5px;
+        padding-block: 5px;
+        .ion-item {
+          height: 25px;
+        }
+      }
+  
+    }
+  }
+  
+  app-map {
+    .gm-style-iw {
+      height: 242px;
+    }
+  }
+  
+  .width-link-bar-100 .mat-ink-bar {
+    width: 100% !important;
+  }
+  

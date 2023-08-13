@@ -1,0 +1,261 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Ziani Project
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 header">
+      <div class="slideShow">
+        <img height="100%" *ngIf="imageUrl" width="100%" [src]="imageUrl" (load)="loaded = true">
+        <div class="text-picture-container" *ngIf="!isMobile">
+          <h3>{{'CATEGORY.ABOUT_US.LINE_1'}}</h3>
+          <h3 style="color: #007bff">{{'CATEGORY.ABOUT_US.LINE_2'}}</h3>
+          <h3>
+          {{'CATEGORY.ABOUT_US.LINE_3'}} </h3>
+
+        </div>
+      </div>
+      <div class="searchClassContainer">
+        <div class="text-picture-container isMobile" *ngIf="isMobile">
+          <h3>{{'CATEGORY.ABOUT_US.LINE_4'}}</h3>
+        </div>
+
+        <div class="searchClass">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+              <div class="body">
+                <div class="example-container">
+                  <form [formGroup]="labelForm">
+                    <div class="row">
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <form class="example-form">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>{{'CATEGORY.SEARCH_FORM.SPECIALITY_LABEL'}}</mat-label>
+                            <input
+                              matInput
+                              aria-label="State"
+                              [matAutocomplete]="speciality"
+                              [formControl]="specialityCtrl">
+                            <mat-icon matSuffix class="search-icon">search</mat-icon>
+                            <mat-autocomplete #speciality="matAutocomplete">
+                              <mat-option *ngFor="let state of filtredSpeciality | async" [value]="state.name">
+                                <img class="example-option-img" height="25">
+                                <span>{{state.title}}</span>
+                                {{state.name}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </form>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                        <form class="example-form">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>{{'CATEGORY.SEARCH_FORM.TOWN_LABEL'}}</mat-label>
+                            <input
+                              matInput
+                              aria-label="State"
+                              [matAutocomplete]="town"
+                              [formControl]="townCtrl">
+                            <mat-icon matSuffix class="search-icon">room</mat-icon>
+
+                            <mat-autocomplete #town="matAutocomplete">
+                              <mat-option>
+                                <span >state.nameAr</span>
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                  
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 content">
+
+      <!-- CATEGORIES Mobile tablete-->
+      <div class="row categorySection d-bloc d-xs-block d-sm-block" >
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #whatSectionTitle>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-4 col-4 subSection" #messagingSubSection *ngFor="let category of categories" (click)="redirectToSpace(category.value)" >
+            <div class="card">
+            <div class="categoryClass">
+              <img [src]="category.imgRef">
+            </div>
+            <h4>
+              {{category.name}}
+            </h4>
+              <div class="hr-container">
+              <hr [ngStyle]="{'background-color': category.color}">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- WHY ESIHA -->
+      <div class="row WhySection">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #whySectionTitle>
+          <h1 [@show]="showstates['whyTitle']">{{'CATEGORY.WHY_SECTION.WHY_USE_LABEL'}}</h1>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+          <div class="row whyContent">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 left top subSection description firstSectionClass" #securitySubSection>
+              <img src="assets/images/category/cover/img-1.webp" width="100px" [@show]="showstates['securityIMG']">
+              <h2 [@pullRight]="pullRightstates['security']">{{'CATEGORY.WHY_SECTION.SEARCH.TITLE'}}</h2>
+              <p [@pullRight]="pullRightstates['securityDescription']">{{'CATEGORY.WHY_SECTION.SEARCH.TEXT'}} </p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 right top subSection description" #collaborationSubSection>
+              <img src="assets/images/category/cover/img-0.webp" width="100px" [@show]="showstates['collaborationIMG']">
+              <h2 [@pullLeft]="pullLeftstates['collaboration']">{{'CATEGORY.WHY_SECTION.RDV.TITLE'}}</h2>
+              <p [@pullLeft]="pullLeftstates['collaborationDescription']">{{'CATEGORY.WHY_SECTION.RDV.TEXT'}} </p>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 left subSection borderClass description" #pricingSubSection>
+              <img src="assets/images/category/cover/img-2.webp" width="100px" [@show]="showstates['pricingIMG']">
+              <h2 [@pullRight]="pullRightstates['pricing']">{{'CATEGORY.WHY_SECTION.HISTORY.TITLE'}}</h2>
+              <p [@pullRight]="pullRightstates['pricingDescription']">{{'CATEGORY.WHY_SECTION.HISTORY.TEXT'}} </p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 right subSection description" #qualitySubSection>
+              <img src="assets/images/category/cover/img-3.webp" width="100px" [@show]="showstates['qualityIMG']">
+              <h2 [@pullLeft]="pullLeftstates['quality']">{{'CATEGORY.WHY_SECTION.TELECONSULTATION.TITLE'}}</h2>
+              <p
+                [@pullLeft]="pullLeftstates['qualityDescription']">{{'CATEGORY.WHY_SECTION.TELECONSULTATION.TEXT'}}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- NOS PLUS -->
+      <div class="row ourPlusSection">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #ourPlusTitle>
+          <h1 [@show]="showstates['whatTitle']">{{'CATEGORY.PLUS_SECTION.LABEL'}}</h1>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="row plusContent">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12 subSection">
+              <img src="assets/images/category/cover/img_4.webp" width="30%" [@show]="showstates['messagingIMG']">
+              <h2 [@showUp]="showUpstates['messaging']">{{'CATEGORY.PLUS_SECTION.ONE_ACCOUNT.TITLE'}}</h2>
+              <p [@showUp]="showUpstates['messagingDescription']">{{'CATEGORY.PLUS_SECTION.ONE_ACCOUNT.TEXT'}}</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12 subSection" #callsSubSection>
+              <img src="assets/images/category/cover/img_5.webp" width="30%" [@show]="showstates['callsIMG']">
+              <h2 [@showUp]="showUpstates['calls']">{{'CATEGORY.PLUS_SECTION.SIMPLE.TITLE'}}</h2>
+              <p [@showUp]="showUpstates['callsDescription']">{{'CATEGORY.PLUS_SECTION.SIMPLE.TEXT'}}</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12 subSection" #videoSubSection>
+              <img src="assets/images/category/cover/img_6.webp" width="30%" [@show]="showstates['videoIMG']">
+
+              <h2 [@showUp]="showUpstates['video']">{{'CATEGORY.PLUS_SECTION.ALL.TITLE'}}</h2>
+              <p [@showUp]="showUpstates['videoDescription']">{{'CATEGORY.PLUS_SECTION.ALL.TEXT'}}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PROFESSIONEL -->
+      <div class="row companiesSection">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #companiesSectionTitle>
+          <h1 [@show]="showstates['serviceTitle']">{{'CATEGORY.PRO_SECTION.TITLE'}}</h1>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 p-l-0 p-r-0" #companiesContent>
+
+          <div class="row companiesContent p-l-0 p-r-0">
+            <div class="pictureText-container">
+              <div class="col-lg-7 col-md-7 col-sm-12 col-12 ">
+                <img src="assets/images/category/cover/img_7.webp" width="100%"
+                     [@pullRight]="pullRightstates['teamConnection']">
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-12 col-12 pictureText-text" #oneAppSubSection>
+                <h1 [@showUp]="showUpstates['teamConnection']">{{'CATEGORY.PRO_SECTION.ONE_APP.TITLE'}}</h1>
+                <h3
+                  [@showUp]="showUpstates['teamConnectionText']"> {{'CATEGORY.PRO_SECTION.ONE_APP.TEXT'}}</h3>
+              </div>
+              <div class="pictureText-shadow"></div>
+            </div>
+
+            <div class="pictureText-container">
+              <div class="col-lg-5 col-md-5 col-sm-12 col-12 p-l-40 pictureText-text" #webPageSubSection>
+                <h1 [@showUp]="showUpstates['projectManagement']">{{'CATEGORY.PRO_SECTION.PAGE.TITLE'}}</h1>
+                <h3
+                  [@showUp]="showUpstates['projectManagementText']"> {{'CATEGORY.PRO_SECTION.PAGE.TEXT'}} </h3>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-12 col-12 ">
+                <img src="assets/images/category/cover/img_8.webp" width="100%"
+                     [@pullLeft]="pullLeftstates['projectManagement']">
+              </div>
+              <div class="pictureText-shadow"></div>
+            </div>
+
+            <div class="pictureText-container">
+              <div class="col-lg-7 col-md-7 col-sm-12 col-12">
+                <img src="assets/images/category/cover/img_9.webp" width="100%" [@pullRight]="pullRightstates['reporting']">
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-12 col-12 pictureText-text" #upSubSection>
+                <h1 [@showUp]="showUpstates['reporting']">{{'CATEGORY.PRO_SECTION.UP.TITLE'}}</h1>
+                <h3 [@showUp]="showUpstates['reportingText']">{{'CATEGORY.PRO_SECTION.UP.TEXT'}}</h3>
+              </div>
+              <div class="pictureText-shadow"></div>
+            </div>
+
+            <div class="pictureText-container">
+              <div class="col-lg-5 col-md-5 col-sm-12 col-12 p-l-40 pictureText-text" #numericSubSection>
+                <h1
+                  [@showUp]="showUpstates['projectManagement']">{{'CATEGORY.PRO_SECTION.NUMERIC.TITLE'}}</h1>
+                <h3
+                  [@showUp]="showUpstates['projectManagementText']">{{'CATEGORY.PRO_SECTION.NUMERIC.TEXT'}}</h3>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-12 col-12 ">
+                <img src="assets/images/category/cover/img_10.webp" width="100%"
+                     [@pullLeft]="pullLeftstates['projectManagement']">
+              </div>
+              <div class="pictureText-shadow"></div>
+            </div>
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
