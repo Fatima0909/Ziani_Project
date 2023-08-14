@@ -100,21 +100,7 @@
       <div class="row categorySection d-bloc d-xs-block d-sm-block" >
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #whatSectionTitle>
         </div>
-        <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-4 col-4 subSection" #messagingSubSection *ngFor="let category of categories" (click)="redirectToSpace(category.value)" >
-            <div class="card">
-            <div class="categoryClass">
-              <img [src]="category.imgRef">
-            </div>
-            <h4>
-              {{category.name}}
-            </h4>
-              <div class="hr-container">
-              <hr [ngStyle]="{'background-color': category.color}">
-              </div>
-            </div>
-          </div>
-        </div>
+     
       </div>
 <div class="row categorySection d-bloc d-xs-block d-sm-block">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle contentmiddle" >
@@ -125,41 +111,12 @@
     
 </div>
 <div class="card-group">
-    <div class="card content_card">
+    <div class="card content_card" *ngFor="let car of cars">
      
       <div class="card-body">
-        <h5 class="card-title"><strong>GLE 300d Full</strong> </h5>
-        <p class="card-text">cette version 300d n’a rien de pénible. Grâce aux 500 Nm de couple mais aussi aux 245 ch délivrés. Très bien épaulé par une boîte automatique à neuf rapports aussi bien gérée.</p>
-        <img class="card-img-top"src="/assets/photos/GT.jpeg" alt="Card image cap">
-        <div class="row">
-            
-            <div class="col-6"><p class="card-text"><small class="text-muted"><i class="fa fa-info-circle" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
-            <div class="col-6"> <p class="card-text"><small class="text-muted"><i class="fas fa-car" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
-
-        </div>
-      </div>
-    </div>
-    <div class="card content_card">
-  
-      <div class="card-body">
-        <h5 class="card-title"><strong>GOLF 8 R Line</strong> </h5>
-        <p class="card-text">La Volkswagen Golf 8 conserve un style sobre et bien dessiné tout en apportant un lot intéressant de nouveautés, surtout au niveau des équipements. Avec ses deux écrans de 10,25 pouces.</p>
-        <img class="card-img-top" src="/assets/photos/Golf.jpeg" alt="Card image cap">
-        
-        <div class="row">
-            
-            <div class="col-6"><p class="card-text"><small class="text-muted"><i class="fa fa-info-circle" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
-            <div class="col-6"> <p class="card-text"><small class="text-muted"><i class="fas fa-car" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
-
-        </div>
-      </div>
-    </div>
-    <div class="card content_card">
-  
-      <div class="card-body">
-        <h5 class="card-title"><strong> Audi S3 Berline</strong></h5>
-        <p class="card-text">la nouvelle Audi S3 Berline et sa version Edition One rouge Tango, disponible en option, vous feront éprouver de nouvelles sensations. Conduite dynamique, allure de Coupé élégant et nombreuses innovations.</p>
-        <img class="card-img-top" src="/assets/photos/audi.jpeg"alt="Card image cap">
+        <h5 class="card-title"><strong>{{car.title}}</strong> </h5>
+        <p class="card-text">{{car.description}}</p>
+        <img class="card-img-top" [src]="car.picture" alt="Card image cap">
         <div class="row">
             
             <div class="col-6"><p class="card-text"><small class="text-muted"><i class="fa fa-info-circle" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>

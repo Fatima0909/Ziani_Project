@@ -3,6 +3,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Car } from '../shared/model/car';
+import { CarService } from '../shared/service/car.service';
 
 @Component({ selector: 'app-home',
 templateUrl: './home.component.html',
@@ -122,7 +124,7 @@ specialityCtrl = new FormControl('', null);
 loaded = false;
 
 bestSpecialities: any;
-categories: any ;
+cars: Car[] ;
 filtredSpeciality: any;
 selectedSpecialities: any;
 selectedSpeciality: any;
@@ -148,7 +150,7 @@ private selectedProUrl: any;
 isMobile: boolean = false;
 
 constructor (fb: FormBuilder, private router: Router, 
-            ) {
+            private carService: CarService) {
   this.labelForm = fb.group({
     hideRequired: this.hideRequiredControl
   });
@@ -158,7 +160,7 @@ constructor (fb: FormBuilder, private router: Router,
 ngOnInit() {
   this.initSeo();
   this.initSpeciality();
-  this.initCategories();
+  this.initCars();
   this.initTowns();
   this.initLanguage();
   this.showstates = [];
@@ -363,8 +365,13 @@ private initLanguage() {
 
 }
 
-private initCategories() {
- 
+private initCars() {
+ this.carService.getCars().once('value').then((res) => {
+  this.cars = [];
+  res.forEach(val => {
+    this.cars.push(val.val());
+  })
+ })
 }
 
 redirectToSpace(category: string) {
