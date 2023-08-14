@@ -1,45 +1,34 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">Ziani Project
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
+<nav class="navbar">
+    <div class="logo"><img class="img-fluid" src="/assets/photos/logo.png" alt="LOGO"></div>
+    <div class="push-left">
+      <button id="menu-toggler" data-class="menu-active" class="hamburger">
+        <span class="hamburger-line hamburger-line-top"></span>
+        <span class="hamburger-line hamburger-line-middle"></span>
+        <span class="hamburger-line hamburger-line-bottom"></span>
+      </button>
+  
+      <!--  Menu compatible with wp_nav_menu  -->
+      <ul id="primary-menu" class="menu nav-menu">
+        <li class="menu-item current-menu-item"><a class="nav__link"  href="#"><strong>Home</strong></a></li>
+        <li class="menu-item dropdown"><a class="nav__link"  href="#"> <strong>À propos de nous</strong></a></li>
+        <li class="menu-item dropdown"><a class="nav__link"  href="#"><strong>Contact</strong></a></li>
+       
+        </ul>
     </div>
-</nav>
+  </nav>
 
 <div class="container-fluid">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 header">
       <div class="slideShow">
-        <img height="100%" *ngIf="imageUrl" width="100%" [src]="imageUrl" (load)="loaded = true">
+        <img height="100%" *ngIf="imageUrl" width="100%" src="/assets/photos/cover.jpeg"(load)="loaded = true">
         <div class="text-picture-container" *ngIf="!isMobile">
-          <h3>{{'CATEGORY.ABOUT_US.LINE_1'}}</h3>
-          <h3 style="color: #007bff">{{'CATEGORY.ABOUT_US.LINE_2'}}</h3>
-          <h3>
-          {{'CATEGORY.ABOUT_US.LINE_3'}} </h3>
+          
 
         </div>
       </div>
       <div class="searchClassContainer">
         <div class="text-picture-container isMobile" *ngIf="isMobile">
-          <h3>{{'CATEGORY.ABOUT_US.LINE_4'}}</h3>
+          <h3>Choisissez la marque</h3>
         </div>
 
         <div class="searchClass">
@@ -53,13 +42,13 @@
                       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <form class="example-form">
                           <mat-form-field class="example-full-width" appearance="outline">
-                            <mat-label>{{'CATEGORY.SEARCH_FORM.SPECIALITY_LABEL'}}</mat-label>
+                            <mat-label>Choisissez la marque</mat-label>
                             <input
                               matInput
                               aria-label="State"
                               [matAutocomplete]="speciality"
                               [formControl]="specialityCtrl">
-                            <mat-icon matSuffix class="search-icon">search</mat-icon>
+                  
                             <mat-autocomplete #speciality="matAutocomplete">
                               <mat-option *ngFor="let state of filtredSpeciality | async" [value]="state.name">
                                 <img class="example-option-img" height="25">
@@ -74,13 +63,13 @@
                       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
                         <form class="example-form">
                           <mat-form-field class="example-full-width" appearance="outline">
-                            <mat-label>{{'CATEGORY.SEARCH_FORM.TOWN_LABEL'}}</mat-label>
+                            <mat-label>Choisissez le modéle</mat-label>
                             <input
                               matInput
                               aria-label="State"
                               [matAutocomplete]="town"
                               [formControl]="townCtrl">
-                            <mat-icon matSuffix class="search-icon">room</mat-icon>
+                          
 
                             <mat-autocomplete #town="matAutocomplete">
                               <mat-option>
@@ -90,7 +79,8 @@
                           </mat-form-field>
                         </form>
                       </div>
-                  
+                      <div>
+                      <button  style="height: 50px;margin-top: 3%;padding: 10px 37px;margin-left: 20%;"type="button" class="btn btn-danger">Chercher</button></div>
                     </div>
 
                   </form>
@@ -100,6 +90,7 @@
           </div>
         </div>
       </div>
+
       </div>
     </div>
 
@@ -125,137 +116,171 @@
           </div>
         </div>
       </div>
+<div class="row categorySection d-bloc d-xs-block d-sm-block">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle contentmiddle" >
+    
+    <h2  class="titre-ligne "><strong>Discover Our Featured Models</strong></h2>
+    <p>A masterful combination of style, power, sporty handling and comfort. A masterful <br>combination of style, power, sporty handling and comfort.</p>
 
+    
+</div>
+<div class="card-group">
+    <div class="card content_card">
+     
+      <div class="card-body">
+        <h5 class="card-title"><strong>GLE 300d Full</strong> </h5>
+        <p class="card-text">cette version 300d n’a rien de pénible. Grâce aux 500 Nm de couple mais aussi aux 245 ch délivrés. Très bien épaulé par une boîte automatique à neuf rapports aussi bien gérée.</p>
+        <img class="card-img-top"src="/assets/photos/GT.jpeg" alt="Card image cap">
+        <div class="row">
+            
+            <div class="col-6"><p class="card-text"><small class="text-muted"><i class="fa fa-info-circle" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
+            <div class="col-6"> <p class="card-text"><small class="text-muted"><i class="fas fa-car" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
 
-      <!-- WHY ESIHA -->
-      <div class="row WhySection">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #whySectionTitle>
-          <h1 [@show]="showstates['whyTitle']">{{'CATEGORY.WHY_SECTION.WHY_USE_LABEL'}}</h1>
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-          <div class="row whyContent">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12 left top subSection description firstSectionClass" #securitySubSection>
-              <img src="assets/images/category/cover/img-1.webp" width="100px" [@show]="showstates['securityIMG']">
-              <h2 [@pullRight]="pullRightstates['security']">{{'CATEGORY.WHY_SECTION.SEARCH.TITLE'}}</h2>
-              <p [@pullRight]="pullRightstates['securityDescription']">{{'CATEGORY.WHY_SECTION.SEARCH.TEXT'}} </p>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12 right top subSection description" #collaborationSubSection>
-              <img src="assets/images/category/cover/img-0.webp" width="100px" [@show]="showstates['collaborationIMG']">
-              <h2 [@pullLeft]="pullLeftstates['collaboration']">{{'CATEGORY.WHY_SECTION.RDV.TITLE'}}</h2>
-              <p [@pullLeft]="pullLeftstates['collaborationDescription']">{{'CATEGORY.WHY_SECTION.RDV.TEXT'}} </p>
-            </div>
-
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12 left subSection borderClass description" #pricingSubSection>
-              <img src="assets/images/category/cover/img-2.webp" width="100px" [@show]="showstates['pricingIMG']">
-              <h2 [@pullRight]="pullRightstates['pricing']">{{'CATEGORY.WHY_SECTION.HISTORY.TITLE'}}</h2>
-              <p [@pullRight]="pullRightstates['pricingDescription']">{{'CATEGORY.WHY_SECTION.HISTORY.TEXT'}} </p>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12 right subSection description" #qualitySubSection>
-              <img src="assets/images/category/cover/img-3.webp" width="100px" [@show]="showstates['qualityIMG']">
-              <h2 [@pullLeft]="pullLeftstates['quality']">{{'CATEGORY.WHY_SECTION.TELECONSULTATION.TITLE'}}</h2>
-              <p
-                [@pullLeft]="pullLeftstates['qualityDescription']">{{'CATEGORY.WHY_SECTION.TELECONSULTATION.TEXT'}}</p>
-            </div>
-          </div>
-        </div>
-
       </div>
+    </div>
+    <div class="card content_card">
+  
+      <div class="card-body">
+        <h5 class="card-title"><strong>GOLF 8 R Line</strong> </h5>
+        <p class="card-text">La Volkswagen Golf 8 conserve un style sobre et bien dessiné tout en apportant un lot intéressant de nouveautés, surtout au niveau des équipements. Avec ses deux écrans de 10,25 pouces.</p>
+        <img class="card-img-top" src="/assets/photos/Golf.jpeg" alt="Card image cap">
+        
+        <div class="row">
+            
+            <div class="col-6"><p class="card-text"><small class="text-muted"><i class="fa fa-info-circle" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
+            <div class="col-6"> <p class="card-text"><small class="text-muted"><i class="fas fa-car" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
 
-      <!-- NOS PLUS -->
-      <div class="row ourPlusSection">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #ourPlusTitle>
-          <h1 [@show]="showstates['whatTitle']">{{'CATEGORY.PLUS_SECTION.LABEL'}}</h1>
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-          <div class="row plusContent">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-12 subSection">
-              <img src="assets/images/category/cover/img_4.webp" width="30%" [@show]="showstates['messagingIMG']">
-              <h2 [@showUp]="showUpstates['messaging']">{{'CATEGORY.PLUS_SECTION.ONE_ACCOUNT.TITLE'}}</h2>
-              <p [@showUp]="showUpstates['messagingDescription']">{{'CATEGORY.PLUS_SECTION.ONE_ACCOUNT.TEXT'}}</p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-12 subSection" #callsSubSection>
-              <img src="assets/images/category/cover/img_5.webp" width="30%" [@show]="showstates['callsIMG']">
-              <h2 [@showUp]="showUpstates['calls']">{{'CATEGORY.PLUS_SECTION.SIMPLE.TITLE'}}</h2>
-              <p [@showUp]="showUpstates['callsDescription']">{{'CATEGORY.PLUS_SECTION.SIMPLE.TEXT'}}</p>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-12 subSection" #videoSubSection>
-              <img src="assets/images/category/cover/img_6.webp" width="30%" [@show]="showstates['videoIMG']">
-
-              <h2 [@showUp]="showUpstates['video']">{{'CATEGORY.PLUS_SECTION.ALL.TITLE'}}</h2>
-              <p [@showUp]="showUpstates['videoDescription']">{{'CATEGORY.PLUS_SECTION.ALL.TEXT'}}</p>
-            </div>
-          </div>
-        </div>
-
       </div>
-
-      <!-- PROFESSIONEL -->
-      <div class="row companiesSection">
-
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #companiesSectionTitle>
-          <h1 [@show]="showstates['serviceTitle']">{{'CATEGORY.PRO_SECTION.TITLE'}}</h1>
-        </div>
-
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12 p-l-0 p-r-0" #companiesContent>
-
-          <div class="row companiesContent p-l-0 p-r-0">
-            <div class="pictureText-container">
-              <div class="col-lg-7 col-md-7 col-sm-12 col-12 ">
-                <img src="assets/images/category/cover/img_7.webp" width="100%"
-                     [@pullRight]="pullRightstates['teamConnection']">
-              </div>
-              <div class="col-lg-5 col-md-5 col-sm-12 col-12 pictureText-text" #oneAppSubSection>
-                <h1 [@showUp]="showUpstates['teamConnection']">{{'CATEGORY.PRO_SECTION.ONE_APP.TITLE'}}</h1>
-                <h3
-                  [@showUp]="showUpstates['teamConnectionText']"> {{'CATEGORY.PRO_SECTION.ONE_APP.TEXT'}}</h3>
-              </div>
-              <div class="pictureText-shadow"></div>
-            </div>
-
-            <div class="pictureText-container">
-              <div class="col-lg-5 col-md-5 col-sm-12 col-12 p-l-40 pictureText-text" #webPageSubSection>
-                <h1 [@showUp]="showUpstates['projectManagement']">{{'CATEGORY.PRO_SECTION.PAGE.TITLE'}}</h1>
-                <h3
-                  [@showUp]="showUpstates['projectManagementText']"> {{'CATEGORY.PRO_SECTION.PAGE.TEXT'}} </h3>
-              </div>
-              <div class="col-lg-7 col-md-7 col-sm-12 col-12 ">
-                <img src="assets/images/category/cover/img_8.webp" width="100%"
-                     [@pullLeft]="pullLeftstates['projectManagement']">
-              </div>
-              <div class="pictureText-shadow"></div>
-            </div>
-
-            <div class="pictureText-container">
-              <div class="col-lg-7 col-md-7 col-sm-12 col-12">
-                <img src="assets/images/category/cover/img_9.webp" width="100%" [@pullRight]="pullRightstates['reporting']">
-              </div>
-              <div class="col-lg-5 col-md-5 col-sm-12 col-12 pictureText-text" #upSubSection>
-                <h1 [@showUp]="showUpstates['reporting']">{{'CATEGORY.PRO_SECTION.UP.TITLE'}}</h1>
-                <h3 [@showUp]="showUpstates['reportingText']">{{'CATEGORY.PRO_SECTION.UP.TEXT'}}</h3>
-              </div>
-              <div class="pictureText-shadow"></div>
-            </div>
-
-            <div class="pictureText-container">
-              <div class="col-lg-5 col-md-5 col-sm-12 col-12 p-l-40 pictureText-text" #numericSubSection>
-                <h1
-                  [@showUp]="showUpstates['projectManagement']">{{'CATEGORY.PRO_SECTION.NUMERIC.TITLE'}}</h1>
-                <h3
-                  [@showUp]="showUpstates['projectManagementText']">{{'CATEGORY.PRO_SECTION.NUMERIC.TEXT'}}</h3>
-              </div>
-              <div class="col-lg-7 col-md-7 col-sm-12 col-12 ">
-                <img src="assets/images/category/cover/img_10.webp" width="100%"
-                     [@pullLeft]="pullLeftstates['projectManagement']">
-              </div>
-              <div class="pictureText-shadow"></div>
-            </div>
-
-
-
-          </div>
+    </div>
+    <div class="card content_card">
+  
+      <div class="card-body">
+        <h5 class="card-title"><strong> Audi S3 Berline</strong></h5>
+        <p class="card-text">la nouvelle Audi S3 Berline et sa version Edition One rouge Tango, disponible en option, vous feront éprouver de nouvelles sensations. Conduite dynamique, allure de Coupé élégant et nombreuses innovations.</p>
+        <img class="card-img-top" src="/assets/photos/audi.jpeg"alt="Card image cap">
+        <div class="row">
+            
+            <div class="col-6"><p class="card-text"><small class="text-muted"><i class="fa fa-info-circle" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
+            <div class="col-6"> <p class="card-text"><small class="text-muted"><i class="fas fa-car" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
 
         </div>
       </div>
     </div>
   </div>
+</div>
+
+ <!-- Footer-->
+
+ <footer class="footer-section">
+    <div class="container">
+        <div class="row d-bloc d-xs-block d-sm-block">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 " >
+        <div class="footer-cta pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-map-marker-alt" style="color:#b20101"></i>
+                        <div class="cta-text">
+                            <h4>Trouvez Nous</h4>
+                            <span>Bir eljir,Oran  Algerie</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-phone"style="color:#b20101"></i>
+                        <div class="cta-text">
+                            <h4>Appelez Nous</h4>
+                            <span>0557642311</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="far fa-envelope-open" style="color:#b20101"></i>
+                        <div class="cta-text">
+                            <h4>Contactez Nous</h4>
+                            <span>mail@info.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 mb-50">
+                    <div class="footer-widget">
+                        <div class="footer-logo">
+                            <a href="index.html"><img src="/assets/photos/logo.png" class="img-fluid" alt="logo"></a>
+                        </div>
+                        <div class="footer-text">
+                            <p>La société Ziani-Automobiles, accompagne particuliers et entreprises sur 
+                                leurs projets d'achat mais aussi assure la vente et le reprise de votre voitures, toutes les marques et selon la disponibilité.   
+                                 L’Equipe Ziani-Automobiles, avec ses commerciales, reste a votre entière disposition pour toutes informations complémentaire </p>
+                        </div>
+                        <div class="footer-social-icon">
+                            <span>Suivez Nous sur</span>
+                            <a href="#"><i class="fab fa-facebook-f "style="font-size:36px;color:#b20101"></i></a>
+                            <a href="#"><i class="fab fa-instagram "style="font-size:36px;color:#b20101"></i></a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>informations</h3>
+                        </div>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Nos</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">À propos de nous</a></li>
+                            <li><a href="#">Nos Services</a></li>
+                            <li><a href="#">nouveautés</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                    <div class="footer-widget">
+                      
+                        <div class="footer-text mb-25">
+                            <p>Pour plus d'informations,Contactez nous</p>
+                        </div>
+                        <div class="subscribe-form">
+                            <form action="#">
+                                <input type="text" placeholder="Envoyer Message">
+                                <button><i class="fab fa-telegram-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                    <div class="copyright-text">
+                        <p>Copyright &copy; 2018,Tous droits réservés.</p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</footer>
