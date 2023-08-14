@@ -1,6 +1,9 @@
 /* styles.css */
 
 /* Add some global styling */
+body, html {
+  transition: all 0.5s;
+  background-color: #fff; }
 .mat-card {
     width: 100%;
     max-width: 800px;
@@ -10,7 +13,10 @@
     background-color: #ffffff;
     border-radius: 10px;
   }
-  
+  .title-with-line {
+    border-bottom: 2px solid rgb(148, 18, 18); /* Ajoute une bordure noire en bas */
+    padding-bottom: 5px; /* Espace entre le texte et la bordure */
+  }
   /* Add spacing below the "Add Product" button */
   .add-button {
     margin-bottom: 20px;
