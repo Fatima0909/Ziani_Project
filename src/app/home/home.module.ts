@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -16,11 +17,7 @@ const routes: Routes = [
 ];
 
 
-const modules = [
-  MatFormFieldModule,
-  MatInputModule,
-  MatAutocompleteModule
-];
+
 
 @NgModule({
   declarations: [
@@ -30,7 +27,7 @@ const modules = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    modules,
+    SharedModule,
     RouterModule.forChild(routes)
   ]
 })
