@@ -1,1 +1,133 @@
-<p>product-dialog works!</p>
+<div class="row clearfix space-form">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="body">
+          <mat-icon class="edit" (click)="isUpdateDisabled = false" *ngIf="isUpdateDisabled; else isNotDisabled">mode_edit</mat-icon>
+          <ng-template #isNotDisabled>
+            <mat-icon class="edit" (click)="resetSpace()">close</mat-icon>
+          </ng-template>
+          <form [formGroup]="docForm" (ngSubmit)="onSubmit()">
+            <mat-vertical-stepper [linear]="isLinear" #stepper  (selectionChange)="selectionChange($event)">
+            <mat-step>
+
+              <ng-template matStepLabel>{{'ACTIVITY.DETAIL_LABEL' }}</ng-template>
+
+              <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>{{'ACTIVITY.FORM.TITLE.LABEL'}}</mat-label>
+                        <input matInput formControlName="spaceTitle" required >
+                        <mat-error *ngIf="docForm.get('spaceTitle').errors">
+                          {{'ACTIVITY.FORM.TITLE.ERROR'}}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+            
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                     
+                  
+                    </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label> {{'ACTIVITY.FORM.MAIL.LABEL'}}</mat-label>
+                    <input matInput formControlName="spaceMail"    required>
+                    <mat-error *ngIf="docForm.get('spaceMail').errors">
+                      {{'ACTIVITY.FORM.MAIL.ERROR'}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>  {{'ACTIVITY.FORM.MOBILE.LABEL'}}</mat-label>
+                    <input matInput formControlName="spaceMobileNumber" type="text"  >
+                    <mat-error *ngIf="docForm.get('spaceMobileNumber').errors">
+                      {{'ACTIVITY.FORM.MOBILE.ERROR'}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>{{'ACTIVITY.FORM.FIX.LABEL'}}</mat-label>
+                    <input matInput formControlName="spaceFixeNumber" type="text"  >
+                    <mat-error *ngIf="docForm.get('spaceFixeNumber').errors">
+                      {{'ACTIVITY.FORM.MOBILE.ERROR'}}
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+           
+                    </div>
+              
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>{{'ACTIVITY.FORM.MANUEL_ADDRESS.LABEL'}}</mat-label>
+                        <input matInput formControlName="spaceManuelAddress" />
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>{{'ACTIVITY.FORM.NEAR_ADDRESS.LABEL'}}</mat-label>
+                        <input matInput formControlName="spaceNearAddress"   >
+                      </mat-form-field>
+                    </div>
+                  </div>
+              </mat-step>
+          
+           
+        
+            <mat-step>
+              <ng-template matStepLabel>{{'ACTIVITY.PHOTO_LABEL' }}</ng-template>
+              <div class="pictureSection">
+                <div *ngIf="spacePhotos.length > 0" class="row photosClass">
+                  <ng-container>
+                    <div class="col-6 col-lg-3"  *ngFor="let photo of spacePhotos"
+                     (click)="removeThisPhotoFromSpace(photo)">
+                      <div class="image">
+                        <img class="cursorDelete" [src]="photo.imageRef" disabled>
+                      </div>
+                    </div>
+                  </ng-container>
+                <!-- Messages -->
+              <!--  <div class="ui  teal message" *ngIf="isSpacePhotosMsg">
+                  <div class="content">{{spacePhotosMsg}}</div>
+                </div> -->
+              </div>
+
+                <div class="row uploadContainer"  *ngIf="!isUpdateDisabled">
+                  <input type="file" class="inputFile" #embedpollfileinput1 id="embedpollfileinput1" (change)="onFileChange()" accept="image/*"/>
+
+                  <button (click)="onFileChange()">{{'ACTIVITY.UPLOAD_PICTURE' }}</button>
+
+              </div>
+
+              </div>
+              <div class="row photosRefClass" *ngIf="!isUpdateDisabled" >
+                <div class="col-lg-3 col-6" *ngFor="let ref of spacePhotosRefs"
+                    >
+                  <div class="image">
+                    <img  (click)="addThisPhotoToSpace(ref)" class="cursorAdd" [src]="ref">
+                  </div>
+                </div>
+              </div>
+            </mat-step>
+            </mat-vertical-stepper>
+
+            <div class="row" *ngIf="!isUpdateDisabled">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+              <div class="example-button-row">
+                <button mat-raised-button color="primary"
+                        type="submit" [disabled]="!docForm.valid" [ngClass]="(!docForm.valid  || !spacePhotos || spacePhotos.length < 2) ? 'disable-btn':''">{{'SHARED.AGENDA_POPUP.SAVE_LABEL' }}</button>
+                <button mat-raised-button class="cancel"  (click)="resetSpace()" [disabled]="isUpdateDisabled" tabindex="-1">{{'SHARED.AGENDA_POPUP.CANCEL_LABEL' }}</button>
+              </div>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+
+</div>

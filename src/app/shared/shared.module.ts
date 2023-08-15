@@ -10,6 +10,7 @@ import {MatTableModule} from '@Angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
 
 const modules = [
   MatFormFieldModule,
@@ -22,7 +23,8 @@ const modules = [
   MatButtonModule,
   NgxSpinnerModule,
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  MatStepperModule
 ];
 
 @NgModule({
