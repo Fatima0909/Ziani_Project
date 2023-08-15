@@ -13,26 +13,22 @@
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let product">{{ product.name }}</td>
+          <td mat-cell *matCellDef="let product">{{ product.title }}</td>
         </ng-container>
   
         <!-- Price Column -->
-        <ng-container matColumnDef="Marque">
+        <ng-container matColumnDef="marque">
           <th mat-header-cell *matHeaderCellDef>Marque</th>
           <td mat-cell *matCellDef="let product">{{ product.marque}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="Modele">
+        <ng-container matColumnDef="modele">
           <th mat-header-cell *matHeaderCellDef>Modèle</th>
           <td mat-cell *matCellDef="let product">{{ product.model}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="">
-          <th mat-header-cell *matHeaderCellDef>Prix</th>
-          <td mat-cell *matCellDef="let product">{{ product.Price}}</td>
-        </ng-container>
 
-        <ng-container matColumnDef="">
+        <ng-container matColumnDef="picture">
           <th mat-header-cell *matHeaderCellDef>Photo de voiture</th>
           <td mat-cell *matCellDef="let product"></td>
         </ng-container>

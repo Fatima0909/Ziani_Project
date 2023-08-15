@@ -47,6 +47,10 @@
               
               .card{
                margin-inline:6px;
+               &.content_card {
+                max-width: 450px;
+               
+               }
                   }
   .titre-ligne {
     border-bottom: 2px solid rgb(178, 26, 26); /* Bordure de 2px d'épaisseur de couleur noire (#333) */
@@ -1798,6 +1802,8 @@ ul {
     }
     .categorySection img {
       border-radius: 1rem;
+      max-height: 400px;
+    max-width: 450px;
     }
     .searchClass {
       margin-left: 5%;

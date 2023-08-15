@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CarService } from '../shared/service/car.service';
+import { Car } from '../shared/model/car';
 
 @Component({
   selector: 'app-products',
@@ -15,12 +17,14 @@ export class ProductsComponent implements OnInit {
     { id: 3, name: 'Product 3', price: 30 }
   ];
 
-  displayedColumns: string[] = ['name', 'price', 'actions'];
+  cars: Car[] = [];
+
+  displayedColumns: string[] = ['marque', 'modele', 'picture', 'actions'];
   dataSource = this.products;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private carService: CarService) {}
   ngOnInit(): void {
-    this.dataSource = this.products;
+    this.initCars();
 
   }
 
@@ -52,6 +56,16 @@ export class ProductsComponent implements OnInit {
       }
     });
   }
+
+  private initCars() {
+    this.carService.getCars().once('value').then((res) => {
+     this.cars = [];
+     res.forEach(val => {
+       this.cars.push(val.val());
+     })
+     this.dataSource = this.cars;
+    })
+   }
 
   deleteProduct(product: any) {
     const index = this.products.findIndex(p => p.id === product.id);
