@@ -116,11 +116,17 @@
       <div class="card-body">
         <h5 class="card-title"><strong>{{car.title}}</strong> </h5>
         <p class="card-text">{{car.description}}</p>
-        <img class="card-img-top" [src]="car.picture" alt="Card image cap">
         <div class="row">
+        
+        <img class=" col-6 card-img-top" [src]="car.picture" alt="Card image cap">
+        <div class="col-6"> 
             
-            <div class="col-6"><p class="card-text"><small class="text-muted"><i class="fa fa-info-circle" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
-            <div class="col-6"> <p class="card-text"><small class="text-muted"><i class="fas fa-car" style="color:#b20101"></i>  Last updated 3 mins ago</small></p></div>
+            <p class="card-text"><i class="fas fa-car" style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>
+            <p class="card-text"><i class="fas fa-shield-alt" style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>
+            <p class="card-text"><i class="fas fa-dollar-sign" style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>
+            <p class="card-text"><i class="fas fa-gas-pump " style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>
+            <p class="card-text"><i class="fas fa-info " style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>
+        </div>
 
         </div>
       </div>
