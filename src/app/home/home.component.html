@@ -114,11 +114,11 @@
     <div class="card content_card" *ngFor="let car of cars">
      
       <div class="card-body">
-        <h5 class="card-title"><strong>{{car.title}}</strong> </h5>
-        <p class="card-text">{{car.description}}</p>
+        <h5 class="card-title"><strong>{{car.carTitle}}</strong> </h5>
+        <p class="card-text">{{car.carDescription}}</p>
         <div class="row">
         
-        <img class=" col-6 card-img-top" [src]="car.picture" alt="Card image cap">
+        <img class=" col-6 card-img-top" [src]="car.carPicture[0]?.imageRef" alt="Card image cap">
         <div class="col-6"> 
             
             <p class="card-text"><i class="fas fa-car" style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>

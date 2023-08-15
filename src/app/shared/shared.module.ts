@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatStepperModule} from '@angular/material/stepper';
+import { DisableControlDirective } from './directive/disable-control.directive';
 
 const modules = [
   MatFormFieldModule,
@@ -28,13 +29,17 @@ const modules = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
+    FormsModule ,
+    ReactiveFormsModule,
     modules
   ],
   exports: [
     modules
-  ]
+  ],
+  providers: []
 })
 export class SharedModule { }

@@ -1,5 +1,10 @@
+import { Image } from "./image";
+
 export class Car {
-     title:String;
-     description:String;
-     picture: String;
+     carTitle:String;
+     carMarque: String;
+     carDescription:String;
+     carYear: String;
+     carPicture: Array<Image>;
+     carModel: String;
 }
