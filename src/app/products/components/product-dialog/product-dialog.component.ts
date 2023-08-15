@@ -22,7 +22,7 @@ export class ProductDialogComponent implements OnInit {
   isUpdateAutoComplete: any;
   isLinear = false;
   isOpenAddService: any;
-  spacePhotosRefs: any;
+  spacePhotosRefs: any[] = [];
   spacePhotos: any[];
   maxSpacePhotoNumber = 5;
   isUpdateDisabled: boolean;
@@ -65,13 +65,13 @@ export class ProductDialogComponent implements OnInit {
         spaceTitle: [{value:  '', disabled: this.isUpdateDisabled}
           , [Validators.required, Validators.minLength(3)]],
         spaceCategory: [ '', [Validators.required]],
-        spaceMail: [ {value: "" , disabled: this.isUpdateDisabled} , [Validators.required, Validators.email]],
+        spaceMail: [ {value: "" , disabled: this.isUpdateDisabled} ,null],
         spaceMobileNumber: [{value: "" , disabled: this.isUpdateDisabled}, null],
         spaceFixeNumber: [{value:'', disabled: this.isUpdateDisabled}, null],
         spaceTown: [{value:  '', disabled: this.isUpdateDisabled}],
         spaceSmallTown: [{value:  '', disabled: this.isUpdateDisabled}],
         spaceManuelAddress: [{value: '', disabled: this.isUpdateDisabled }, null],
-        spaceNearAddress: [{value:  '', disabled: this.isUpdateDisabled}, null]
+        
       });
   }
 
@@ -114,10 +114,23 @@ export class ProductDialogComponent implements OnInit {
   
 
 
+  loadImage(input : any) {
+    console.log(input);
+    input.click();
+  }
 
 
 
-  public async onFileChange() {
+  public async onFileChange($event: any) {
+    const target = $event.target as HTMLInputElement;
+    if(target.files && target.files.length) {
+      const image = target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.spacePhotosRefs.push(e.target?.result);
+      }
+      reader.readAsDataURL(image);
+    }
     /*
     const source = CameraSource.Photos;
     Camera.getPhoto({
