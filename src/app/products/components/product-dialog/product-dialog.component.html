@@ -22,7 +22,7 @@
 
 
 <div class="row clearfix space-form">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 general-card">
         <div class="body">
        <div class="centered-container"> 
          <button type="button" class="btn btn-dark btn-lg " (click)="isUpdateDisabled = false" *ngIf="isUpdateDisabled; else isNotDisabled"><i class="fas fa-pen" style="font-size:16px ;color:white"></i>   Modifier information de voiture  </button>
@@ -30,7 +30,7 @@
           <ng-template #isNotDisabled>
             <mat-icon class="edit" (click)="resetSpace()">close</mat-icon>
           </ng-template>
-          <form [formGroup]="docForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="docForm" class="form-card"(ngSubmit)="onSubmit()">
             <mat-vertical-stepper [linear]="isLinear" #stepper  (selectionChange)="selectionChange($event)">
             <mat-step>
 

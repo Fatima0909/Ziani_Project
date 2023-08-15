@@ -14,7 +14,11 @@ body {
   color: $ternary;
   font-size: 14px;
   margin: 0;
+  background-color: white;
 
+}
+.card-general{
+ background-color: white;
 }
 
 .logo {
@@ -269,6 +273,7 @@ body, html {
     .mat-cell {
         word-wrap: break-word;
         white-space: normal;
+        background-color: #fff;
       }
     .mat-cell {
         max-width: 100%;
