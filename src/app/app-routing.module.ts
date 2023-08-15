@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardGuard } from './auth-guard.guard';
-import { AddCarComponent } from './add-car/add-car.component';
+import { ProductDialogComponent } from './products/components/product-dialog/product-dialog.component';
+
 
 const routes: Routes = [
   
@@ -19,6 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./products/products.module').then(m =>m.ProductsModule),
     canActivate: [AuthGuardGuard] 
   },
+  { path: 'dashboard/addProduct', component: ProductDialogComponent}
   
 ];
 

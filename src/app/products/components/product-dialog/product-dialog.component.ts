@@ -70,9 +70,7 @@ export class ProductDialogComponent implements OnInit {
         carModel: [ {value: "" , disabled: this.isUpdateDisabled} ,null],
         carMarque: [{value: "" , disabled: this.isUpdateDisabled}, null],
         carYear: [{value:'', disabled: this.isUpdateDisabled}, null],
-        carDescription: [{value:  '', disabled: this.isUpdateDisabled}],
-        spaceSmallTown: [{value:  '', disabled: this.isUpdateDisabled}],
-        spaceManuelAddress: [{value: '', disabled: this.isUpdateDisabled }, null],
+        carDescription: [{value:  '', disabled: this.isUpdateDisabled}]
         
       });
   }

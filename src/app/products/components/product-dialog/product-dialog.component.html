@@ -118,6 +118,20 @@
               </div>
 
               </div>
+<<<<<<< HEAD
+=======
+            
+              <div class="row photosRefClass" *ngIf="!isUpdateDisabled" >
+                <div class="col-lg-3 col-md-4
+                
+                 col-6" *ngFor="let ref of spacePhotosRefs"
+                    >
+                  <div class="image">
+                    <img  (click)="addThisPhotoToSpace(ref)" class="cursorAdd" [src]="ref">
+                  </div>
+                </div>
+              </div>
+>>>>>>> d795f3f (add 2)
             </mat-step>
             </mat-vertical-stepper>
 

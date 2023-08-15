@@ -3,6 +3,7 @@ import { ProductDialogComponent } from './components/product-dialog/product-dial
 import { MatDialog } from '@angular/material/dialog';
 import { CarService } from '../shared/service/car.service';
 import { Car } from '../shared/model/car';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -22,7 +23,7 @@ export class ProductsComponent implements OnInit {
   displayedColumns: string[] = ['title','modele','description', 'picture' , 'actions'];
   dataSource = this.products;
 
-  constructor(private dialog: MatDialog, private carService: CarService) {}
+  constructor(private dialog: MatDialog, private carService: CarService, private router: Router) {}
   ngOnInit(): void {
     this.initCars();
 
@@ -57,6 +58,10 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+
+  redirectToOtherPage() {
+    this.router.navigate(['/dashboard/addProduct']); 
+  }
   private initCars() {
     this.carService.getCars().once('value').then((res) => {
      this.cars = [];

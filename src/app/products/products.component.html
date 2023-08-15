@@ -1,3 +1,24 @@
+<nav class="navbar">
+  <div class="logo"><img class="img-fluid" src="/assets/photos/logo.png" alt="LOGO"></div>
+  <div class="push-left">
+    <button id="menu-toggler" data-class="menu-active" class="hamburger">
+      <span class="hamburger-line hamburger-line-top"></span>
+      <span class="hamburger-line hamburger-line-middle"></span>
+      <span class="hamburger-line hamburger-line-bottom"></span>
+    </button>
+
+    <!--  Menu compatible with wp_nav_menu  -->
+    <ul id="primary-menu" class="menu nav-menu">
+      <li class="menu-item current-menu-item"><a class="nav__link"  href="#"><strong>Home</strong></a></li>
+      <li class="menu-item dropdown"><a class="nav__link"  href="#"> <strong>À propos de nous</strong></a></li>
+      <li class="menu-item dropdown"><a class="nav__link"  href="#"><strong>Contact</strong></a></li>
+     
+      </ul>
+  </div>
+</nav>
+
+
+
 <mat-card>
   <mat-card-header>
     <mat-card-title ><h1 class="title-with-line"><strong>Listes des voitures</strong> </h1></mat-card-title>
@@ -5,14 +26,15 @@
   <mat-card-content>
 
 
-
-    <button mat-raised-button color="danger" class="add-button btn btn-danger" (click)="addProduct()">Ajouter voiture</button>
+<div class="add-product">
+    <button mat-raised-button color="danger" class="add-button btn btn-danger" (click)="redirectToOtherPage()">Ajouter une voiture</button>
+  </div>
     <div class="table-container">
     
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Name Column -->
         <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <th mat-header-cell *matHeaderCellDef>Nom de voiture</th>
           <td mat-cell *matCellDef="let product">{{ product.title }}</td>
         </ng-container>
   
@@ -23,14 +45,14 @@
         </ng-container>
 
         <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef>description</th>
+          <th mat-header-cell *matHeaderCellDef>Modèle</th>
           <td mat-cell *matCellDef="let product">{{ product.model}}</td>
         </ng-container>
 
 
         <ng-container matColumnDef="modele">
           <th mat-header-cell *matHeaderCellDef>description</th>
-          <td mat-cell *matCellDef="let product">{{ product.model}}</td>
+          <td mat-cell *matCellDef="let product">{{ product.description}}</td>
         </ng-container>
 
 
@@ -46,10 +68,10 @@
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef="let product">
             <button mat-icon-button color="primary" class="edit-button" (click)="editProduct(product)">
-              <mat-icon>modifier</mat-icon>
+              <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button  class="btn btn-danger btn-sm"  (click)="deleteProduct(product)">
-              <mat-icon>supprimer</mat-icon>
+            <button mat-icon-button  class="btn-sm"  (click)="deleteProduct(product)">
+              <mat-icon>delete</mat-icon>
             </button>
           </td>
         </ng-container>
