@@ -21,6 +21,13 @@ body {
  background-color: white;
 }
 
+
+   .form-card{
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19);
+    width: 100%;
+    border-radius: 5px;
+}
+
 .logo {
   max-width: 200px;
 }
@@ -191,16 +198,10 @@ body, html {
     padding-bottom: 5px; /* Espace entre le texte et la bordure */
   }
   /* Add spacing below the "Add Product" button */
-  .add-button {
-    margin-bottom: 20px;
-    justify-content: center;
-    text-align: center;
-    width: 15%;
-  }
+ 
   .add-product {
   
-    justify-content: center;
-    text-align: center;
+   float: right;
   }
  
   /* Style the table */

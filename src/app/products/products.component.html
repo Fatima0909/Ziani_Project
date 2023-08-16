@@ -19,7 +19,7 @@
 
 
 
-<mat-card class="card-general">
+<mat-card class="card-general" style="background-color:white">
   <mat-card-header>
     <mat-card-title ><h1 class="title-with-line"><strong>Listes des voitures</strong> </h1></mat-card-title>
   </mat-card-header>
@@ -29,7 +29,7 @@
 <div class="add-product">
     <button mat-raised-button color="danger" class="add-button btn btn-danger" (click)="redirectToOtherPage()">Ajouter une voiture</button>
   </div>
-    <div class="table-container">
+    <div class="table-container form-card">
     
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Name Column -->

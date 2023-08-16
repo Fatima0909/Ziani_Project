@@ -1,14 +1,17 @@
 .centered-container {
  float: right;
     
-    margin-top: 15px;
+    margin-top:50px;
     margin-right: 26px;
   }
   .general-card{
     background-color: #fff;
 }
+.general-card{
+    background-color: #fff;
+}
 .form-card{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.19);
     border-radius: 50px 50px;
     margin-top: 100px;
 }
@@ -32,6 +35,7 @@
 
 .photosRefClass{
     justify-content: center;
+    margin-top: 15px;
        }
 
     
