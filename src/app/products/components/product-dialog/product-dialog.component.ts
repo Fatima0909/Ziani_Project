@@ -9,6 +9,7 @@ import 'firebase/storage';
 import { Car } from 'src/app/shared/model/car';
 import { CarService } from 'src/app/shared/service/car.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-dialog',
@@ -16,6 +17,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./product-dialog.component.scss']
 })
 export class ProductDialogComponent implements OnInit {
+  [x: string]: any;
   docForm: FormGroup;
   serviceForm: FormGroup;
   categories: any;
@@ -58,7 +60,7 @@ export class ProductDialogComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService,
               private spinner: NgxSpinnerService,
-              private carService: CarService) {
+              private carService: CarService,  private router: Router) {
   }
   onSubmit() {
      this.updateOrSaveSpace();
@@ -75,6 +77,10 @@ export class ProductDialogComponent implements OnInit {
         carDescription: [{value:  this.carFromBdd ? this.carFromBdd.carDescription : '', disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]]
         
       });
+  }
+
+  returnPage(){
+    this.router.navigate(['/dashboard']); 
   }
 
   private createServiceForm() {
@@ -120,6 +126,7 @@ export class ProductDialogComponent implements OnInit {
   }
 
   
+  
 
 
   loadImage(input : any) {
@@ -162,7 +169,7 @@ export class ProductDialogComponent implements OnInit {
       }
     });*/
   }
-
+  
   private compressePhoto(file: any) {
     /*const maxHeight: number = Constants.MAX_PHOTO_HEIGHT;
     const maxWidth: number = Constants.MAX_PHOTO_WIDTH;

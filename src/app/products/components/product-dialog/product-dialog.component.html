@@ -10,8 +10,8 @@
     <!--  Menu compatible with wp_nav_menu  -->
     <ul id="primary-menu" class="menu nav-menu">
       <li class="menu-item current-menu-item"><a class="nav__link"  href="#"><strong>Home</strong></a></li>
-      <li class="menu-item dropdown"><a class="nav__link"  href="#"> <strong>À propos de nous</strong></a></li>
-      <li class="menu-item dropdown"><a class="nav__link"  href="#"><strong>Contact</strong></a></li>
+      <li class="menu-item dropdown"><a class="nav__link" href="#footer"> <strong>À propos de nous</strong></a></li>
+     
      
       </ul>
   </div>
@@ -25,8 +25,11 @@
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 general-card">
         <div class="body">
        <div class="centered-container"> 
-         <button type="button" class="btn btn-dark btn-lg " (click)="isUpdateDisabled = false" *ngIf="isUpdateDisabled; else isNotDisabled"><i class="fas fa-pen" style="font-size:16px ;color:white"></i>   Modifier information de voiture  </button>
+         <button type="button" class="btn btn-lg " style="background-color: #b20101; color: white;"(click)="isUpdateDisabled = false" *ngIf="isUpdateDisabled; else isNotDisabled"><i class="fas fa-pen" style="font-size:16px ;color:white"></i>   Modifier  </button>
        </div> 
+       <div class="centered-right"> 
+        <button type="button" class="btn  btn-dark  btn-lg "  (click)="returnPage()"><i class="fas fa-reply" style="font-size:16px ;color:white"></i>  retour  </button>
+      </div>
           <ng-template #isNotDisabled>
             <mat-icon class="edit" (click)="resetSpace()">close</mat-icon>
           </ng-template>
@@ -42,7 +45,7 @@
                         <mat-label>Nom de voiture </mat-label>
                         <input matInput formControlName="carTitle" required="true"  [disableControl]="isUpdateDisabled">
                         <mat-error>
-                          {{'ACTIVITY.FORM.TITLE.ERROR'}}
+                          Le nom est obligatoire
                         </mat-error>
                       </mat-form-field>
                     </div>
@@ -52,7 +55,7 @@
                         <mat-label> Modèle de voiture</mat-label>
                         <input matInput formControlName="carModel"    required [disableControl]="isUpdateDisabled">
                         <mat-error *ngIf="docForm.get('carModel').errors">
-                          {{'ACTIVITY.FORM.MAIL.ERROR'}}
+                         Le modèle est obligatoire
                         </mat-error>
                       </mat-form-field>
                     </div>
@@ -62,7 +65,7 @@
                         <mat-label>  Marque de voiture</mat-label>
                         <input matInput formControlName="carMarque" type="text" [disableControl]="isUpdateDisabled"  >
                         <mat-error *ngIf="docForm.get('carMarque').errors">
-                          {{'ACTIVITY.FORM.MOBILE.ERROR'}}
+                         La marque est obligatoire
                         </mat-error>
                       </mat-form-field>
                     </div>
@@ -71,7 +74,7 @@
                         <mat-label>Année </mat-label>
                         <input matInput formControlName="carYear" type="text" [disableControl]="isUpdateDisabled" >
                         <mat-error *ngIf="docForm.get('carYear').errors">
-                          {{'ACTIVITY.FORM.MOBILE.ERROR'}}
+                          l'année est obligatoire
                         </mat-error>
                       </mat-form-field>
                     </div>
@@ -84,6 +87,7 @@
                   <mat-form-field class="example-full-width mb-3" appearance="outline">
                     <mat-label>Description sur la voiture</mat-label>
                     <textarea matInput formControlName="carDescription" [disableControl]="isUpdateDisabled"></textarea>
+
                   </mat-form-field>
                 </div>
               </div>
