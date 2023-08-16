@@ -10,6 +10,26 @@ $ternary: #272727;
 $dark: #444444;
 
 
+::ng-deep {
+  .warning_swal {
+    &:focus {
+      box-shadow: unset !important
+    }
+    background-color: transparent !important;
+    color: orange !important;
+    border: 1px solid orange !important;
+  }
+  .teal_swal {
+    &:focus {
+      box-shadow: unset !important
+    }
+      background-color: transparent !important;
+      color: rgba(133, 116, 217, 0.39) !important;
+      border: 1px solid rgba(133, 116, 217, 0.39) !important;
+    
+  }
+}
+
 
 
 

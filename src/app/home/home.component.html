@@ -118,7 +118,7 @@
         <p class="card-text">{{car.carDescription}}</p>
         <div class="row">
         
-        <img class=" col-6 card-img-top" [src]="car.carPicture[0]?.imageRef" alt="Card image cap">
+        <img class=" col-6 card-img-top" [src]="car.carPicture[0]?.imageRef" (click)="openPictures(car.carPicture)" alt="Card image cap">
         <div class="col-6"> 
             
             <p class="card-text"><i class="fas fa-car" style="font-size:16px ;color:#b20101"></i> {{car.carModel}}</p>

@@ -5,6 +5,8 @@ import { CarService } from '../shared/service/car.service';
 import { Car } from '../shared/model/car';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { PictureCarouselComponent } from '../picture-carousel/picture-carousel.component';
+import { Image } from '../shared/model/image';
 
 @Component({
   selector: 'app-products',
@@ -53,7 +55,10 @@ export class ProductsComponent implements OnInit {
     this.carService.getCars().once('value').then((res) => {
      this.cars = [];
      res.forEach(val => {
-       this.cars.push(val.val());
+       this.cars.push({
+        ...val.val(),
+        id: val.key
+       });
      })
      this.dataSource = this.cars;
     })
@@ -68,14 +73,35 @@ export class ProductsComponent implements OnInit {
       confirmButtonText: 'Confirmer',
       cancelButtonText: 'Annuler',
       confirmButtonColor: 'red',
-    cancelButtonColor:"black"
+    cancelButtonColor:"black",
+    customClass: {
+      cancelButton :   'teal_swal',
+      confirmButton: 'warning_swal'
+    }
     }).then((result) => {
       if (result.isConfirmed) {
-        const index = this.products.findIndex(p => p.id === product.id);
-        if (index !== -1) {
-          this.products.splice(index, 1);
-        Swal.fire('Supprimé !', 'L\'élément a été supprimé.', 'success');
-      }
+        
+        this.carService.deleteCar(product.id).then(res => {
+          Swal.fire('Supprimé !', 'L\'élément a été supprimé.', 'success');
+          const index = this.cars.findIndex(p => p.id === product.id);
+          if (index !== -1) {
+            this.products.splice(index, 1);
+          
+        }
+        })
+        
     }});
+  }
+  openPicture(pictures: Image[]) {
+    this.dialog.open(PictureCarouselComponent, {
+      width: '100%',
+      height: '100%',
+      maxWidth: '100%',
+      panelClass: 'custom-dialog',
+      data: {
+        imageList: pictures,
+        currentImage: pictures[0]?.imageRef,
+      },
+    });
   }
 }

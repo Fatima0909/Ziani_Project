@@ -12,6 +12,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatStepperModule} from '@angular/material/stepper';
 import { DisableControlDirective } from './directive/disable-control.directive';
+import { PictureCarouselComponent } from '../picture-carousel/picture-carousel.component';
 
 const modules = [
   MatFormFieldModule,
@@ -30,6 +31,7 @@ const modules = [
 
 @NgModule({
   declarations: [
+    PictureCarouselComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ const modules = [
     modules
   ],
   exports: [
-    modules
+    modules,
+    PictureCarouselComponent
   ],
   providers: []
 })

@@ -63,7 +63,7 @@
         <ng-container matColumnDef="picture">
           <th mat-header-cell *matHeaderCellDef>Photo de voiture</th>
           <td mat-cell *matCellDef="let product">
-            <img [src]="product.carPicture[0]?.imageRef" width="40px" height="40px">
+            <img [src]="product.carPicture[0]?.imageRef" width="40px" height="40px" (click)="openPicture(product.carPicture)">
           </td> 
         </ng-container>
   

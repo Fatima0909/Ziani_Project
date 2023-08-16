@@ -1,0 +1,18 @@
+<div class="container">
+ <button class="close-icon" mat-button (click)="dialogRef.close()"  style="--background:transparent">
+  <mat-icon >close</mat-icon>
+ </button>
+  <button (click)="prevPicture()" class="last" size="small" style="--background:transparent">
+    <mat-icon      >skip_previous</mat-icon>
+  </button>
+  <div class="image-container">
+    <div>
+    <img [src]="pictureList[counter]">
+    </div>
+  </div>
+
+  <button type="button"  mat-flat-button color="primary" (click)="dialogRef.close()"  class="btn btn-block">
+    Fermer</button>
+  <button class="next" size="small" style="--background:transparent" (click)="nextPicture()"><mat-icon> skip_next</mat-icon>
+  </button>
+ </div>

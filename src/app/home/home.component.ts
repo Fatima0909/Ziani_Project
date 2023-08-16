@@ -6,72 +6,12 @@ import { Observable } from 'rxjs';
 import { Car } from '../shared/model/car';
 import { CarService } from '../shared/service/car.service';
 
+import { PictureCarouselComponent } from '../picture-carousel/picture-carousel.component';
+import { Image } from '../shared/model/image';
+import { MatDialog } from '@angular/material/dialog';
 @Component({ selector: 'app-home',
 templateUrl: './home.component.html',
 styleUrls: ['./home.component.scss'],
-animations: [
-  trigger('Titles', [
-    state('initial', style({'transform': 'translateY(-400%)', opacity: 0})),
-    state('active', style({'transform': 'translateY(0%)', opacity: 1})),
-
-
-    transition('initial => active', animate('1s 0s ease-in')),
-    transition('active => initial', animate('1s 0s ease-in')),
-
-
-  ]),
-  trigger('subTitles', [
-    state('initial', style({'transform': 'translateY(400%)', opacity: 0})),
-    state('active', style({'transform': 'translateY(0%)', opacity: 1})),
-
-
-    transition('initial => active', animate('1s 0s ease-in')),
-    transition('active => initial', animate('1s 0s ease-in')),
-
-
-  ]),
-
-  trigger('show', [
-    state('initial', style({opacity: 0})),
-    state('active', style({opacity: 1})),
-
-
-    transition('initial => active', animate('1s 0s ease-in')),
-    transition('active => initial', animate('1s 0s ease-in')),
-
-
-  ]),
-  trigger('pullRight', [
-    state('initial', style({'transform': 'translateX(-100%)', opacity: 0})),
-    state('active', style({'transform': 'translateX(0%)', opacity: 1})),
-
-
-    transition('initial => active', animate('1s 0s ease-in')),
-    transition('active => initial', animate('1s 0s ease-in')),
-
-
-  ]),
-  trigger('pullLeft', [
-    state('initial', style({'transform': 'translateX(200%)', opacity: 0})),
-    state('active', style({'transform': 'translateX(0%)', opacity: 1})),
-
-
-    transition('initial => active', animate('1s 0s ease-in')),
-    transition('active => initial', animate('1s 0s ease-in')),
-
-
-  ]),
-  trigger('showUp', [
-    state('initial', style({'transform': 'translateY(300%)', opacity: 0})),
-    state('active', style({'transform': 'translateY(0%)', opacity: 1})),
-
-
-    transition('initial => active', animate('1s 0s ease-out')),
-    transition('active => initial', animate('1s 0s ease-out')),
-
-
-  ]),
-]
 
 })
 export class HomeComponent implements OnInit, AfterViewInit {
@@ -149,7 +89,7 @@ appointmentPercent = 0;
 private selectedProUrl: any;
 isMobile: boolean = false;
 
-constructor (fb: FormBuilder, private router: Router, 
+constructor (fb: FormBuilder, private dialog: MatDialog, 
             private carService: CarService) {
   this.labelForm = fb.group({
     hideRequired: this.hideRequiredControl
@@ -167,55 +107,7 @@ ngOnInit() {
   this.showUpstates = [];
   this.pullRightstates = [];
   this.pullLeftstates = [];
-  this.showstates["whatTitle"] = 'initial';
-  this.showstates["whyTitle"] = 'initial';
-  this.showstates["serviceTitle"] = 'initial';
-  this.showstates["messagingIMG"] = 'initial';
-  this.showstates["callsIMG"] = 'initial';
-  this.showstates["videoIMG"] = 'initial';
-  this.showstates["securityIMG"] = 'initial';
-  this.showstates["collaborationIMG"] = 'initial';
-  this.showstates["qualityIMG"] = 'initial';
-  this.showstates["pricingIMG"] = 'initial';
-  this.showstates["history"] = 'initial';
-  this.showstates["encryption"] = 'initial';
-  this.showstates["oneClick"] = 'initial';
-
-
-  this.showUpstates["whatDescription"] = 'initial';
-  this.showUpstates["messaging"] = 'initial';
-  this.showUpstates["messagingDescription"] = 'initial';
-  this.showUpstates["calls"] = 'initial';
-  this.showUpstates["callsDescription"] = 'initial';
-  this.showUpstates["video"] = 'initial';
-  this.showUpstates["videoDescription"] = 'initial';
-  this.showUpstates["teamConnection"] = 'initial';
-  this.showUpstates["teamConnectionText"] = 'initial';
-  this.showUpstates["projectManagement"] = 'initial';
-  this.showUpstates["projectManagementText"] = 'initial';
-  this.showUpstates["reporting"] = 'initial';
-  this.showUpstates["reportingText"] = 'initial';
-  this.showUpstates["oneClick"] = 'initial';
-  this.showUpstates["oneClickText"] = 'initial';
-  this.showUpstates["history"] = 'initial';
-  this.showUpstates["historyText"] = 'initial';
-  this.showUpstates["encryption"] = 'initial';
-  this.showUpstates["encryptionText"] = 'initial';
-  this.showUpstates["contactForm"] = 'initial';
-
-  this.pullRightstates["security"] = 'initial';
-  this.pullRightstates["securityDescription"] = 'initial';
-  this.pullRightstates["pricing"] = 'initial';
-  this.pullRightstates["pricingDescription"] = 'initial';
-  this.pullRightstates["teamConnection"] = 'initial';
-  this.pullRightstates["reporting"] = 'initial';
-
-  this.pullLeftstates["collaboration"] = 'initial';
-  this.pullLeftstates["collaborationDescription"] = 'initial';
-  this.pullLeftstates["quality"] = 'initial';
-  this.pullLeftstates["qualityDescription"] = 'initial';
-  this.pullLeftstates["projectManagement"] = 'initial';
-
+  
   this.slideshowAnimation();
 
 }
@@ -392,5 +284,17 @@ ngAfterViewInit(): void {
     })
   //  this.setUrl(0);
   })*/
-}
+  }
+  openPictures(pictures: Image[]) {
+    this.dialog.open(PictureCarouselComponent, {
+      width: '100%',
+      height: '100%',
+      maxWidth: '100%',
+      panelClass: 'custom-dialog',
+      data: {
+        imageList: pictures,
+        currentImage: pictures[0]?.imageRef,
+      },
+    });
+  }
 }

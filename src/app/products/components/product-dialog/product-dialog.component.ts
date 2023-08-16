@@ -22,7 +22,6 @@ export class ProductDialogComponent implements OnInit {
   serviceForm: FormGroup;
   categories: any;
   specialities: any;
-  space: any;
   isOpen: any;
   isUpdateAutoComplete: any;
   isLinear = false;
@@ -96,7 +95,6 @@ export class ProductDialogComponent implements OnInit {
     this.carFromBdd = this.carService.selectedCar;
     this.docForm = this.createDocForm();
     this.carToSave = new Car();
-    this.initAboutUsInfo();
     this.initPictures();
   }
 
@@ -116,18 +114,7 @@ export class ProductDialogComponent implements OnInit {
     }
 
   }
-
-  private initAboutUsInfo(){
-    this.spaceDescription = this.space ? this.space.spaceDescription : '';
-    this.spaceFacebookLink = this.space ? this.space.spaceFacebookLink : '';
-    this.spaceTwitterLink = this.space ? this.space.spaceTwitterLink : '';
-    this.spaceLinkedinLink = this.space ? this.space.spaceLinkedinLink : '';
-    this.spaceInstaLink = this.space ? this.space.spaceInstaLink: '';
-  }
-
-  
-  
-
+    
 
   loadImage(input : any) {
     console.log(input);
@@ -242,7 +229,7 @@ export class ProductDialogComponent implements OnInit {
   }
 
   removeThisPhotoFromSpace(photo: any) {
-    if ((!this.isUpdateDisabled && this.space) || (!this.space)) {
+    if ((!this.isUpdateDisabled && this.carFromBdd) || (!this.carFromBdd)) {
       this.spacePhotoToRemove.push(photo);
       this.spacePhotos.splice(this.spacePhotos.indexOf(photo), 1);
     }
@@ -252,28 +239,27 @@ export class ProductDialogComponent implements OnInit {
 
     let isFilterChanged = false;
     const spaceForm = this.docForm.getRawValue();
-    this.carAfterUpdate = this.space;
-    if (this.carAfterUpdate.carTitle !== spaceForm.carTitle) {
+    if (this.carFromBdd.carTitle !== spaceForm.carTitle) {
            this.carToSave.carTitle = spaceForm.carTitle;
            this.carAfterUpdate.carTitle = spaceForm.carTitle;
       }
-    if (this.carAfterUpdate.carMarque !== spaceForm.carMarque) {
+    if (this.carFromBdd.carMarque !== spaceForm.carMarque) {
       this.carToSave.carMarque = spaceForm.carMarque;
-      this.carAfterUpdate.carMarque = spaceForm.carMarque;
+      this.carFromBdd.carMarque = spaceForm.carMarque;
     }
-    if (this.carAfterUpdate.carDescription !== spaceForm.carDescription) {
+    if (this.carFromBdd.carDescription !== spaceForm.carDescription) {
       this.carToSave.carDescription = spaceForm.carDescription;
-      this.carAfterUpdate.carDescription = spaceForm.carDescription;
+      this.carFromBdd.carDescription = spaceForm.carDescription;
     }
          // This treatement order is to respect between category and speciality
-    if (this.carAfterUpdate.carYear !== spaceForm.carYear) {
+    if (this.carFromBdd.carYear !== spaceForm.carYear) {
       this.carToSave.carYear = spaceForm.carYear;
-      this.carAfterUpdate.carYear = spaceForm.carYear;
+      this.carFromBdd.carYear = spaceForm.carYear;
     }
 
-    if (this.carAfterUpdate.carModel !== spaceForm.carModel) {
+    if (this.carFromBdd.carModel !== spaceForm.carModel) {
       this.carToSave.carModel = spaceForm.carModel;
-      this.carAfterUpdate.carModel = spaceForm.carModel;
+      this.carFromBdd.carModel = spaceForm.carModel;
     }
   }
 
@@ -336,8 +322,14 @@ export class ProductDialogComponent implements OnInit {
     } else {
       this.carToSave.carPicture =  Object.assign({}, this.spacePhotos);
     }
-    this.carAfterUpdate.carPicture = this.carToSave.carPicture;
-    const spaceToUpdateKey = this.ownerFromBddId;
+    this.carService.updateCar(this.carToSave, this.carFromBdd.id).then(res => {
+      
+      Swal.fire('Les informations est bien enregistré', '', 'success');
+
+      setTimeout(() => {
+        this.returnPage();
+      }, 4000)
+    });
 
   }
 
@@ -407,7 +399,11 @@ export class ProductDialogComponent implements OnInit {
     this.carToSave.carPicture =  this.spacePhotos;
     this.spinner.show();
     this.carService.addCarData(this.carToSave).then(res => {
-      Swal.fire('Les informations est bien enregistré', '', 'success');;
+      Swal.fire('Les informations est bien enregistré', '', 'success');
+      
+      setTimeout(() => {
+        this.returnPage();
+      }, 4000)
     }, error => {
       console.log("error", error);
     })

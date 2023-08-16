@@ -1,0 +1,54 @@
+.container {
+ position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.image-container {
+  height: 100%;
+  padding: 44px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.image-container > div {
+  text-align: center;
+}
+
+button.last,button.next {
+  position: absolute;
+  top: calc(50% - 50px);
+  color: white;
+  background: black;
+}
+
+.last {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.close-icon{
+  position: absolute;
+  top: 20px;
+  color: white;
+  right: 20px;
+}
+
+mat-icon {
+  pointer-events: none;
+  cursor: pointer;
+}
+.btn.btn-block {
+  background-color: black;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
