@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products.component';
@@ -8,6 +8,9 @@ import { SharedModule } from '../shared/shared.module';
 import { MatDialog } from '@angular/material/dialog';
 import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { DisableControlDirective } from '../shared/directive/disable-control.directive';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -21,10 +24,12 @@ import { DisableControlDirective } from '../shared/directive/disable-control.dir
     ProductsRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    MatFormFieldModule, MatInputModule
   ],
   providers: [
-    MatDialog
+    MatDialog,
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
   ]
 })
 export class ProductsModule { }

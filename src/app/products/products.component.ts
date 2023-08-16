@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CarService } from '../shared/service/car.service';
 import { Car } from '../shared/model/car';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products',
@@ -39,19 +40,9 @@ export class ProductsComponent implements OnInit {
   }
 
   editProduct(product: any) {
-    const dialogRef = this.dialog.open(ProductDialogComponent, {
-      width: '300px',
-      data: { operation: 'Edit', product }
-    });
-
-    dialogRef.afterClosed().subscribe((updatedProduct) => {
-      if (updatedProduct) {
-        const index = this.products.findIndex(p => p.id === updatedProduct.id);
-        if (index !== -1) {
-          this.products[index] = updatedProduct;
-        }
-      }
-    });
+   this.carService.assignCar(product);
+   this.redirectToOtherPage();
+   
   }
 
 
@@ -69,9 +60,22 @@ export class ProductsComponent implements OnInit {
    }
 
   deleteProduct(product: any) {
-    const index = this.products.findIndex(p => p.id === product.id);
-    if (index !== -1) {
-      this.products.splice(index, 1);
-    }
+    Swal.fire({
+      title: 'Êtes-vous sûr de vouloir supprimer cette voiture ?',
+      icon: 'warning',
+    
+      showCancelButton: true,
+      confirmButtonText: 'Confirmer',
+      cancelButtonText: 'Annuler',
+      confirmButtonColor: 'red',
+    cancelButtonColor:"black"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const index = this.products.findIndex(p => p.id === product.id);
+        if (index !== -1) {
+          this.products.splice(index, 1);
+        Swal.fire('Supprimé !', 'L\'élément a été supprimé.', 'success');
+      }
+    }});
   }
 }

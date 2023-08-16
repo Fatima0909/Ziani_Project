@@ -9,6 +9,11 @@ $secondary: #ccc;
 $ternary: #272727;
 $dark: #444444;
 
+
+
+
+
+
 body {
   background: $secondary;
   color: $ternary;
@@ -189,7 +194,7 @@ body, html {
     max-width: 100%;
     margin: 8% auto;
     padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
     background-color: #ffffff;
     
   }
@@ -202,12 +207,17 @@ body, html {
   .add-product {
   
    float: right;
+   margin-bottom: 11px;
   }
  
   /* Style the table */
   .mat-table {
     width: 100%;
   }
+  .general-card{
+    background-color: #fff;
+    box-shadow: none;
+}
   
   /* Style the table header */
   .mat-header-cell {

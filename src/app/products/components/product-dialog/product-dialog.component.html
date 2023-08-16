@@ -39,9 +39,9 @@
               <div class="row">
                     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
                       <mat-form-field class="example-full-width mb-3" appearance="outline">
-                        <mat-label>Nom de voiture</mat-label>
-                        <input matInput formControlName="carTitle" required  [disableControl]="isUpdateDisabled">
-                        <mat-error *ngIf="docForm.get('carTitle').errors">
+                        <mat-label>Nom de voiture </mat-label>
+                        <input matInput formControlName="carTitle" required="true"  [disableControl]="isUpdateDisabled">
+                        <mat-error>
                           {{'ACTIVITY.FORM.TITLE.ERROR'}}
                         </mat-error>
                       </mat-form-field>
@@ -119,14 +119,7 @@
 
               </div>
             
-              <div class="row photosRefClass" *ngIf="!isUpdateDisabled" >
-                <div class="col-lg-3 col-md-4 col-6" *ngFor="let ref of spacePhotosRefs"
-                    >
-                  <div class="image">
-                    <img  (click)="addThisPhotoToSpace(ref)" class="cursorAdd" [src]="ref">
-                  </div>
-                </div>
-              </div>
+            
             </mat-step>
             </mat-vertical-stepper>
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/login/services/auth.service';
 import {StepperSelectionEvent} from '@angular/cdk/stepper';
@@ -8,6 +8,7 @@ import firebase from 'firebase/app';
 import 'firebase/storage';
 import { Car } from 'src/app/shared/model/car';
 import { CarService } from 'src/app/shared/service/car.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-dialog',
@@ -52,7 +53,7 @@ export class ProductDialogComponent implements OnInit {
   isHasSpace: boolean;
   isCenterSpecialties: any;
   isHasSpeciality: boolean;
-  carFromBdd: any;
+  carFromBdd: Car;
 
 
   constructor(private fb: FormBuilder, private authService: AuthService,
@@ -60,17 +61,18 @@ export class ProductDialogComponent implements OnInit {
               private carService: CarService) {
   }
   onSubmit() {
-    this.updateOrSaveSpace();
+     this.updateOrSaveSpace();
   }
+ 
   createDocForm(): FormGroup {
     this.isUpdateDisabled = true;
     return this.fb.group({
-        carTitle: [{value:  '', disabled: this.isUpdateDisabled}
+        carTitle: [{value:  this.carFromBdd ? this.carFromBdd.carTitle : '', disabled: this.isUpdateDisabled}
           , [Validators.required, Validators.minLength(3)]],
-        carModel: [ {value: "" , disabled: this.isUpdateDisabled} ,null],
-        carMarque: [{value: "" , disabled: this.isUpdateDisabled}, null],
-        carYear: [{value:'', disabled: this.isUpdateDisabled}, null],
-        carDescription: [{value:  '', disabled: this.isUpdateDisabled}]
+        carModel: [ {value: this.carFromBdd ? this.carFromBdd.carModel : '' , disabled: this.isUpdateDisabled} ,[Validators.required, Validators.minLength(3)]],
+        carMarque: [{value: this.carFromBdd ? this.carFromBdd.carMarque : '' , disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]],
+        carYear: [{value: this.carFromBdd ? this.carFromBdd.carYear : '', disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]],
+        carDescription: [{value:  this.carFromBdd ? this.carFromBdd.carDescription : '', disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]]
         
       });
   }
@@ -85,9 +87,8 @@ export class ProductDialogComponent implements OnInit {
   }
   ngOnInit(): void {
     this.initAccount();
+    this.carFromBdd = this.carService.selectedCar;
     this.docForm = this.createDocForm();
-    this.serviceForm = this.createServiceForm();
-    
     this.carToSave = new Car();
     this.initAboutUsInfo();
     this.initPictures();
@@ -102,6 +103,11 @@ export class ProductDialogComponent implements OnInit {
   private initPictures() {
 
     this.spacePhotos = [];
+    if(this.carFromBdd) {
+      this.carFromBdd.carPicture.forEach(image => {
+        this.spacePhotos.push(image);
+      })
+    }
 
   }
 
@@ -202,8 +208,12 @@ export class ProductDialogComponent implements OnInit {
   }
 
   updateOrSaveSpace() {
-    console.log('spacePhotos', this.spacePhotos);
-    if (!this.spacePhotos || this.spacePhotos.length < 2) {
+    this.docForm.markAllAsTouched();
+    if(!this.docForm.valid) {
+
+    }
+    else if (!this.spacePhotos || this.spacePhotos.length < 2) {
+      this.treatMsgError ("Il faut d'ajouter au moins 2")
     }else {
       this.spinner.show();
       if (this.carFromBdd != null) {
@@ -390,7 +400,7 @@ export class ProductDialogComponent implements OnInit {
     this.carToSave.carPicture =  this.spacePhotos;
     this.spinner.show();
     this.carService.addCarData(this.carToSave).then(res => {
-      console.log("success", res);
+      Swal.fire('Les informations est bien enregistré', '', 'success');;
     }, error => {
       console.log("error", error);
     })
@@ -410,22 +420,21 @@ export class ProductDialogComponent implements OnInit {
   }
 
   private treatMsgError(message: string) {
-    /*
+    
     Swal.fire({
       title: '',
       text: message,
       icon: 'info',
       iconColor: 'red' ,
       showCancelButton: true,
-      cancelButtonText: this.translate.instant('SHARED.LABELS.CANCEL'),
-      confirmButtonText: this.translate.instant('SHARED.LABELS.SIGN_IN'),
       showConfirmButton: false,
-      confirmButtonColor: 'transparent',
+      cancelButtonText: "Annuler",
+     
       cancelButtonColor: 'transparent',
       customClass: {
         cancelButton :  'red_swal',
       }
-    });*/
+    });
   }
 
  

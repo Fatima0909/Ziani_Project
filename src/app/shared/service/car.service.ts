@@ -9,6 +9,10 @@ import { Car } from '../model/car';
   providedIn: 'root'
 })
 export class CarService {
+  selectedCar: Car;
+  assignCar(car: Car):void {
+   this.selectedCar = car;
+  };
   addCarData(carToSave: Car) {
     return firebase.database().ref('cars').push(carToSave);
   }

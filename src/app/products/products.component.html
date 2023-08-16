@@ -1,3 +1,5 @@
+
+
 <nav class="navbar">
   <div class="logo"><img class="img-fluid" src="/assets/photos/logo.png" alt="LOGO"></div>
   <div class="push-left">
@@ -18,8 +20,10 @@
 </nav>
 
 
-
-<mat-card class="card-general" style="background-color:white">
+<div class="row clearfix space-form ">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 general-card">
+      
+<mat-card class="card-general" >
   <mat-card-header>
     <mat-card-title ><h1 class="title-with-line"><strong>Listes des voitures</strong> </h1></mat-card-title>
   </mat-card-header>
@@ -27,7 +31,7 @@
 
 
 <div class="add-product">
-    <button mat-raised-button color="danger" class="add-button btn btn-danger" (click)="redirectToOtherPage()">Ajouter une voiture</button>
+    <button mat-raised-button color="danger" class="add-button btn btn-danger" (click)="redirectToOtherPage()"> <i class="fa fa-plus" style="font-size:16px; color: white;"></i>  Ajouter une voiture</button>
   </div>
     <div class="table-container form-card">
     
@@ -82,3 +86,7 @@
     </div>
   </mat-card-content>
 </mat-card>
+</div>
+</div>
+
+

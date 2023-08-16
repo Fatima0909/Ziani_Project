@@ -9,13 +9,17 @@ import { SharedModule } from '../shared.module';
 export class DisableControlDirective {
   @Input() set disableControl(condition: boolean ) {
 
-    const action = condition ? false : true;
-    this.renderer.setProperty(this.elementRef.nativeElement, 'disabled', condition);
-
+    if(this.ngControl.control) {
+      const action = condition ? 'disable' : 'enable';
+      this.ngControl.control[action]();
+  
+    }
+    
   }
 
   constructor(  private elementRef: ElementRef,
-    private renderer: Renderer2, ) {
+    private renderer: Renderer2, 
+    @Self()  private ngControl: NgControl) {
   }
 
 }
