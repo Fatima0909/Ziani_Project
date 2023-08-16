@@ -121,11 +121,9 @@
         <img class=" col-6 card-img-top" [src]="car.carPicture[0]?.imageRef" alt="Card image cap">
         <div class="col-6"> 
             
-            <p class="card-text"><i class="fas fa-car" style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>
-            <p class="card-text"><i class="fas fa-shield-alt" style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>
-            <p class="card-text"><i class="fas fa-dollar-sign" style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>
-            <p class="card-text"><i class="fas fa-gas-pump " style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>
-            <p class="card-text"><i class="fas fa-info " style="font-size:16px ;color:#b20101"></i>  Last updated 3 mins ago</p>
+            <p class="card-text"><i class="fas fa-car" style="font-size:16px ;color:#b20101"></i> {{car.carModel}}</p>
+            <p class="card-text"><i class="fas fa-shield-alt" style="font-size:16px ;color:#b20101"></i>  {{car.carYear}}</p>
+            <p class="card-text"><i class="fas fa-info" style="font-size:16px ;color:#b20101"></i>  {{car.carMarque}}</p>
         </div>
 
         </div>
