@@ -90,6 +90,7 @@ appointmentPercent = 0;
 private selectedProUrl: any;
 isMobile: boolean = false;
   brands: ({ brand: string; models?: any;  })[];
+isNavActive = false;
 
 constructor (fb: FormBuilder, private dialog: MatDialog, 
             private carService: CarService) {
@@ -111,12 +112,16 @@ ngOnInit() {
   this.pullLeftstates = [];
   
   this.slideshowAnimation();
-
+  
 }
 
 
 
 
+
+  toggleNav() {
+    this.isNavActive = !this.isNavActive;
+  }
 swipeRight() {
   this.slideIndex = this.slideshow.slideIndex;
   if (this.slideIndex === 0) {
