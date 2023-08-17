@@ -11,7 +11,10 @@ body {
     background-color: #f4f4f4;
   
   }
-  
+  .push-left {
+    position: relative;
+    right: 10px;
+  }
   body.swal2-height-auto.mat-typography {
     height: 100% !important;
   }

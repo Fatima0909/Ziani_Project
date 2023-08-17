@@ -1,14 +1,15 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 import { Car } from '../shared/model/car';
 import { CarService } from '../shared/service/car.service';
 
 import { PictureCarouselComponent } from '../picture-carousel/picture-carousel.component';
 import { Image } from '../shared/model/image';
 import { MatDialog } from '@angular/material/dialog';
+import { Brands } from '../shared/core/brands';
 @Component({ selector: 'app-home',
 templateUrl: './home.component.html',
 styleUrls: ['./home.component.scss'],
@@ -60,16 +61,16 @@ LoginOpened: boolean = false;
 @ViewChild('companiesContent') companiesContent: any;
 @ViewChild('contactSection') contactSection: any;
 @ViewChild('contactForm') contactForm: any;
-specialityCtrl = new FormControl('', null);
+brandCtrl = new FormControl('', Validators.required);
 loaded = false;
 
 bestSpecialities: any;
 cars: Car[] ;
-filtredSpeciality: any;
-selectedSpecialities: any;
-selectedSpeciality: any;
+filtredBrand: any;
+selectedBrands: any;
+selectedBrand: any;
 
-townCtrl = new FormControl('', null);
+modelCtrl = new FormControl('', null);
 
 isUpdateDisabled: any;
 userImage: any;
@@ -88,6 +89,7 @@ todayPatientPercent = 0;
 appointmentPercent = 0;
 private selectedProUrl: any;
 isMobile: boolean = false;
+  brands: ({ brand: string; models?: any;  })[];
 
 constructor (fb: FormBuilder, private dialog: MatDialog, 
             private carService: CarService) {
@@ -243,9 +245,39 @@ private slideshowAnimation() {
 
 
 
-private async initSpeciality()  {
+private  initSpeciality()  {
+    
+    this.brands = Brands.BRANDS;
+    this.filtredBrand = this.brandCtrl.valueChanges
+      .pipe(
+        startWith(''),
+        map(brand => brand ? this._filterSpecialities(brand) : this.brands.slice())
+      );
+   
  
 }
+  private _filterSpecialities(brand: any): any {
+    this.selectedBrands = [];
+   return this.brands.filter(item => {
+      console.log('brandHere', brand, item, item.brand.includes(brand));
+      if(item.brand.includes(brand)) {
+        this.selectedBrands.push(item);
+        return true;
+      };
+      return false;
+    })
+  }
+
+  onBlurBrand($event: any) {
+      setTimeout(() => {
+        console.log('selectedBrands', this.selectedBrands);
+        if (this.selectedBrands) {
+          this.selectedBrand = this.selectedBrands[0];
+          this.brandCtrl.setValue(this.selectedBrand.brand);
+        }
+      }, 200);
+    }
+  
 
 private initTowns() {
 }

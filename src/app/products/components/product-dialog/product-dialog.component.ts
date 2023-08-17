@@ -10,6 +10,7 @@ import { Car } from 'src/app/shared/model/car';
 import { CarService } from 'src/app/shared/service/car.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Brands } from 'src/app/shared/core/brands';
 
 @Component({
   selector: 'app-product-dialog',
@@ -55,7 +56,9 @@ export class ProductDialogComponent implements OnInit {
   isCenterSpecialties: any;
   isHasSpeciality: boolean;
   carFromBdd: Car;
-
+  selectedBrands: String[] ;
+  selectedBrand: String;
+  brands = Brands.BRANDS;
 
   constructor(private fb: FormBuilder, private authService: AuthService,
               private spinner: NgxSpinnerService,
@@ -314,6 +317,8 @@ export class ProductDialogComponent implements OnInit {
         });
       });
   }
+
+ 
   private updateSpaceToBdd(photos: Array<any>) {
     if (this.spacePhotos.length > 1 && photos.length >= 1) {
       this.spacePhotos = this.spacePhotos.filter(p => p.imageRef.length < this.maxUrlLength);

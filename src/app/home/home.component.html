@@ -1,11 +1,8 @@
 <nav class="navbar">
     <div class="logo"><img class="img-fluid" src="/assets/photos/logo.png" alt="LOGO"></div>
     <div class="push-left">
-      <button id="menu-toggler" data-class="menu-active" class="hamburger">
-        <span class="hamburger-line hamburger-line-top"></span>
-        <span class="hamburger-line hamburger-line-middle"></span>
-        <span class="hamburger-line hamburger-line-bottom"></span>
-      </button>
+     
+      
   
       <!--  Menu compatible with wp_nav_menu  -->
       <ul id="primary-menu" class="menu nav-menu">
@@ -27,9 +24,7 @@
         </div>
       </div>
       <div class="searchClassContainer">
-        <div class="text-picture-container isMobile" *ngIf="isMobile">
-          <h3>Choisissez la marque</h3>
-        </div>
+       
 
         <div class="searchClass">
         <div class="row">
@@ -44,16 +39,16 @@
                           <mat-form-field class="example-full-width" appearance="outline">
                             <mat-label>Choisissez la marque</mat-label>
                             <input
+                            (blur)="onBlurBrand($event)"
+                              
                               matInput
                               aria-label="State"
-                              [matAutocomplete]="speciality"
-                              [formControl]="specialityCtrl">
+                              [matAutocomplete]="brand"
+                              [formControl]="brandCtrl">
                   
-                            <mat-autocomplete #speciality="matAutocomplete">
-                              <mat-option *ngFor="let state of filtredSpeciality | async" [value]="state.name">
-                                <img class="example-option-img" height="25">
-                                <span>{{state.title}}</span>
-                                {{state.name}}
+                            <mat-autocomplete #brand="matAutocomplete">
+                              <mat-option *ngFor="let state of filtredBrand | async" [value]="state.brand">
+                                <span>{{state.brand}}</span>
                               </mat-option>
                             </mat-autocomplete>
                           </mat-form-field>
@@ -67,20 +62,16 @@
                             <input
                               matInput
                               aria-label="State"
-                              [matAutocomplete]="town"
-                              [formControl]="townCtrl">
+                              
+                              [formControl]="modelCtrl">
                           
 
-                            <mat-autocomplete #town="matAutocomplete">
-                              <mat-option>
-                                <span >state.nameAr</span>
-                              </mat-option>
-                            </mat-autocomplete>
+                     
                           </mat-form-field>
                         </form>
                       </div>
-                      <div>
-                      <button  style="height: 50px;margin-top: 3%;padding: 10px 37px;margin-left: 20%;"type="button" class="btn btn-danger">Chercher</button></div>
+                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                      <button  type="button" class="btn btn-danger"  [disabled]="brandCtrl.invalid">Chercher</button></div>
                     </div>
 
                   </form>
@@ -105,13 +96,15 @@
 <div class="row categorySection d-bloc d-xs-block d-sm-block">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle contentmiddle" >
     
-    <h2  class="titre-ligne "><strong>Discover Our Featured Models</strong></h2>
-    <p>A masterful combination of style, power, sporty handling and comfort. A masterful <br>combination of style, power, sporty handling and comfort.</p>
+    <h2  class="titre-ligne "><strong>Nous aimons les voitures
+    </strong></h2>
+    <p>BIENVENUE DANS NOTRE ESPACE VOITURES NEUVES ET D'OCCASIONS CREE DEPUIS 2009 à  GAMBITTA
+      <br></p>
 
     
 </div>
-<div class="card-group">
-    <div class="card content_card" *ngFor="let car of cars">
+<div class="card-parent row">
+    <div class="card content_card col-lg-4 col-md-6 col-12" *ngFor="let car of cars">
      
       <div class="card-body">
         <h5 class="card-title"><strong>{{car.carTitle}}</strong> </h5>

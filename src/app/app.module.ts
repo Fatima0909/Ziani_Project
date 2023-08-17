@@ -7,14 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import firebase from 'firebase/app';
 import { environment } from 'src/environments/environment';
-import { AddCarComponent } from './add-car/add-car.component';
 
 
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [
-    AppComponent,
-    AddCarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
