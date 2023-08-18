@@ -91,8 +91,6 @@ private selectedProUrl: any;
 isMobile: boolean = false;
 isNavActive = false;
   brands: ({ brand: string; models?: any;  })[];
-isNavActive = false;
-
 constructor (fb: FormBuilder, private dialog: MatDialog, 
             private carService: CarService) {
   this.labelForm = fb.group({
@@ -118,9 +116,6 @@ ngOnInit() {
 
 
 
-toggleNav() {
-  this.isNavActive = !this.isNavActive;
-}
 
 
 

@@ -13,10 +13,12 @@
         </ul>
       </nav>
 <div class="container-fluid">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-12 header">
-      <div class="slideShow">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 header bg-opacity">
+      <div class="slideShow content">
+    
         <img height="100%" *ngIf="imageUrl" width="100%" src="/assets/photos/cover.jpeg"(load)="loaded = true">
         <div class="text-picture-container" *ngIf="!isMobile">
+         
           
 
         </div>
@@ -33,17 +35,17 @@
 
       <!-- CATEGORIES Mobile tablete-->
       <div class="row categorySection d-bloc d-xs-block d-sm-block" >
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle contentmiddle" >
-    
-          <h2><strong> RECHERCHER</strong></h2>
-          
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 contentmiddle" >
+      
+          <h2  class="titre-ligne "><strong> RECHERCHER UNE VOITURE</strong></h2>
+          </div>
       
           
     
         <div class="searchClass col-12">
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-              <div class="card">
+              <div class="card" >
                 <div class="body">
                   <div class="example-container">
                     <form [formGroup]="labelForm">
@@ -195,13 +197,15 @@
         </div>
      
       </div>
+      
 <div class="row categorySection d-bloc d-xs-block d-sm-block">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle contentmiddle" >
     
-    <h2  class="titre-ligne "><strong>Nous aimons les voitures
+    <h2  class="titre-ligne "><strong>Découvrez Notre selection des voitures
     </strong></h2>
-    <p>BIENVENUE DANS NOTRE ESPACE VOITURES NEUVES ET D'OCCASIONS CREE DEPUIS 2009 à  GAMBITTA
-      <br></p>
+     <p>BIENVENUE DANS NOTRE ESPACE VOITURES NEUVES ET D'OCCASIONS CREE DEPUIS 2009 à  GAMBITTA
+     </p>
+    
 
     
 </div>
