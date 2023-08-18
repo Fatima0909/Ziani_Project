@@ -56,12 +56,10 @@
                             <mat-form-field class="example-full-width" appearance="outline">
                               <mat-label>Marque</mat-label>
                               <input
-                              (blur)="onBlurBrand($event)"
-                                
-                                matInput
+                              (blur)="onBlurBrand($event)"matInput
                                 aria-label="State"
                                 [matAutocomplete]="brand"
-                                [formControl]="brandCtrl">
+                               >
                     
                               <mat-autocomplete #brand="matAutocomplete">
                                 <mat-option *ngFor="let state of filtredBrand | async" [value]="state.brand">
@@ -92,11 +90,15 @@
                             <mat-form-field class="example-full-width" appearance="outline">
                               <mat-label>Energie</mat-label>
                               <input
-                              matInput
-                              aria-label="State"
-                              
-                              [formControl]="modelCtrl">
-  
+                              (blur)="onBlurEnergie($event)"matInput
+                                aria-label="State"
+                                [matAutocomplete]="energie"
+                              >
+                                <mat-autocomplete #energie="matAutocomplete">
+                                  <mat-option *ngFor="let state of filtredEnergie | async" [value]="state.energie">
+                                    <span>{{state.energie}}</span>
+                                  </mat-option>
+                                </mat-autocomplete>
                        
                             </mat-form-field>
                           </form>
@@ -105,13 +107,14 @@
                           <form class="example-form">
                             <mat-form-field class="example-full-width" appearance="outline">
                               <mat-label>Transmission</mat-label>
-                              <input
-                                matInput
-                                aria-label="State"
-                                
-                                [formControl]="modelCtrl">
-                            
-  
+                              <mat-select required>
+                                <mat-option value=""></mat-option>
+                                <mat-option value="automatique">Automatique</mat-option>
+                                <mat-option value="manuelle">Manuelle</mat-option>
+                                <mat-option value="semi-automatique">Semi-Automatique</mat-option>
+                              </mat-select >
+                              
+ 
                        
                             </mat-form-field>
                           </form>
@@ -139,7 +142,7 @@
                                 matInput
                                 aria-label="State"
                                 [matAutocomplete]="brand"
-                                [formControl]="brandCtrl">
+                                >
                     
                               <mat-autocomplete #brand="matAutocomplete">
                                 <mat-option *ngFor="let state of filtredBrand | async" [value]="state.brand">
@@ -203,7 +206,7 @@
     
     <h2  class="titre-ligne "><strong>Découvrez Notre selection des voitures
     </strong></h2>
-     <p>BIENVENUE DANS NOTRE ESPACE VOITURES NEUVES ET D'OCCASIONS CREE DEPUIS 2009 à  GAMBITTA
+     <p style="color: white;">BIENVENUE DANS NOTRE ESPACE VOITURES NEUVES ET D'OCCASIONS CREE DEPUIS 2009 à  GAMBITTA
      </p>
     
 

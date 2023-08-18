@@ -5,7 +5,11 @@ export class Car {
      carTitle:String;
      carMarque: String;
      carDescription:String;
-     carYear: String;
+     carYear: number;
      carPicture: Array<Image>;
      carModel: String;
+  carColor: String;
+  carEnergie: String;
+  carMoteur: String;
+  Transmission:String;
 }

@@ -45,6 +45,24 @@
           <td mat-cell *matCellDef="let product">{{ product.carModel}}</td>
         </ng-container>
 
+        <ng-container matColumnDef="Transmission">
+          <th mat-header-cell *matHeaderCellDef>Transmission</th>
+          <td mat-cell *matCellDef="let product">{{ product.Transmission}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Energie">
+          <th mat-header-cell *matHeaderCellDef>Energie</th>
+          <td mat-cell *matCellDef="let product">{{ product.carEnergie}}</td>
+        </ng-container>
+        <ng-container matColumnDef="Moteur">
+          <th mat-header-cell *matHeaderCellDef>Moteur</th>
+          <td mat-cell *matCellDef="let product">{{ product.carMoteur}}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="Couleur">
+          <th mat-header-cell *matHeaderCellDef>Couleur</th>
+          <td mat-cell *matCellDef="let product">{{ product.carColor}}</td>
+        </ng-container>
+
 
         <ng-container matColumnDef="description">
           <th mat-header-cell *matHeaderCellDef>description</th>

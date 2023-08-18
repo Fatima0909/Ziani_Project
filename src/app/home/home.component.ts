@@ -10,6 +10,7 @@ import { PictureCarouselComponent } from '../picture-carousel/picture-carousel.c
 import { Image } from '../shared/model/image';
 import { MatDialog } from '@angular/material/dialog';
 import { Brands } from '../shared/core/brands';
+import { Energies } from '../shared/core/energies';
 @Component({ selector: 'app-home',
 templateUrl: './home.component.html',
 styleUrls: ['./home.component.scss'],
@@ -62,6 +63,7 @@ LoginOpened: boolean = false;
 @ViewChild('contactSection') contactSection: any;
 @ViewChild('contactForm') contactForm: any;
 brandCtrl = new FormControl('', Validators.required);
+energieCtrl = new FormControl('', Validators.required);
 loaded = false;
 
 bestSpecialities: any;
@@ -69,6 +71,9 @@ cars: Car[] ;
 filtredBrand: any;
 selectedBrands: any;
 selectedBrand: any;
+filtredEnergie: any;
+selectedEnergie: any;
+selectedEnergies: any;
 
 modelCtrl = new FormControl('', null);
 
@@ -91,6 +96,8 @@ private selectedProUrl: any;
 isMobile: boolean = false;
 isNavActive = false;
   brands: ({ brand: string; models?: any;  })[];
+  energies: ({ energie: string; models?: any;  })[];
+
 constructor (fb: FormBuilder, private dialog: MatDialog, 
             private carService: CarService) {
   this.labelForm = fb.group({
@@ -102,6 +109,7 @@ constructor (fb: FormBuilder, private dialog: MatDialog,
 ngOnInit() {
   this.initSeo();
   this.initSpeciality();
+  this.initSpecialityEnergie() ;
   this.initCars();
   this.initTowns();
   this.initLanguage();
@@ -258,8 +266,20 @@ private  initSpeciality()  {
         startWith(''),
         map(brand => brand ? this._filterSpecialities(brand) : this.brands.slice())
       );
-   
+      
  
+}
+
+private  initSpecialityEnergie()  {
+  
+    this.energies = Energies.ENERGIES;
+    this.filtredEnergie= this.energieCtrl.valueChanges
+      .pipe(
+        startWith(''),
+        map(energie => energie ? this._filterEnergies(energie) : this.energies.slice())
+      );
+ 
+
 }
   private _filterSpecialities(brand: any): any {
     this.selectedBrands = [];
@@ -267,6 +287,17 @@ private  initSpeciality()  {
       console.log('brandHere', brand, item, item.brand.includes(brand));
       if(item.brand.includes(brand)) {
         this.selectedBrands.push(item);
+        return true;
+      };
+      return false;
+    })
+  }
+  private _filterEnergies(energie: any): any {
+    this.selectedEnergies = [];
+   return this.energies.filter(item => {
+      console.log('brandHere', energie, item, item.energie.includes(energie));
+      if(item.energie.includes(energie)) {
+        this.selectedEnergies.push(item);
         return true;
       };
       return false;
@@ -282,7 +313,15 @@ private  initSpeciality()  {
         }
       }, 200);
     }
-  
+    onBlurEnergie($event: any){
+      setTimeout(() => {
+        console.log('selectedEnergies', this.selectedEnergies);
+        if (this.selectedEnergies) {
+          this.selectedEnergie = this.selectedEnergies[0];
+          this.energieCtrl.setValue(this.selectedEnergie.energie);
+        }
+      }, 200);
+    }
 
 private initTowns() {
 }

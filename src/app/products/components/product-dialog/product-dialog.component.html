@@ -51,7 +51,8 @@
   <mat-option *ngFor="let brand of brands" [value]="brand.brand">
     {{brand.brand}}
   </mat-option>
-</mat-select>   <mat-error *ngIf="docForm.get('carMarque').errors">
+</mat-select>   
+<mat-error *ngIf="docForm.get('carMarque').errors">
                          La marque est obligatoire
                         </mat-error>
                       </mat-form-field>
@@ -65,22 +66,81 @@
                         </mat-error>
                       </mat-form-field>
                     </div>
-
-               
                     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
                       <mat-form-field class="example-full-width mb-3" appearance="outline" >
-                        <mat-label>Année </mat-label>
-                        <input matInput formControlName="carYear" type="text" [disableControl]="isUpdateDisabled" >
+                        <mat-label> Année de voiture</mat-label>
+                        <input matInput type ="number" formControlName="carYear"required [disableControl]="isUpdateDisabled">
                         <mat-error *ngIf="docForm.get('carYear').errors">
-                          l'année est obligatoire
+                         L'année est obligatoire
                         </mat-error>
                       </mat-form-field>
                     </div>
-                    
+                   
+                   
               </div>
               <div class="row">
-              
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline" >
+                    <mat-label> Transmission</mat-label>
+                     <mat-select required  formControlName="Transmission"required [disableControl]="isUpdateDisabled">
+    <mat-option value="">Transmission</mat-option>
+    <mat-option value="automatique">Automatique</mat-option>
+    <mat-option value="manuelle">Manuelle</mat-option>
+    <mat-option value="semi-automatique">Semi-automatique</mat-option>
+  </mat-select>
+                   
+                    <mat-error *ngIf="docForm.get('Transmission').errors">
+                     Transmission est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline" >
+                    <mat-label> Moteur de voiture</mat-label>
+                    <input matInput   formControlName="carMoteur"required [disableControl]="isUpdateDisabled">
+                    <mat-error *ngIf="docForm.get('carMoteur').errors">
+                   Moteur est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline" >
+                    <mat-label> Energie </mat-label>
+                    <mat-select  formControlName="carEnergie" [disableControl]="isUpdateDisabled">
+                      <mat-option *ngFor="let energie of energies" [value]="energie.energie">
+                        {{energie.energie}}
+                      </mat-option>
+                    </mat-select>
+                    
+                    <mat-error *ngIf="docForm.get('carEnergie').errors">
+                     Energie est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline" >
+                    <mat-label> Couleur </mat-label>
+                    <input matInput  formControlName="caColor"required [disableControl]="isUpdateDisabled">
+                    <mat-error *ngIf="docForm.get('carColor').errors">
+                     La couleur est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
                 
+               
+               
+                
+               
+
+
+
+
+
+                </div>
+
+
+
+              <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
                   <mat-form-field class="example-full-width mb-3" appearance="outline">
                     <mat-label>Description sur la voiture</mat-label>

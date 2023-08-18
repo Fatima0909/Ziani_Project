@@ -11,6 +11,11 @@ import { CarService } from 'src/app/shared/service/car.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Brands } from 'src/app/shared/core/brands';
+import { Energies } from 'src/app/shared/core/energies';
+interface Transmission {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-product-dialog',
@@ -59,6 +64,9 @@ export class ProductDialogComponent implements OnInit {
   selectedBrands: String[] ;
   selectedBrand: String;
   brands = Brands.BRANDS;
+  energies = Energies.ENERGIES
+  selectedEnergies: String[] ;
+  selectedEnergie: String;
   isNavActive = false;
   constructor(private fb: FormBuilder, private authService: AuthService,
               private spinner: NgxSpinnerService,
@@ -79,8 +87,11 @@ export class ProductDialogComponent implements OnInit {
         carModel: [ {value: this.carFromBdd ? this.carFromBdd.carModel : '' , disabled: this.isUpdateDisabled} ,[Validators.required, Validators.minLength(3)]],
         carMarque: [{value: this.carFromBdd ? this.carFromBdd.carMarque : '' , disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]],
         carYear: [{value: this.carFromBdd ? this.carFromBdd.carYear : '', disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]],
-        carDescription: [{value:  this.carFromBdd ? this.carFromBdd.carDescription : '', disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]]
-        
+        carDescription: [{value:  this.carFromBdd ? this.carFromBdd.carDescription : '', disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]],
+        Transmission:[{value:  this.carFromBdd ? this.carFromBdd.Transmission: '', disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]],
+        carMoteur:[{value:  this.carFromBdd ? this.carFromBdd. carMoteur : '', disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]],
+        carEnergie:[{value:  this.carFromBdd ? this.carFromBdd.carEnergie : '', disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]],
+        carColor:[{value:  this.carFromBdd ? this.carFromBdd.carColor : '', disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]]
       });
   }
 
@@ -267,6 +278,22 @@ export class ProductDialogComponent implements OnInit {
     if (this.carFromBdd.carModel !== spaceForm.carModel) {
       this.carToSave.carModel = spaceForm.carModel;
       this.carFromBdd.carModel = spaceForm.carModel;
+    }
+    if (this.carFromBdd.Transmission !== spaceForm.Transmission) {
+      this.carToSave.Transmission = spaceForm.Transmission;
+      this.carFromBdd.Transmission = spaceForm.Transmission;
+    }
+    if (this.carFromBdd.carEnergie!== spaceForm.carEnergie) {
+      this.carToSave.carEnergie = spaceForm.carEnergie;
+      this.carFromBdd.carEnergie = spaceForm.carEnergie;
+    }
+    if (this.carFromBdd.carMoteur!== spaceForm.carMoteur) {
+      this.carToSave.carMoteur = spaceForm.carMoteur;
+      this.carFromBdd.carMoteur = spaceForm.carMoteur;
+    }
+    if (this.carFromBdd.carColor!== spaceForm.carColor) {
+      this.carToSave.carColor = spaceForm.carColor;
+      this.carFromBdd.carColor = spaceForm.carColor;
     }
   }
 
