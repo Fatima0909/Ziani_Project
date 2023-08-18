@@ -119,7 +119,7 @@ ngOnInit() {
   this.pullLeftstates = [];
   
   this.slideshowAnimation();
-  
+
 }
 
 
