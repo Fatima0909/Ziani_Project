@@ -59,7 +59,7 @@ export class ProductDialogComponent implements OnInit {
   selectedBrands: String[] ;
   selectedBrand: String;
   brands = Brands.BRANDS;
-
+  isNavActive = false;
   constructor(private fb: FormBuilder, private authService: AuthService,
               private spinner: NgxSpinnerService,
               private carService: CarService,  private router: Router) {
@@ -67,7 +67,10 @@ export class ProductDialogComponent implements OnInit {
   onSubmit() {
      this.updateOrSaveSpace();
   }
- 
+  toggleNav() {
+    this.isNavActive = !this.isNavActive;
+  }
+  
   createDocForm(): FormGroup {
     this.isUpdateDisabled = true;
     return this.fb.group({
@@ -84,6 +87,7 @@ export class ProductDialogComponent implements OnInit {
   returnPage(){
     this.router.navigate(['/dashboard']); 
   }
+  
 
   private createServiceForm() {
     return  this.fb.group({

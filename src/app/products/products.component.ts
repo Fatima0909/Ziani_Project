@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
   products: any[] = [];
 
   cars: Car[] = [];
-
+  isNavActive = false;
   displayedColumns: string[] = ['title','modele','description', 'picture' , 'actions'];
   dataSource = this.products;
 
@@ -27,6 +27,7 @@ export class ProductsComponent implements OnInit {
     this.initCars();
 
   }
+  
 
   addProduct() {
     const dialogRef = this.dialog.open(ProductDialogComponent, {
@@ -46,6 +47,12 @@ export class ProductsComponent implements OnInit {
    this.redirectToOtherPage();
    
   }
+
+toggleNav() {
+  this.isNavActive = !this.isNavActive;
+}
+
+
 
 
   redirectToOtherPage() {

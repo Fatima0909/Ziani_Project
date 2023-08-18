@@ -46,24 +46,18 @@
        }
 
     
- /* navbar */
-
 /* Extra */
 $primary: #fff;
 $secondary: #ccc;
 $ternary: #272727;
 $dark: #444444;
 
-body {
-  background: $secondary;
-  color: $ternary;
-  font-size: 14px;
+*,
+*::before,
+*::after {
   margin: 0;
-
-}
-
-.logo {
-  max-width: 200px;
+  padding: 0;
+  box-sizing: border-box;
 }
 .navbar {
   align-items: center;
@@ -74,148 +68,91 @@ body {
   font-family: sans-serif;
   padding: 10px 50px;
 }
-
-.push-left {
-  margin-left: auto;
+body {
+  min-height: 100vh;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-/* Menu */
-.hamburger {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: none;
-  outline: none;
-  height: 30px;
-  position: relative;
-  width: 30px;
-  z-index: 1000;
-  @media screen and (max-width: 768px) {
-    display: inline-block;
-  }
-  
-  &-line {
-    background: $ternary;
-    height: 3px;
-    position: absolute;
-    left: 0;
-    transition: all .2s ease-out; 
-    width: 100%;
-    
-    .hamburger:hover & {
-      background: #777;
-    }
-    
-    &-top {
-      top: 3px;
-    }
-    
-    .menu-active &-top {
-      top: 50%;
-      transform: rotate(45deg) translatey(-50%);
-    }
-    
-    &-middle {
-      top: 50%;
-      transform: translatey(-50%);
-    }
-    
-    .menu-active &-middle {
-      left: 50%;
-      opacity: 0;
-      width: 0;
-    }
-
-    &-bottom {
-      bottom: 3px;
-    }
-
-    .menu-active &-bottom {
-      bottom: 50%;
-      transform: rotate(-45deg) translatey(50%);
-    }
-  }
-}
-
-.nav-menu {
+nav {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color:white;
+  color:black;
+  position: relative;
+}
+
+/* responsive */
+nav.active {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.img-fluid {
+  max-width: 30%;
+  height: auto;
+}
+
+nav h2.logo {
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+nav .bars {
+  position: absolute;
+  right: 1rem;
+  font-size: xx-large;
+  display: none;
+}
+
+ul.nav-links {
+  display: flex;
+ 
+}
+
+/* responsive */
+nav.active ul.nav-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+li.nav-link {
   list-style: none;
-  margin: 0;
-  padding: 0;
-  transition: all .25s ease-in; 
-  
-  @media screen and (max-width: 768px) {
-    background: $primary;
-    flex-direction: column;
-    justify-content: center;
-    opacity: 0;
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    transform: translatey(-100%);
-    text-align: center;
-    
-    .menu-active & {
-      transform: translatey(0%);  
-      opacity: 1;
-    }
-  }
-  
-  .menu-item a {
-    color: $dark;
+  margin: 0.5rem 1rem;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+}
+
+li.nav-link:hover {
+  background-color: #ccc;
+  color: #333;
+}
+
+li.nav-link.auth {
+  border: 2px solid white;
+  border-radius: 1rem;
+}
+
+li.nav-link a {
+  text-decoration: none;
+  color: inherit;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: large;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 800px) {
+  nav .bars {
     display: block;
-    line-height: 30px;
-    margin: 0px 10px;
-    text-decoration: none;
-    text-transform: uppercase;
-    
-    &:hover {
-      color: #b20101;
-      text-decoration: underline;
-    }
-
-    @media screen and (max-width: 768px) {
-      font-size: 20px;
-      margin: 8px;
-    }
   }
-  
-  
-}
 
-.sub-nav {
-    border: 1px solid #ccc;
+  nav .nav-links {
     display: none;
-    position: absolute;
-    background-color: $primary;
-    padding: 5px 5px;
-    list-style: none; 
-    width: 230px;   
-    @media screen and (max-width: 768px) {
-      position: relative;
-      width: 100%;
-      display: none;
-      background-color: rgba(0, 0, 0, 0.20);
-      box-sizing: border-box;
-    }
-}
-
- .nav__link {
-   &:hover + .sub-nav {
-        display:block;
-
- }
-}
-
-.sub-nav {
-  &:hover {
-    display:block;
   }
 }
-
-
-
-
-
 
 
  

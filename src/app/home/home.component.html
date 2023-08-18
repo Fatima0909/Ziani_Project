@@ -24,69 +24,173 @@
       <div class="searchClassContainer">
        
 
-        <div class="searchClass">
-        <div class="row">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <div class="card">
-              <div class="body">
-                <div class="example-container">
-                  <form [formGroup]="labelForm">
-                    <div class="row">
-                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <form class="example-form">
-                          <mat-form-field class="example-full-width" appearance="outline">
-                            <mat-label>Choisissez la marque</mat-label>
-                            <input
-                            (blur)="onBlurBrand($event)"
-                              
-                              matInput
-                              aria-label="State"
-                              [matAutocomplete]="brand"
-                              [formControl]="brandCtrl">
-                  
-                            <mat-autocomplete #brand="matAutocomplete">
-                              <mat-option *ngFor="let state of filtredBrand | async" [value]="state.brand">
-                                <span>{{state.brand}}</span>
-                              </mat-option>
-                            </mat-autocomplete>
-                          </mat-form-field>
-                        </form>
-                      </div>
+     
 
-                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                        <form class="example-form">
-                          <mat-form-field class="example-full-width" appearance="outline">
-                            <mat-label>Choisissez le modéle</mat-label>
-                            <input
+      </div>
+    </div>
+    
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 content">
+
+      <!-- CATEGORIES Mobile tablete-->
+      <div class="row categorySection d-bloc d-xs-block d-sm-block" >
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle contentmiddle" >
+    
+          <h2><strong> RECHERCHER</strong></h2>
+          
+      
+          
+    
+        <div class="searchClass col-12">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              <div class="card">
+                <div class="body">
+                  <div class="example-container">
+                    <form [formGroup]="labelForm">
+                      <div class="row">
+
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                          <form class="example-form">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>Marque</mat-label>
+                              <input
+                              (blur)="onBlurBrand($event)"
+                                
+                                matInput
+                                aria-label="State"
+                                [matAutocomplete]="brand"
+                                [formControl]="brandCtrl">
+                    
+                              <mat-autocomplete #brand="matAutocomplete">
+                                <mat-option *ngFor="let state of filtredBrand | async" [value]="state.brand">
+                                  <span>{{state.brand}}</span>
+                                </mat-option>
+                              </mat-autocomplete>
+                            </mat-form-field>
+                          </form>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                          <form class="example-form">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>Modéle</mat-label>
+                              <input
+                                matInput
+                                aria-label="State"
+                                
+                                [formControl]="modelCtrl">
+                            
+  
+                       
+                            </mat-form-field>
+                          </form>
+                        </div>
+  
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                          <form class="example-form">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>Energie</mat-label>
+                              <input
                               matInput
                               aria-label="State"
                               
                               [formControl]="modelCtrl">
-                          
+  
+                       
+                            </mat-form-field>
+                          </form>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                          <form class="example-form">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>Transmission</mat-label>
+                              <input
+                                matInput
+                                aria-label="State"
+                                
+                                [formControl]="modelCtrl">
+                            
+  
+                       
+                            </mat-form-field>
+                          </form>
+                        </div>
 
-                     
-                          </mat-form-field>
-                        </form>
+                       
+                        
                       </div>
-                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                      <button  type="button" class="btn btn-danger"  [disabled]="brandCtrl.invalid">Chercher</button></div>
-                    </div>
+  
+                    </form>
 
-                  </form>
+
+
+                    
+                    <form [formGroup]="labelForm">
+                      <div class="row">
+
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                          <form class="example-form">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>Moteur</mat-label>
+                              <input
+                              (blur)="onBlurBrand($event)"
+                                
+                                matInput
+                                aria-label="State"
+                                [matAutocomplete]="brand"
+                                [formControl]="brandCtrl">
+                    
+                              <mat-autocomplete #brand="matAutocomplete">
+                                <mat-option *ngFor="let state of filtredBrand | async" [value]="state.brand">
+                                  <span>{{state.brand}}</span>
+                                </mat-option>
+                              </mat-autocomplete>
+                            </mat-form-field>
+                          </form>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                          <form class="example-form">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>Options</mat-label>
+                              <input
+                                matInput
+                                aria-label="State"
+                                
+                                [formControl]="modelCtrl">
+                            
+  
+                       
+                            </mat-form-field>
+                          </form>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                          <form class="example-form">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                              <mat-label>La Couleur</mat-label>
+                              <input
+                                matInput
+                                aria-label="State"
+                                
+                                [formControl]="modelCtrl">
+                            </mat-form-field>
+                          </form>
+                        </div>
+                      
+                        
+                        
+                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                        <button  type="button" class="btn btn-danger"  [disabled]="brandCtrl.invalid">Chercher</button>
+                  
+                        </div>
+                        </div>
+                    </form>
+                  
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      </div>
-    </div>
-
-    <div class="col-lg-12 col-md-12 col-sm-12 col-12 content">
-
-      <!-- CATEGORIES Mobile tablete-->
-      <div class="row categorySection d-bloc d-xs-block d-sm-block" >
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #whatSectionTitle>
         </div>
      

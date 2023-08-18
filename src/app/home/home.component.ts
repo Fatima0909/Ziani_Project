@@ -89,6 +89,7 @@ todayPatientPercent = 0;
 appointmentPercent = 0;
 private selectedProUrl: any;
 isMobile: boolean = false;
+isNavActive = false;
   brands: ({ brand: string; models?: any;  })[];
 isNavActive = false;
 
@@ -116,6 +117,10 @@ ngOnInit() {
 }
 
 
+
+toggleNav() {
+  this.isNavActive = !this.isNavActive;
+}
 
 
 
