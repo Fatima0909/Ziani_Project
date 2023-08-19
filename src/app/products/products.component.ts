@@ -47,6 +47,10 @@ export class ProductsComponent implements OnInit {
    this.redirectToOtherPage();
    
   }
+  infoProduct(product: any){
+    this.carService.assignCar(product);
+    this.router.navigate(['dashboard/details']);
+  }
 
 toggleNav() {
   this.isNavActive = !this.isNavActive;
@@ -58,6 +62,7 @@ toggleNav() {
   redirectToOtherPage() {
     this.router.navigate(['/dashboard/addProduct']); 
   }
+
   private initCars() {
     this.carService.getCars().once('value').then((res) => {
      this.cars = [];

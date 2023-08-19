@@ -68,6 +68,7 @@ export class ProductDialogComponent implements OnInit {
   selectedEnergies: String[] ;
   selectedEnergie: String;
   isNavActive = false;
+  isLoading = false;
   constructor(private fb: FormBuilder, private authService: AuthService,
               private spinner: NgxSpinnerService,
               private carService: CarService,  private router: Router) {
@@ -435,9 +436,12 @@ export class ProductDialogComponent implements OnInit {
     photos.map(image => this.spacePhotos.push(Object.assign({}, image)));
 
     this.carToSave.carPicture =  this.spacePhotos;
+    this.isLoading = true;
     this.spinner.show();
     this.carService.addCarData(this.carToSave).then(res => {
       Swal.fire('Les informations est bien enregistré', '', 'success');
+      this.isLoading = false;
+      this.spinner.hide();
       
       setTimeout(() => {
         this.returnPage();

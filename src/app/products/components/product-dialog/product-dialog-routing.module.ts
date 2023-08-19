@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: "addProduct",
     component: ProductDialogComponent
+  },
+  {
+    path: "details",
+    component: ProductDialogComponent
   }
 ];
 

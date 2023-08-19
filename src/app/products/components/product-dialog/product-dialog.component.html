@@ -27,6 +27,7 @@
             <mat-icon class="edit" (click)="resetSpace()">close</mat-icon>
           </ng-template>
           <form [formGroup]="docForm" class="form-card"(ngSubmit)="onSubmit()">
+            <app-spinner *ngIf="isLoading"></app-spinner>
             <mat-vertical-stepper [linear]="isLinear" #stepper  (selectionChange)="selectionChange($event)">
             <mat-step>
 
@@ -122,7 +123,15 @@
                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
                   <mat-form-field class="example-full-width mb-3" appearance="outline" >
                     <mat-label> Couleur </mat-label>
-                    <input matInput  formControlName="carColor"required [disableControl]="isUpdateDisabled">
+                    <mat-select required  formControlName="carColor"required [disableControl]="isUpdateDisabled">
+                      <mat-option value="">Couleur</mat-option>
+                      <mat-option value="noir">Noir</mat-option>
+                      <mat-option value="rouge">Rouge</mat-option>
+                      <mat-option value="blanc">Blanc</mat-option>
+                      <mat-option value="gris">Gris</mat-option>
+                      <mat-option value="bleu">Bleu</mat-option>
+                      <mat-option value="vert">Vert</mat-option>
+                    </mat-select>
                     <mat-error *ngIf="docForm.get('carColor').errors">
                      La couleur est obligatoire
                     </mat-error>
@@ -192,7 +201,9 @@
               <div class="example-button-row centered-button">
                 <button  class="btn btn-danger btn-lg" style="background-color:#b20101; width:20%;"
                         type="submit" [ngClass]="">Sauvgarder</button>
+
                 <button  class="btn btn-outline-danger btn-lg cancel" (click)="resetSpace()" [disabled]="isUpdateDisabled" tabindex="-1">Annuler</button>
+              
               </div>
             </div>
           </div>
