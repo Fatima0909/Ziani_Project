@@ -15,13 +15,13 @@ export class LoginComponent implements OnInit {
   hide = true;
   authForm: FormGroup;
   error: any;
+  isLoading = false;
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
     private spinner: NgxSpinnerService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.spinner.hide();
     this.initForm();
   }
 
@@ -38,15 +38,16 @@ export class LoginComponent implements OnInit {
     if (this.authForm.invalid) {
       return;
     } else {
-      this.spinner.show();
+      this.isLoading = true;
       this.authService.emailPwpLogin(this.buildMailPasswordData()).then(
         success => {
           const authUser: any = success.user?.uid;
-          console.log(authUser);
+          this.isLoading = false;
             this.redirectToUserAccount(authUser);
          }, error => {
           this.error = this.authService.getError(error);
           this.spinner.hide();
+          this.isLoading = false;
         });
     }
 

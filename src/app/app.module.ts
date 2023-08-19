@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import firebase from 'firebase/app';
 import { environment } from 'src/environments/environment';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 firebase.initializeApp(environment.firebase);
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+   
   ],
   imports: [
     BrowserModule,
