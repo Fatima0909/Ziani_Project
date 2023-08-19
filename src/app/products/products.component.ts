@@ -19,7 +19,7 @@ export class ProductsComponent implements OnInit {
 
   cars: Car[] = [];
   isNavActive = false;
-  displayedColumns: string[] = ['title','modele','marque','Transmission','Moteur','Energie','Couleur','description', 'picture' , 'actions'];
+  displayedColumns: string[] = ['modele','marque','Transmission','Moteur','Energie','mileage','carColor', 'description' , 'picture' , 'actions'];
   dataSource = this.products;
 
   constructor(private dialog: MatDialog, private carService: CarService, private router: Router) {}

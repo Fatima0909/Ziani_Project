@@ -62,8 +62,10 @@ LoginOpened: boolean = false;
 @ViewChild('companiesContent') companiesContent: any;
 @ViewChild('contactSection') contactSection: any;
 @ViewChild('contactForm') contactForm: any;
-brandCtrl = new FormControl('', Validators.required);
-energieCtrl = new FormControl('', Validators.required);
+brandCtrl = new FormControl('');
+moteurCtrl = new FormControl('');
+energieCtrl = new FormControl('');
+transCtrl = new FormControl('');
 loaded = false;
 
 bestSpecialities: any;
@@ -76,7 +78,8 @@ selectedEnergie: any;
 selectedEnergies: any;
 
 modelCtrl = new FormControl('', null);
-
+colorCtrl = new FormControl('');
+mileageCtrl = new FormControl('');
 isUpdateDisabled: any;
 userImage: any;
 selectedTown: string = "";
@@ -97,6 +100,7 @@ isMobile: boolean = false;
 isNavActive = false;
   brands: ({ brand: string; models?: any;  })[];
   energies: ({ energie: string; models?: any;  })[];
+  selectedCars: Car[];
 
 constructor (fb: FormBuilder, private dialog: MatDialog, 
             private carService: CarService) {
@@ -339,6 +343,7 @@ private initCars() {
   res.forEach(val => {
     this.cars.push(val.val());
   })
+  this.filterItems();
  })
 }
 
@@ -372,5 +377,41 @@ ngAfterViewInit(): void {
         currentImage: pictures[0]?.imageRef,
       },
     });
+  }
+
+  filterItems() {
+    this.selectedCars = this.cars.filter(car => {
+      const isFiltredCar = true;
+      if(this.brandCtrl.value && car.carMarque !== this.brandCtrl.value) {
+        return false;
+      }
+
+      if(this.transCtrl.value && car.Transmission!== this.transCtrl.value) {
+        return false;
+      } 
+    
+      if(this.modelCtrl.value && !car.carModel?.toLowerCase().trim().includes(this.modelCtrl.value.toLowerCase().trim()) ) {
+        return false;
+      }
+
+      if(this.moteurCtrl.value && car.carMoteur !== this.moteurCtrl.value) {
+        return false;
+      }
+
+      if(this.energieCtrl.value && car.carEnergie!== this.energieCtrl.value) {
+        return false;
+      } 
+
+      if(this.mileageCtrl.value && car.carMileage > this.mileageCtrl.value) {
+        return false
+      }
+
+      if(this.colorCtrl.value && car.carColor !== this.colorCtrl.value) {
+        return false;
+      }
+
+      return true;
+
+    })
   }
 }

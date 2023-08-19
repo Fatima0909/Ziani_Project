@@ -2,7 +2,6 @@ import { Image } from "./image";
 
 export class Car {
      id: String;
-     carTitle:String;
      carMarque: String;
      carDescription:String;
      carYear: number;
@@ -12,4 +11,5 @@ export class Car {
   carEnergie: String;
   carMoteur: String;
   Transmission:String;
+  carMileage: number;
 }

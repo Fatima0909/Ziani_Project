@@ -82,7 +82,7 @@ export class ProductDialogComponent implements OnInit {
   createDocForm(): FormGroup {
     this.isUpdateDisabled = true;
     return this.fb.group({
-        carTitle: [{value:  this.carFromBdd ? this.carFromBdd.carTitle : '', disabled: this.isUpdateDisabled}
+        carMileage: [{value:  this.carFromBdd ? this.carFromBdd.carMileage : '', disabled: this.isUpdateDisabled}
           , [Validators.required, Validators.minLength(3)]],
         carModel: [ {value: this.carFromBdd ? this.carFromBdd.carModel : '' , disabled: this.isUpdateDisabled} ,[Validators.required, Validators.minLength(3)]],
         carMarque: [{value: this.carFromBdd ? this.carFromBdd.carMarque : '' , disabled: this.isUpdateDisabled}, [Validators.required, Validators.minLength(3)]],
@@ -257,9 +257,9 @@ export class ProductDialogComponent implements OnInit {
 
     let isFilterChanged = false;
     const spaceForm = this.docForm.getRawValue();
-    if (this.carFromBdd.carTitle !== spaceForm.carTitle) {
-           this.carToSave.carTitle = spaceForm.carTitle;
-           this.carAfterUpdate.carTitle = spaceForm.carTitle;
+    if (this.carFromBdd.carMileage !== spaceForm.carMileage) {
+           this.carToSave.carMileage = spaceForm.carMileage;
+           this.carFromBdd.carMileage = spaceForm.carMileage;
       }
     if (this.carFromBdd.carMarque !== spaceForm.carMarque) {
       this.carToSave.carMarque = spaceForm.carMarque;
@@ -358,6 +358,8 @@ export class ProductDialogComponent implements OnInit {
     } else {
       this.carToSave.carPicture =  Object.assign({}, this.spacePhotos);
     }
+
+    console.log('carToSaveHere', this.carToSave);
     this.carService.updateCar(this.carToSave, this.carFromBdd.id).then(res => {
       
       Swal.fire('Les informations est bien enregistré', '', 'success');
@@ -372,7 +374,7 @@ export class ProductDialogComponent implements OnInit {
   private setNewSpaceValues() {
     const carFormData = this.docForm.getRawValue();
     console.log('setNewSpaceValues', this.docForm.getRawValue());
-    this.carToSave.carTitle = carFormData.carTitle;
+    this.carToSave.carMileage = carFormData.carMileage;
     if (carFormData.carDescription) {
       this.carToSave.carDescription = carFormData.carDescription;
     }

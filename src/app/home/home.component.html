@@ -61,6 +61,7 @@
                               (blur)="onBlurBrand($event)"matInput
                                 aria-label="State"
                                 [matAutocomplete]="brand"
+                                [formControl]="brandCtrl"
                                >
                     
                               <mat-autocomplete #brand="matAutocomplete">
@@ -95,6 +96,7 @@
                               (blur)="onBlurEnergie($event)"matInput
                                 aria-label="State"
                                 [matAutocomplete]="energie"
+                                [formControl]="energieCtrl"
                               >
                                 <mat-autocomplete #energie="matAutocomplete">
                                   <mat-option *ngFor="let state of filtredEnergie | async" [value]="state.energie">
@@ -109,7 +111,7 @@
                           <form class="example-form">
                             <mat-form-field class="example-full-width" appearance="outline">
                               <mat-label>Transmission</mat-label>
-                              <mat-select required>
+                              <mat-select [formControl]="transCtrl">
                                 <mat-option value=""></mat-option>
                                 <mat-option value="automatique">Automatique</mat-option>
                                 <mat-option value="manuelle">Manuelle</mat-option>
@@ -139,30 +141,26 @@
                             <mat-form-field class="example-full-width" appearance="outline">
                               <mat-label>Moteur</mat-label>
                               <input
-                              (blur)="onBlurBrand($event)"
+    
                                 
                                 matInput
                                 aria-label="State"
-                                [matAutocomplete]="brand"
+                                [formControl]="moteurCtrl"
                                 >
                     
-                              <mat-autocomplete #brand="matAutocomplete">
-                                <mat-option *ngFor="let state of filtredBrand | async" [value]="state.brand">
-                                  <span>{{state.brand}}</span>
-                                </mat-option>
-                              </mat-autocomplete>
+                         
                             </mat-form-field>
                           </form>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
                           <form class="example-form">
                             <mat-form-field class="example-full-width" appearance="outline">
-                              <mat-label>Options</mat-label>
+                              <mat-label>max Kilométrage</mat-label>
                               <input
                                 matInput
                                 aria-label="State"
-                                
-                                [formControl]="modelCtrl">
+                                type="number"
+                                [formControl]="mileageCtrl">
                             
   
                        
@@ -177,7 +175,7 @@
                                 matInput
                                 aria-label="State"
                                 
-                                [formControl]="modelCtrl">
+                                [formControl]="colorCtrl">
                             </mat-form-field>
                           </form>
                         </div>
@@ -185,7 +183,7 @@
                         
                         
                          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                        <button  type="button" class="btn btn-danger"  [disabled]="brandCtrl.invalid">Chercher</button>
+                        <button  type="button" class="btn btn-danger" (click)="filterItems()">Chercher</button>
                   
                         </div>
                         </div>
@@ -215,19 +213,21 @@
     
 </div>
 <div class="card-parent row">
-    <div class="card content_card col-lg-4 col-md-6 col-12" *ngFor="let car of cars">
+    <div class="card content_card col-lg-4 col-md-6 col-12" *ngFor="let car of selectedCars">
      
       <div class="card-body">
-        <h5 class="card-title"><strong>{{car.carTitle}}</strong> </h5>
+        <h5 class="card-title"><strong>{{car.carModel}}</strong> </h5>
         <p class="card-text">{{car.carDescription}}</p>
         <div class="row">
         
         <img class=" col-6 card-img-top" [src]="car.carPicture[0]?.imageRef" (click)="openPictures(car.carPicture)" alt="Card image cap">
         <div class="col-6"> 
             
-            <p class="card-text"><i class="fas fa-car" style="font-size:16px ;color:#b20101"></i> {{car.carModel}}</p>
-            <p class="card-text"><i class="fas fa-shield-alt" style="font-size:16px ;color:#b20101"></i>  {{car.carYear}}</p>
-            <p class="card-text"><i class="fas fa-info" style="font-size:16px ;color:#b20101"></i>  {{car.carMarque}}</p>
+            <p class="card-text"><i class="fas fa-car" style="font-size:16px ;color:#b20101"></i> {{car.carMarque}}</p>
+            <p class="card-text"><i class="fas fa-shield-alt" style="font-size:16px ;color:#b20101"></i>  {{car.carModel}}</p>
+            <p class="card-text"><i class="fas fa-calendar" style="font-size:16px ;color:#b20101"></i>  {{car.carYear}}</p>
+            <p class="card-text"><i class="fas fa-paint-brush" style="font-size:16px ;color:#b20101"></i> {{car.carColor}}</p>
+            <p class="card-text"><i class="fas fa-tachometer-alt" style="font-size:16px ;color:#b20101"></i>  {{car.carMileage}}</p>
         </div>
 
         </div>
