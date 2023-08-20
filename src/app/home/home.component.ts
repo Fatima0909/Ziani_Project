@@ -11,6 +11,7 @@ import { Image } from '../shared/model/image';
 import { MatDialog } from '@angular/material/dialog';
 import { Brands } from '../shared/core/brands';
 import { Energies } from '../shared/core/energies';
+import { Color } from '../shared/core/color';
 @Component({ selector: 'app-home',
 templateUrl: './home.component.html',
 styleUrls: ['./home.component.scss'],
@@ -77,6 +78,10 @@ filtredEnergie: any;
 selectedEnergie: any;
 selectedEnergies: any;
 
+filtredColor: any;
+selectedColor: any;
+selectedColors: any;
+
 modelCtrl = new FormControl('', null);
 colorCtrl = new FormControl('');
 mileageCtrl = new FormControl('');
@@ -101,6 +106,7 @@ isNavActive = false;
   brands: ({ brand: string; models?: any;  })[];
   energies: ({ energie: string; models?: any;  })[];
   selectedCars: Car[];
+  colors: { name: string; hex: string; }[];
 
 constructor (fb: FormBuilder, private dialog: MatDialog, 
             private carService: CarService) {
@@ -117,6 +123,7 @@ ngOnInit() {
   this.initCars();
   this.initTowns();
   this.initLanguage();
+  this.initColors();
   this.showstates = [];
   this.showUpstates = [];
   this.pullRightstates = [];
@@ -274,6 +281,18 @@ private  initSpeciality()  {
  
 }
 
+private  initColors()  {
+  
+  this.colors = Color.COLOR;
+  this.filtredColor= this.colorCtrl.valueChanges
+    .pipe(
+      startWith(''),
+      map(energie => energie ? this._filterColors(energie) : this.colors.slice())
+    );
+
+
+}
+
 private  initSpecialityEnergie()  {
   
     this.energies = Energies.ENERGIES;
@@ -285,6 +304,8 @@ private  initSpecialityEnergie()  {
  
 
 }
+
+
   private _filterSpecialities(brand: any): any {
     this.selectedBrands = [];
    return this.brands.filter(item => {
@@ -306,6 +327,27 @@ private  initSpecialityEnergie()  {
       };
       return false;
     })
+  }
+
+  private _filterColors(energie: any): any {
+    this.selectedColors = [];
+   return this.colors.filter(item => {
+      console.log('brandHere', energie, item, item.name.includes(energie));
+      if(item.name.includes(energie)) {
+        this.selectedColors.push(item);
+        return true;
+      };
+      return false;
+    })
+  }
+  
+  onBlurColor($event: any) {
+    setTimeout(() => {
+      if (this.selectedColors) {
+        this.selectedColor = this.selectedColors[0];
+        this.colorCtrl.setValue(this.selectedColor.name);
+      }
+    }, 200);
   }
 
   onBlurBrand($event: any) {
