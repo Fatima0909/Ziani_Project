@@ -108,7 +108,7 @@
                             <mat-form-field class="example-full-width" appearance="outline">
                               <mat-label>Transmission</mat-label>
                               <mat-select [formControl]="transCtrl">
-                                <mat-option value=""></mat-option>
+                                <mat-option value="">Transmission</mat-option>
                                 <mat-option value="automatique">Automatique</mat-option>
                                 <mat-option value="manuelle">Manuelle</mat-option>
                                 <mat-option value="semi-automatique">Semi-Automatique</mat-option>
@@ -167,11 +167,15 @@
                           <form class="example-form">
                             <mat-form-field class="example-full-width" appearance="outline">
                               <mat-label>La Couleur</mat-label>
-                              <input
-                                matInput
-                                aria-label="State"
-                                
-                                [formControl]="colorCtrl">
+                              <mat-select required  ormControlName="carColor">
+                                <mat-option value="">Couleur</mat-option>
+                                <mat-option value="noir">Noir</mat-option>
+                                <mat-option value="rouge">Rouge</mat-option>
+                                <mat-option value="blanc">Blanc</mat-option>
+                                <mat-option value="gris">Gris</mat-option>
+                                <mat-option value="bleu">Bleu</mat-option>
+                                <mat-option value="vert">Vert</mat-option>
+                              </mat-select>
                             </mat-form-field>
                           </form>
                         </div>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardGuard } from './auth-guard.guard';
 import { ProductDialogComponent } from './products/components/product-dialog/product-dialog.component';
 import { ProductsComponent } from './products/products.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,8 @@ const routes: Routes = [
     canActivate: [AuthGuardGuard] 
   },
   { path: 'dashboard/addProduct', component: ProductDialogComponent},
+
+  
   
   
 ];

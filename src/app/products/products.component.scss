@@ -166,6 +166,7 @@ body, html {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 200px; /* Set a reasonable max-width */
+    padding-inline: 5px;
   }
   
   .table-container {

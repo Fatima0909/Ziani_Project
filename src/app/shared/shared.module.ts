@@ -14,6 +14,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { DisableControlDirective } from './directive/disable-control.directive';
 import { PictureCarouselComponent } from '../picture-carousel/picture-carousel.component';
 import { MatSelectModule } from '@angular/material/select';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 const modules = [
   MatFormFieldModule,
@@ -33,7 +34,8 @@ const modules = [
 
 @NgModule({
   declarations: [
-    PictureCarouselComponent
+    PictureCarouselComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ const modules = [
   ],
   exports: [
     modules,
-    PictureCarouselComponent
+    PictureCarouselComponent,
+    SpinnerComponent
   ],
   providers: []
 })
