@@ -541,7 +541,7 @@ ul {
   margin-right: -15px;
   margin-left: -15px;
   background-color: #01010c;
-  opacity: 0.6;
+  opacity: 1;
 }
 
 .titles {
@@ -1307,7 +1307,7 @@ p {
   .slideShow {
     img {
       position: absolute;
-      height: 467px;
+      height: 100%;
     }
   }
 }
@@ -1479,6 +1479,7 @@ p {
 
   .categorySection {
     padding-right: 0.8rem;
+    padding-top: 20px;
     padding-left: 0.8rem;
 
     .subSection .card {
