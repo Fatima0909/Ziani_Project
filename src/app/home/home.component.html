@@ -61,8 +61,8 @@
                                >
                     
                               <mat-autocomplete #brand="matAutocomplete">
-                                <mat-option *ngFor="let state of filtredBrand | async" [value]="state.brand">
-                                  <span>{{state.brand}}</span>
+                                <mat-option *ngFor="let state of filtredBrand | async" [value]="state">
+                                  <span>{{state}}</span>
                                 </mat-option>
                               </mat-autocomplete>
                             </mat-form-field>
