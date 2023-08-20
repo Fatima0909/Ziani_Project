@@ -103,7 +103,7 @@ appointmentPercent = 0;
 private selectedProUrl: any;
 isMobile: boolean = false;
 isNavActive = false;
-  brands: ({ brand: string; models?: any;  })[];
+  brands: string  [];
   energies: ({ energie: string; models?: any;  })[];
   selectedCars: Car[];
   colors: { name: string; hex: string; }[];
@@ -309,8 +309,8 @@ private  initSpecialityEnergie()  {
   private _filterSpecialities(brand: any): any {
     this.selectedBrands = [];
    return this.brands.filter(item => {
-      console.log('brandHere', brand, item, item.brand.includes(brand));
-      if(item.brand.includes(brand)) {
+      console.log('brandHere', brand, item, item.includes(brand));
+      if(item.includes(brand)) {
         this.selectedBrands.push(item);
         return true;
       };
