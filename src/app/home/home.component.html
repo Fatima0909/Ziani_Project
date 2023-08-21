@@ -73,13 +73,17 @@
                             <mat-form-field class="example-full-width" appearance="outline">
                               <mat-label>Modéle</mat-label>
                               <input
-                                matInput
-                                aria-label="State"
-                                
-                                [formControl]="modelCtrl">
-                            
-  
-                       
+                            (blur)="onBlurModel($event)"
+                            matInput
+                            aria-label="State"
+                            [matAutocomplete]="model"
+                            [formControl]="modelCtrl">
+                          <mat-autocomplete #model="matAutocomplete">
+                            <mat-option *ngFor="let state of filtredModel | async" [value]="state.label">
+                             
+                              <span >{{state.label}}</span>
+                            </mat-option>
+                          </mat-autocomplete>
                             </mat-form-field>
                           </form>
                         </div>

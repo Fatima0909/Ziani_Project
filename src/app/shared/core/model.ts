@@ -7260,6 +7260,12 @@ export class Model {
     {
         "id": "2677",
         brand: "volkswagen","codename": "volkswagen-golf-4",
+        "label": "Golf 8",
+        "__typename": "SpecificationDataset"
+    },
+    {
+        "id": "2677",
+        brand: "volkswagen","codename": "volkswagen-golf-4",
         "label": "Golf 4",
         "__typename": "SpecificationDataset"
     },

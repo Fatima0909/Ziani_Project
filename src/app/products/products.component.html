@@ -84,7 +84,7 @@
             <button mat-icon-button color="primary" class="edit-button" (click)="editProduct(product)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="" class="info-button" (click)="infoProduct(product)">
+            <button mat-icon-button color="" *ngIf="false" class="info-button" (click)="infoProduct(product)">
               <mat-icon>info</mat-icon>
             </button>
             <button mat-icon-button  color="danger"  class="delete-button"  (click)="deleteProduct(product)">

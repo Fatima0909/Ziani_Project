@@ -1,12 +1,12 @@
-<nav  class="navbar" [class.active]="isNavActive">
+<nav class="navbar" [class.active]="isNavActive">
   <div class="logo"><img class="img-fluid" src="/assets/photos/logo.png" alt="LOGO"></div>
   <div class="bars" (click)="toggleNav()">
     <i class="fa fa-bars" style="margin-right: 20px;"></i>
   </div>
-  <ul class="nav-links"[ngClass]="{'active': isNavActive}">
+  <ul class="nav-links" [ngClass]="{'active': isNavActive}">
     <li class="nav-link"><a href="#">Home</a></li>
     <li class="nav-link"><a href="#footer">À Propos de Nous</a></li>
-    
+
   </ul>
 </nav>
 
@@ -15,201 +15,209 @@
 
 
 <div class="row clearfix space-form card">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 general-card">
-        <div class="body">
-       <div class="centered-container"> 
-         <button type="button" class="btn btn-lg " style="background-color: #b20101; color: white;"(click)="isUpdateDisabled = false" *ngIf="isUpdateDisabled; else isNotDisabled"><i class="fas fa-pen" style="font-size:16px ;color:white"></i>   Modifier  </button>
-       </div> 
-       <div class="centered-right"> 
-        <button type="button" class="btn  btn-dark  btn-lg "  (click)="returnPage()"><i class="fas fa-reply" style="font-size:16px ;color:white"></i>  retour  </button>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 general-card">
+    <div class="body">
+      <div class="centered-container">
+        <button type="button" class="btn btn-lg " style="background-color: #b20101; color: white;"
+          (click)="isUpdateDisabled = false" *ngIf="isUpdateDisabled; else isNotDisabled"><i class="fas fa-pen"
+            style="font-size:16px ;color:white"></i> Modifier </button>
       </div>
-          <ng-template #isNotDisabled>
-            <mat-icon class="edit" (click)="resetSpace()">close</mat-icon>
-          </ng-template>
-          <form [formGroup]="docForm" class="form-card"(ngSubmit)="onSubmit()">
-            <app-spinner *ngIf="isLoading"></app-spinner>
-            <mat-vertical-stepper [linear]="isLinear" #stepper  (selectionChange)="selectionChange($event)">
-            <mat-step>
+      <div class="centered-right">
+        <button type="button" class="btn  btn-dark  btn-lg " (click)="returnPage()"><i class="fas fa-reply"
+            style="font-size:16px ;color:white"></i> retour </button>
+      </div>
+      <ng-template #isNotDisabled>
+        <mat-icon class="edit" (click)="resetSpace()">close</mat-icon>
+      </ng-template>
+      <form [formGroup]="docForm" class="form-card" (ngSubmit)="onSubmit()">
+        <app-spinner *ngIf="isLoading"></app-spinner>
+        <mat-vertical-stepper [linear]="isLinear" #stepper (selectionChange)="selectionChange($event)">
+          <mat-step>
 
-              <ng-template matStepLabel >Information de voiture</ng-template>
+            <ng-template matStepLabel>Information de voiture</ng-template>
 
-              <div class="row">
-                  
-            
-                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
-                      <mat-form-field class="example-full-width mb-3" appearance="outline" >
-                        <mat-label>  Marque de voiture</mat-label>
-                    
-<mat-select  formControlName="carMarque" [disableControl]="isUpdateDisabled">
-  <mat-option *ngFor="let brand of brands" [value]="brand.brand">
-    {{brand.brand}}
-  </mat-option>
-</mat-select>   
-<mat-error *ngIf="docForm.get('carMarque').errors">
-                         La marque est obligatoire
-                        </mat-error>
-                      </mat-form-field>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
-                      <mat-form-field class="example-full-width mb-3" appearance="outline" >
-                        <mat-label> Modèle de voiture</mat-label>
-                        <input matInput formControlName="carModel"    required [disableControl]="isUpdateDisabled">
-                        <mat-error *ngIf="docForm.get('carModel').errors">
-                         Le modèle est obligatoire
-                        </mat-error>
-                      </mat-form-field>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
-                      <mat-form-field class="example-full-width mb-3" appearance="outline" >
-                        <mat-label> Année de voiture</mat-label>
-                        <input matInput type ="number" formControlName="carYear"required [disableControl]="isUpdateDisabled">
-                        <mat-error *ngIf="docForm.get('carYear').errors">
-                         L'année est obligatoire
-                        </mat-error>
-                      </mat-form-field>
-                    </div>
-                    
-                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
-                      <mat-form-field class="example-full-width mb-3" appearance="outline" >
-                        <mat-label> Kilométrage de voiture</mat-label>
-                        <input matInput type ="number" formControlName="carMileage"required [disableControl]="isUpdateDisabled">
-                        <mat-error *ngIf="docForm.get('carMileage').errors">
-                         L'année est obligatoire
-                        </mat-error>
-                      </mat-form-field>
-                    </div>
-                   
-                   
+            <div class="row">
+
+
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label> Marque de voiture</mat-label>
+
+                  <mat-select formControlName="carMarque" [disableControl]="isUpdateDisabled">
+                    <mat-option *ngFor="let brand of brands" [value]="brand">
+                      {{brand}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="docForm.get('carMarque').errors">
+                    La marque est obligatoire
+                  </mat-error>
+                </mat-form-field>
               </div>
-              <div class="row">
-                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline" >
-                    <mat-label> Transmission</mat-label>
-                     <mat-select required  formControlName="Transmission"required [disableControl]="isUpdateDisabled">
-    <mat-option value="">Transmission</mat-option>
-    <mat-option value="automatique">Automatique</mat-option>
-    <mat-option value="manuelle">Manuelle</mat-option>
-    <mat-option value="semi-automatique">Semi-automatique</mat-option>
-  </mat-select>
-                   
-                    <mat-error *ngIf="docForm.get('Transmission').errors">
-                     Transmission est obligatoire
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline" >
-                    <mat-label> Moteur de voiture</mat-label>
-                    <input matInput   formControlName="carMoteur"required [disableControl]="isUpdateDisabled">
-                    <mat-error *ngIf="docForm.get('carMoteur').errors">
-                   Moteur est obligatoire
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline" >
-                    <mat-label> Energie </mat-label>
-                    <mat-select  formControlName="carEnergie" [disableControl]="isUpdateDisabled">
-                      <mat-option *ngFor="let energie of energies" [value]="energie.energie">
-                        {{energie.energie}}
-                      </mat-option>
-                    </mat-select>
-                    
-                    <mat-error *ngIf="docForm.get('carEnergie').errors">
-                     Energie est obligatoire
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline" >
-                    <mat-label> Couleur </mat-label>
-                    <mat-select required  formControlName="carColor"required [disableControl]="isUpdateDisabled">
-                      <mat-option value="">Couleur</mat-option>
-                      <mat-option value="noir">Noir</mat-option>
-                      <mat-option value="rouge">Rouge</mat-option>
-                      <mat-option value="blanc">Blanc</mat-option>
-                      <mat-option value="gris">Gris</mat-option>
-                      <mat-option value="bleu">Bleu</mat-option>
-                      <mat-option value="vert">Vert</mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="docForm.get('carColor').errors">
-                     La couleur est obligatoire
-                    </mat-error>
-                  </mat-form-field>
-                </div>
-                
-               
-               
-                
-               
-
-
-
-
-
-                </div>
-
-
-
-              <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
-                  <mat-form-field class="example-full-width mb-3" appearance="outline">
-                    <mat-label>Description sur la voiture</mat-label>
-                    <textarea matInput formControlName="carDescription" [disableControl]="isUpdateDisabled"></textarea>
-
-                  </mat-form-field>
-                </div>
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label> Modèle de voiture</mat-label>
+                  <mat-select  formControlName="carModel" [disabled]="isUpdateDisabled || !docForm.get('carMarque').value">
+                    <mat-option *ngFor="let model of models" [value]="model.label">
+                      {{model.label}}
+                    </mat-option>
+                  </mat-select>
+                 
+                  <mat-error *ngIf="docForm.get('carModel').errors">
+                    Le modèle est obligatoire
+                  </mat-error>
+                </mat-form-field>
               </div>
-         
-              </mat-step>
-          
-           
-        
-            <mat-step>
-              <ng-template matStepLabel>Photos de voiture</ng-template>
-              <div class="pictureSection">
-                <div *ngIf="spacePhotos.length > 0" class="row photosClass">
-                  <ng-container>
-                    <div class="col-lg-3 col-md-4 col-6"  *ngFor="let photo of spacePhotos"
-                     (click)="removeThisPhotoFromSpace(photo)">
-                      <div class="image">
-                        <img class="cursorDelete  cursorAdd" [src]="photo.imageRef" disabled>
-                      </div>
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label> Année de voiture</mat-label>
+                  <input matInput type="number" formControlName="carYear" required [disableControl]="isUpdateDisabled">
+                  <mat-error *ngIf="docForm.get('carYear').errors">
+                    L'année est obligatoire
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label> Kilométrage de voiture</mat-label>
+                  <input matInput type="number" formControlName="carMileage" required
+                    [disableControl]="isUpdateDisabled">
+                  <mat-error *ngIf="docForm.get('carMileage').errors">
+                    L'année est obligatoire
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+
+            </div>
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label> Transmission</mat-label>
+                  <mat-select required formControlName="Transmission" required [disableControl]="isUpdateDisabled">
+                    <mat-option value="">Transmission</mat-option>
+                    <mat-option value="automatique">Automatique</mat-option>
+                    <mat-option value="manuelle">Manuelle</mat-option>
+                    <mat-option value="semi-automatique">Semi-automatique</mat-option>
+                  </mat-select>
+
+                  <mat-error *ngIf="docForm.get('Transmission').errors">
+                    Transmission est obligatoire
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label> Moteur de voiture</mat-label>
+                  <input matInput formControlName="carMoteur" required [disableControl]="isUpdateDisabled">
+                  <mat-error *ngIf="docForm.get('carMoteur').errors">
+                    Moteur est obligatoire
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label> Energie </mat-label>
+                  <mat-select formControlName="carEnergie" [disableControl]="isUpdateDisabled">
+                    <mat-option *ngFor="let energie of energies" [value]="energie.energie">
+                      {{energie.energie}}
+                    </mat-option>
+                  </mat-select>
+
+                  <mat-error *ngIf="docForm.get('carEnergie').errors">
+                    Energie est obligatoire
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mb-3">
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label> Couleur </mat-label>
+                  <mat-select required formControlName="carColor" required [disableControl]="isUpdateDisabled">
+                   
+                    <mat-option *ngFor="let color of colors" [value]="color.name">{{color.name}}</mat-option>
+                
+                  </mat-select>
+                  <mat-error *ngIf="docForm.get('carColor').errors">
+                    La couleur est obligatoire
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                <mat-form-field class="example-full-width mb-3" appearance="outline">
+                  <mat-label>Description sur la voiture</mat-label>
+                  <textarea matInput formControlName="carDescription" [disableControl]="isUpdateDisabled"></textarea>
+
+                </mat-form-field>
+              </div>
+            </div>
+
+          </mat-step>
+
+
+
+          <mat-step>
+            <ng-template matStepLabel>Photos de voiture</ng-template>
+            <div class="pictureSection">
+              <div *ngIf="spacePhotos.length > 0" class="row photosClass">
+                <ng-container>
+                  <div class="col-lg-3 col-md-4 col-6" *ngFor="let photo of spacePhotos"
+                    (click)="removeThisPhotoFromSpace(photo)">
+                    <div class="image">
+                      <img class="cursorDelete  cursorAdd" [src]="photo.imageRef" disabled>
                     </div>
-                  </ng-container>
+                  </div>
+                </ng-container>
                 <!-- Messages -->
-              <!--  <div class="ui  teal message" *ngIf="isSpacePhotosMsg">
+                <!--  <div class="ui  teal message" *ngIf="isSpacePhotosMsg">
                   <div class="content">{{spacePhotosMsg}}</div>
                 </div> -->
               </div>
 
-                <div class="row uploadContainer "  *ngIf="!isUpdateDisabled">
-                  <input type="file" class="inputFile" #embedpollfileinput1 id="embedpollfileinput1" (change)="onFileChange($event)" accept="image/*" hidden/>
+              <div class="row uploadContainer " *ngIf="!isUpdateDisabled">
+                <input type="file" class="inputFile" #embedpollfileinput1 id="embedpollfileinput1"
+                  (change)="onFileChange($event)" accept="image/*" hidden />
 
-                  <button class=" btn btn-success"  style="margin-left:5%;width: 20%;"(click)="loadImage(embedpollfileinput1)" type="button"><i class="fa fa-upload" style="font-size:12px;color:white ;"></i>Télécharger photo</button>
+                <button class=" btn btn-success" style="margin-left:5%;width: 20%;"
+                  (click)="loadImage(embedpollfileinput1)" type="button"><i class="fa fa-upload"
+                    style="font-size:12px;color:white ;"></i>Télécharger photo</button>
 
               </div>
 
-              </div>
-            
-            
-            </mat-step>
-            </mat-vertical-stepper>
+            </div>
 
-            <div class="row" *ngIf="!isUpdateDisabled">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
-              <div class="example-button-row centered-button">
-                <button  class="btn btn-danger btn-lg" style="background-color:#b20101; width:20%;"
-                        type="submit" [ngClass]="">Sauvgarder</button>
 
-                <button  class="btn btn-outline-danger btn-lg cancel" (click)="resetSpace()" [disabled]="isUpdateDisabled" tabindex="-1">Annuler</button>
-              
-              </div>
+          </mat-step>
+        </mat-vertical-stepper>
+
+        <div class="row" *ngIf="!isUpdateDisabled">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <div class="example-button-row centered-button">
+              <button class="btn btn-danger btn-lg" style="background-color:#b20101; width:20%;" type="submit"
+                [ngClass]="">Sauvgarder</button>
+
+              <button class="btn btn-outline-danger btn-lg cancel" (click)="resetSpace()" [disabled]="isUpdateDisabled"
+                tabindex="-1">Annuler</button>
+
             </div>
           </div>
-          </form>
         </div>
-      </div>
+      </form>
+    </div>
+  </div>
 
 </div>
-

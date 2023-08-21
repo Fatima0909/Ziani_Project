@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Brands } from 'src/app/shared/core/brands';
 import { Energies } from 'src/app/shared/core/energies';
+import { Model } from 'src/app/shared/core/model';
+import { Color } from 'src/app/shared/core/color';
 interface Transmission {
   value: string;
   viewValue: string;
@@ -54,7 +56,7 @@ export class ProductDialogComponent implements OnInit {
   spaceInstaLink: string;
   private slashSymbol = '/';
   towns: any;
-  smallTowns: any [];
+  models: any [];
   casnos: any;
   isOpenMap: boolean;
   isHasSpace: boolean;
@@ -67,6 +69,7 @@ export class ProductDialogComponent implements OnInit {
   energies = Energies.ENERGIES
   selectedEnergies: String[] ;
   selectedEnergie: String;
+  colors: any;
   isNavActive = false;
   isLoading = false;
   constructor(private fb: FormBuilder, private authService: AuthService,
@@ -115,6 +118,8 @@ export class ProductDialogComponent implements OnInit {
     this.docForm = this.createDocForm();
     this.carToSave = new Car();
     this.initPictures();
+    this.initMarques();
+    this.initColor()
   }
 
   private initAccount() {
@@ -122,6 +127,25 @@ export class ProductDialogComponent implements OnInit {
     this.isHasSpeciality = false;
   }
 
+  initColor() {
+    this.colors = Color.COLOR;
+    console.log('this.colors', this.colors)
+  }
+  initMarques() {
+    this.docForm.get('carMarque').valueChanges.subscribe(town => {
+      console.log('subscribe', town);
+      if(town)
+      this.initModels(town);
+    });
+  }
+
+  initModels(marque: string) {
+    const models =  Model.MODELS.filter(t => t.brand.toLowerCase() === marque.toLowerCase());
+    console.log('modelsHere', models);
+    if(models){
+      this.models = models;
+    }
+  }
 
   private initPictures() {
 
