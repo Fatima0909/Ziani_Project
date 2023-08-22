@@ -214,6 +214,8 @@ body, html {
         word-wrap: break-word;
         white-space: normal;
         background-color: #fff;
+        text-wrap: nowrap;
+        max-width: 300px;
       }
     .mat-cell {
         max-width: 100%;

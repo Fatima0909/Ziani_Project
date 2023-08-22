@@ -49,7 +49,7 @@ export class ProductsComponent implements OnInit {
   }
   infoProduct(product: any){
     this.carService.assignCar(product);
-    this.router.navigate(['dashboard/details']);
+    this.router.navigate(['dashboard/detai']);
   }
 
 toggleNav() {
