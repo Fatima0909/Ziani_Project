@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {NgxSpinnerService} from 'ngx-spinner';
+import Swal from 'sweetalert2';
 import { Constants } from './models/constants';
 import { EmailPasswordCredentials } from './models/emailpasswordcredentials';
 import { AuthService } from './services/auth.service';
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   authForm: FormGroup;
   error: any;
   isLoading = false;
+  isNavActive = false;
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
     private spinner: NgxSpinnerService,
@@ -45,6 +47,8 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
             this.redirectToUserAccount(authUser);
          }, error => {
+
+      Swal.fire('E-mail ou mot de passe est incorrect,veuillez essayer a nouveau', '', 'error');
           this.error = this.authService.getError(error);
           this.spinner.hide();
           this.isLoading = false;
@@ -57,6 +61,9 @@ export class LoginComponent implements OnInit {
     window.localStorage.setItem(Constants.LOC_OWNER_AUTH_KEY, JSON.stringify(authOwner));
     this.authService.setKeyAuth(authOwner);
     this.router.navigate(['dashboard'])
+  }
+  toggleNav() {
+    this.isNavActive = !this.isNavActive;
   }
 
   private buildMailPasswordData(): EmailPasswordCredentials {

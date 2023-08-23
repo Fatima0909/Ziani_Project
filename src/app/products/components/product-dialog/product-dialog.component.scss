@@ -2,7 +2,7 @@
  float: right;
     
     margin-top:50px;
-    margin-right: 26px;
+    margin-right: 0;
   }
   .centered-right {
     float: left;
@@ -29,6 +29,7 @@
     .cursorAdd {
        width: 140px;
        height: 140px;
+       object-fit: cover;
         }
 .cancel{
     width:20%;

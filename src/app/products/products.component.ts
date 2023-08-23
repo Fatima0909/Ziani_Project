@@ -97,7 +97,7 @@ toggleNav() {
           Swal.fire('Supprimé !', 'L\'élément a été supprimé.', 'success');
           const index = this.cars.findIndex(p => p.id === product.id);
           if (index !== -1) {
-            this.products.splice(index, 1);
+           this.initCars();
           
         }
         })

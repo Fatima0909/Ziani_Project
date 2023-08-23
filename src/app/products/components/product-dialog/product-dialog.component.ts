@@ -249,10 +249,10 @@ export class ProductDialogComponent implements OnInit {
     if(!this.docForm.valid) {
 
     }
-    else if (!this.spacePhotos || this.spacePhotos.length < 2) {
-      this.treatMsgError ("Il faut d'ajouter au moins 2")
+    else if (!this.spacePhotos || this.spacePhotos.length < 10 || this.spacePhotos.length >30) {
+      this.treatMsgError ("Il faut d'ajouter au minimum 10 photos et au maximum 30 photos")
     }else {
-      this.spinner.show();
+      this.isLoading = true;
       if (this.carFromBdd != null) {
         this.buildChangedSpaceValues();
         this.updateSpacesPhotoToFireStoreThenAddToSpaceThenUpdateSpace();
@@ -338,6 +338,7 @@ export class ProductDialogComponent implements OnInit {
     const that = this;
     let photosToSave = new Array<Image>();
     photosToSave = this.spacePhotos.filter(p => p.imageRef.length > this.maxUrlLength);
+    this.isLoading = true;
     if (photosToSave && photosToSave.length > 0) {
       const savedPhotos = new Array<Image>();
       this.updatePhotos(savedPhotos, photosToSave, 0);
@@ -384,14 +385,18 @@ export class ProductDialogComponent implements OnInit {
       this.carToSave.carPicture =  Object.assign({}, this.spacePhotos);
     }
 
-    console.log('carToSaveHere', this.carToSave);
+    this.isLoading = true;
     this.carService.updateCar(this.carToSave, this.carFromBdd.id).then(res => {
-      
       Swal.fire('Les informations est bien enregistré', '', 'success');
-
+        this.isLoading = false;
+        this.spinner.hide();
       setTimeout(() => {
         this.returnPage();
       }, 4000)
+    }, err =>{
+      this.isLoading = false;
+      Swal.fire('Erreur technique Merci de contacter nos services ', '', 'error');
+      
     });
 
   }
@@ -458,11 +463,11 @@ export class ProductDialogComponent implements OnInit {
     
     this.spacePhotos = this.spacePhotos.filter(p => p.imageRef.length < this.maxUrlLength);
     photos.map(image => this.spacePhotos.push(Object.assign({}, image)));
-
     this.carToSave.carPicture =  this.spacePhotos;
     this.isLoading = true;
-    this.spinner.show();
+      this.spinner.show();
     this.carService.addCarData(this.carToSave).then(res => {
+    
       Swal.fire('Les informations est bien enregistré', '', 'success');
       this.isLoading = false;
       this.spinner.hide();
@@ -471,6 +476,7 @@ export class ProductDialogComponent implements OnInit {
         this.returnPage();
       }, 4000)
     }, error => {
+      this.isLoading = false;
       console.log("error", error);
     })
     
