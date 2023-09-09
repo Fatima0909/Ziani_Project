@@ -532,7 +532,12 @@ ul {
 }
 
 .example-form {
-  max-width: unset;
+  max-width: 100%;
+  min-width: unset !important;
+  app-year-picker {
+    display: block;
+    width: 100%;
+  }
 }
 
 

@@ -13,11 +13,28 @@ import { Brands } from '../shared/core/brands';
 import { Energies } from '../shared/core/energies';
 import { Color } from '../shared/core/color';
 import { Model } from '../shared/core/model';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { Moment } from 'moment';
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'YYYY',
+  },
+  display: {
+    dateInput: 'YYYY',
+    monthYearLabel: 'YYYY',
+    monthYearA11yLabel: 'YYYY',
+  },
+};
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-
+  providers: [
+ 
+    { 
+     provide: MAT_DATE_FORMATS, useValue: MY_FORMATS
+    },
+  ]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 
@@ -66,7 +83,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('contactSection') contactSection: any;
   @ViewChild('contactForm') contactForm: any;
   brandCtrl = new FormControl('');
-  moteurCtrl = new FormControl('');
+  moteurCtrl = new FormGroup({
+    start: new FormControl(null),
+    end: new FormControl(null),
+  });
+  minYearCtrl = new FormControl();
+  maxYearCtrl = new FormControl();
   energieCtrl = new FormControl('');
   transCtrl = new FormControl('');
   loaded = false;
@@ -113,6 +135,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   selectedModel: any;
   filtredModel: Observable<any>;
   models: any;
+  minYear = 1950;
+  maxYear: number;
 
   constructor(fb: FormBuilder, private dialog: MatDialog,
     private carService: CarService) {
@@ -135,11 +159,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.pullLeftstates = [];
 
     this.slideshowAnimation();
-
+    this.maxYear = new Date().getFullYear();
   }
 
 
+  get maxMinYear() {
+    return this.maxYearCtrl.value || this.maxYear;
+  }
 
+  get minMaxYear() {
+    return this.minYearCtrl.value || this.minYear;
+  }
 
 
 
@@ -315,7 +345,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private _filterSpecialities(brand: any): any {
     this.selectedBrands = [];
     return this.brands.filter(item => {
-      console.log('brandHere', brand, item, item.includes(brand));
       if (item.includes(brand)) {
         this.selectedBrands.push(item);
         return true;
@@ -326,7 +355,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private _filterEnergies(energie: any): any {
     this.selectedEnergies = [];
     return this.energies.filter(item => {
-      console.log('brandHere', energie, item, item.energie.includes(energie));
       if (item.energie.includes(energie)) {
         this.selectedEnergies.push(item);
         return true;
@@ -338,7 +366,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private _filterColors(energie: any): any {
     this.selectedColors = [];
     return this.colors.filter(item => {
-      console.log('brandHere', energie, item, item.name.includes(energie));
       if (item.name.includes(energie)) {
         this.selectedColors.push(item);
         return true;
@@ -358,7 +385,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   onBlurBrand($event: any) {
     setTimeout(() => {
-      console.log('selectedBrands', this.selectedBrands);
       if (this.selectedBrands) {
         this.selectedBrand = this.selectedBrands[0];
         this.brandCtrl.setValue(this.selectedBrand);
@@ -378,7 +404,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   onBlurEnergie($event: any) {
     setTimeout(() => {
-      console.log('selectedEnergies', this.selectedEnergies);
       if (this.selectedEnergies) {
         this.selectedEnergie = this.selectedEnergies[0];
         this.energieCtrl.setValue(this.selectedEnergie.energie);
@@ -472,7 +497,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
         return false;
       }
 
-      if (this.moteurCtrl.value && car.carMoteur !== this.moteurCtrl.value) {
+      if (this.minYearCtrl.value && car.carYear < this.getYear(this.minYearCtrl.value)) {
+        return false;
+      }
+      if (this.maxYearCtrl.value && car.carYear > this.getYear(this.maxYearCtrl.value)) {
         return false;
       }
 
@@ -491,5 +519,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
       return true;
 
     })
+  }
+  getYear(value: any) {
+    return new Date(value).getFullYear();
+  }
+  chosenYearHandler(normalizedYear: any, dp: any) {
+    
+    dp.close();
+    this.minYearCtrl.setValue(new Date(normalizedYear).getFullYear());
   }
 }

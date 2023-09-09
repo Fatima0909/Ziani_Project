@@ -1,362 +1,350 @@
-<nav  class="navbar" [class.active]="isNavActive">
+<nav class="navbar" [class.active]="isNavActive">
   <div class="logo"><img class="img-fluid" src="/assets/photos/logo.png" alt="LOGO"></div>
   <div class="bars" (click)="toggleNav()">
     <i class="fa fa-bars" style="margin-right: 20px;"></i>
   </div>
-  <ul class="nav-links"[ngClass]="{'active': isNavActive}">
+  <ul class="nav-links" [ngClass]="{'active': isNavActive}">
     <li class="nav-link"><a href="#">Home</a></li>
     <li class="nav-link"><a href="#footer">À Propos de Nous</a></li>
-    
+
   </ul>
 </nav>
 
 <div class="container-fluid">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-12 header">
-      <div class="slideShow showcase">
-    
-        <img height="100%" width="100%" src="/assets/photos/cover.jpeg"(load)="loaded = true">
-        <div class="text-picture-container ">
-          <div class="overlay">
-            <h1>VENTE VEHICULES DE LUXE</h1>
-            <h4>
-             Chez ziani-auto
-            </h4>
-            <div class="trait">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-12 header">
+    <div class="slideShow showcase">
+
+      <img height="100%" width="100%" src="/assets/photos/cover.jpeg" (load)="loaded = true">
+      <div class="text-picture-container ">
+        <div class="overlay">
+          <h1>VENTE VEHICULES DE LUXE</h1>
+          <h4>
+            Chez ziani-auto
+          </h4>
+          <div class="trait">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="searchClassContainer">
+
+
+
+
+    </div>
+  </div>
+
+  <div class="col-lg-12 col-md-12 col-sm-12 col-12 content">
+
+    <!-- CATEGORIES Mobile tablete-->
+    <div class="row categorySection d-bloc d-xs-block d-sm-block">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12 contentmiddle">
+
+        <h2 class="titre-ligne "><strong> RECHERCHER UNE VOITURE</strong></h2>
+      </div>
+
+
+
+      <div class="searchClass col-12">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+              <div class="body">
+                <div class="example-container">
+                  <form [formGroup]="labelForm">
+                    <div class="row">
+
+                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                        <form class="example-form">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Marque</mat-label>
+                            <input (blur)="onBlurBrand($event)" matInput aria-label="State" [matAutocomplete]="brand"
+                              [formControl]="brandCtrl">
+
+                            <mat-autocomplete #brand="matAutocomplete">
+                              <mat-option *ngFor="let state of filtredBrand | async" [value]="state">
+                                <span>{{state}}</span>
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </form>
+                      </div>
+                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                        <form class="example-form">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Modéle</mat-label>
+                            <input (blur)="onBlurModel($event)" matInput aria-label="State" [matAutocomplete]="model"
+                              [formControl]="modelCtrl">
+                            <mat-autocomplete #model="matAutocomplete">
+                              <mat-option *ngFor="let state of filtredModel | async" [value]="state.label">
+
+                                <span>{{state.label}}</span>
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </form>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                        <form class="example-form">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Energie</mat-label>
+                            <input (blur)="onBlurEnergie($event)" matInput aria-label="State"
+                              [matAutocomplete]="energie" [formControl]="energieCtrl">
+                            <mat-autocomplete #energie="matAutocomplete">
+                              <mat-option *ngFor="let state of filtredEnergie | async" [value]="state.energie">
+                                <span>{{state.energie}}</span>
+                              </mat-option>
+                            </mat-autocomplete>
+
+                          </mat-form-field>
+                        </form>
+                      </div>
+                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                        <form class="example-form">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Transmission</mat-label>
+                            <mat-select [formControl]="transCtrl">
+                              <mat-option value="automatique">Automatique</mat-option>
+                              <mat-option value="manuelle">Manuelle</mat-option>
+                              <mat-option value="semi-automatique">Semi-Automatique</mat-option>
+                            </mat-select>
+
+
+
+                          </mat-form-field>
+                        </form>
+                      </div>
+
+
+
+                    </div>
+
+                  </form>
+
+
+
+
+                  <form [formGroup]="labelForm">
+                    <div class="row">
+
+                      <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 ">
+                        <form class="example-form">
+                          <app-year-picker [formControl]="minYearCtrl" [label]="'Min Année'" [max]="maxMinYear"
+                            [min]="minYear">
+                          </app-year-picker>
+                        </form>
+                      </div>
+                      <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 ">
+                        <form class="example-form">
+                          <app-year-picker [formControl]="maxYearCtrl" [label]="'Max Année'" [max]="maxYear"
+                            [min]="minMaxYear">
+                          </app-year-picker>
+                        </form>
+                      </div>
+                      <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 ">
+                        <form class="example-form">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Max Kilométrage</mat-label>
+                            <input matInput aria-label="State" type="number" [formControl]="mileageCtrl">
+
+
+
+                          </mat-form-field>
+                        </form>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                        <form class="example-form">
+                          <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>La Couleur</mat-label>
+                            <input (blur)="onBlurColor($event)" matInput aria-label="State" [matAutocomplete]="color"
+                              [formControl]="colorCtrl">
+                            <mat-autocomplete #color="matAutocomplete">
+                              <mat-option *ngFor="let state of filtredColor | async" [value]="state.name">
+                                <span>{{state.name}}</span>
+                              </mat-option>
+                            </mat-autocomplete>
+
+                          </mat-form-field>
+                        </form>
+                      </div>
+
+
+
+                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                        <button type="button" class="btn btn-danger" (click)="filterItems()">Chercher</button>
+
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="searchClassContainer">
-       
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #whatSectionTitle>
+    </div>
 
-     
+  </div>
 
+  <div class="row categorySection d-bloc d-xs-block d-sm-block">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle contentmiddle">
+
+      <h2 class="titre-ligne "><strong>Découvrez Notre selection des voitures
+        </strong></h2>
+      <p style="color: white;">BIENVENUE DANS NOTRE ESPACE VOITURES NEUVES ET D'OCCASIONS CREE DEPUIS 2009 à GAMBITTA
+      </p>
+
+
+
+    </div>
+    <div class="card-parent row" id="cars">
+      <div class="card content_card col-lg-4 col-md-6 col-12" *ngFor="let car of selectedCars">
+
+        <div class="card-body">
+          <h5 class="card-title"><strong>{{car.carModel}}</strong> </h5>
+          <p class="card-text">{{car.carDescription}}</p>
+          <div class="row">
+
+            <img class=" col-6 card-img-top" [src]="car.carPicture[0]?.imageRef" (click)="openPictures(car.carPicture)"
+              alt="Card image cap">
+            <div class="col-6">
+
+              <p class="card-text"><i class="fas fa-car" style="font-size:16px ;color:#b20101"></i> {{car.carMarque}}
+              </p>
+              <p class="card-text"><i class="fas fa-shield-alt" style="font-size:16px ;color:#b20101"></i>
+                {{car.carModel}}</p>
+              <p class="card-text"><i class="fas fa-calendar" style="font-size:16px ;color:#b20101"></i> {{car.carYear}}
+              </p>
+              <p class="card-text"><i class="fas fa-paint-brush" style="font-size:16px ;color:#b20101"></i>
+                {{car.carColor}}</p>
+              <p class="card-text"><i class="fas fa-tachometer-alt" style="font-size:16px ;color:#b20101"></i>
+                {{car.carMileage}}</p>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
-    
-    <div class="col-lg-12 col-md-12 col-sm-12 col-12 content">
+  </div>
 
-      <!-- CATEGORIES Mobile tablete-->
-      <div class="row categorySection d-bloc d-xs-block d-sm-block" >
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12 contentmiddle" >
-      
-          <h2  class="titre-ligne "><strong> RECHERCHER UNE VOITURE</strong></h2>
+  <!-- Footer-->
+
+  <footer class="footer-section">
+    <div name="footer" id="footer" class="container">
+      <div class="row d-bloc d-xs-block d-sm-block">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 ">
+          <div class="footer-cta pt-5 pb-5">
+            <div class="row">
+              <div class="col-xl-4 col-md-4 mb-30">
+                <div class="single-cta">
+                  <i class="fas fa-map-marker-alt" style="color:#b20101"></i>
+                  <div class="cta-text">
+                    <h4>Trouvez Nous</h4>
+                    <span>à coté de hôpital pédiatre Canstal ORAN </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-md-4 mb-30">
+                <div class="single-cta">
+                  <i class="fas fa-phone" style="color:#b20101"></i>
+                  <div class="cta-text">
+                    <h4>Appelez Nous</h4>
+                    <span>+213 551 41 98 12<br>+213 661 49 51 18 </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-md-4 mb-30">
+                <div class="single-cta">
+                  <i class="far fa-envelope-open" style="color:#b20101"></i>
+                  <div class="cta-text">
+                    <h4>Contactez Nous</h4>
+                    <span>commercial@ziani-auto.com <br> info@ziani-auto.com</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-      
-          
-    
-        <div class="searchClass col-12">
-          <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-              <div class="card" >
-                <div class="body">
-                  <div class="example-container">
-                    <form [formGroup]="labelForm">
-                      <div class="row">
+          <div class="footer-content pt-5 pb-5">
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 mb-50">
+                <div class="footer-widget">
+                  <div class="footer-logo">
+                    <a href="index.html"><img src="/assets/photos/logo.png" class="img-fluid" alt="logo"></a>
+                  </div>
+                  <div class="footer-text">
+                    <p>La société Ziani-Automobiles, accompagne particuliers et entreprises sur
+                      leurs projets d'achat mais aussi assure la vente et le reprise de votre voitures, toutes les
+                      marques et selon la disponibilité.
+                      L’Equipe Ziani-Automobiles, avec ses commerciales, reste a votre entière disposition pour toutes
+                      informations complémentaire </p>
+                  </div>
+                  <div class="footer-social-icon">
+                    <span>Suivez Nous sur</span>
+                    <a href="https://web.facebook.com/zianiautomobile?_rdc=1&_rdr" target="_blank"><i
+                        class="fab fa-facebook-f " style="font-size:36px;color:#b20101"></i></a>
+                    <a href="https://www.instagram.com/ziani_auto_31/" target="_blank"><i class="fab fa-instagram "
+                        style="font-size:36px;color:#b20101"></i></a>
 
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                          <form class="example-form">
-                            <mat-form-field class="example-full-width" appearance="outline">
-                              <mat-label>Marque</mat-label>
-                              <input
-                              (blur)="onBlurBrand($event)"matInput
-                                aria-label="State"
-                                [matAutocomplete]="brand"
-                                [formControl]="brandCtrl"
-                               >
-                    
-                              <mat-autocomplete #brand="matAutocomplete">
-                                <mat-option *ngFor="let state of filtredBrand | async" [value]="state">
-                                  <span>{{state}}</span>
-                                </mat-option>
-                              </mat-autocomplete>
-                            </mat-form-field>
-                          </form>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                          <form class="example-form">
-                            <mat-form-field class="example-full-width" appearance="outline">
-                              <mat-label>Modéle</mat-label>
-                              <input
-                            (blur)="onBlurModel($event)"
-                            matInput
-                            aria-label="State"
-                            [matAutocomplete]="model"
-                            [formControl]="modelCtrl">
-                          <mat-autocomplete #model="matAutocomplete">
-                            <mat-option *ngFor="let state of filtredModel | async" [value]="state.label">
-                             
-                              <span >{{state.label}}</span>
-                            </mat-option>
-                          </mat-autocomplete>
-                            </mat-form-field>
-                          </form>
-                        </div>
-  
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                          <form class="example-form">
-                            <mat-form-field class="example-full-width" appearance="outline">
-                              <mat-label>Energie</mat-label>
-                              <input
-                              (blur)="onBlurEnergie($event)"matInput
-                                aria-label="State"
-                                [matAutocomplete]="energie"
-                                [formControl]="energieCtrl"
-                              >
-                                <mat-autocomplete #energie="matAutocomplete">
-                                  <mat-option *ngFor="let state of filtredEnergie | async" [value]="state.energie">
-                                    <span>{{state.energie}}</span>
-                                  </mat-option>
-                                </mat-autocomplete>
-                       
-                            </mat-form-field>
-                          </form>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                          <form class="example-form">
-                            <mat-form-field class="example-full-width" appearance="outline">
-                              <mat-label>Transmission</mat-label>
-                              <mat-select [formControl]="transCtrl">
-                                <mat-option value="automatique">Automatique</mat-option>
-                                <mat-option value="manuelle">Manuelle</mat-option>
-                                <mat-option value="semi-automatique">Semi-Automatique</mat-option>
-                              </mat-select >
-                              
- 
-                       
-                            </mat-form-field>
-                          </form>
-                        </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                <div class="footer-widget">
+                  <div class="footer-widget-heading">
+                    <h3>informations</h3>
+                  </div>
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#cars">Nos voitures</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                    <li><a href="#footer">À propos de nous</a></li>
 
-                       
-                        
-                      </div>
-  
+
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                <div class="footer-widget">
+
+                  <div class="footer-text mb-25">
+                    <p>Pour plus d'informations,Contactez nous</p>
+                  </div>
+                  <div class="subscribe-form">
+                    <form action="#">
+                      <input type="text" placeholder="Envoyer Message">
+                      <button><i class="fab fa-telegram-plane"></i></button>
                     </form>
-
-
-
-                    
-                    <form [formGroup]="labelForm">
-                      <div class="row">
-
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                          <form class="example-form">
-                            <mat-form-field class="example-full-width" appearance="outline">
-                              <mat-label>Moteur</mat-label>
-                              <input
-    
-                                
-                                matInput
-                                aria-label="State"
-                                [formControl]="moteurCtrl"
-                                >
-                    
-                         
-                            </mat-form-field>
-                          </form>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                          <form class="example-form">
-                            <mat-form-field class="example-full-width" appearance="outline">
-                              <mat-label>Max Kilométrage</mat-label>
-                              <input
-                                matInput
-                                aria-label="State"
-                                type="number"
-                                [formControl]="mileageCtrl">
-                            
-  
-                       
-                            </mat-form-field>
-                          </form>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                          <form class="example-form">
-                            <mat-form-field class="example-full-width" appearance="outline">
-                              <mat-label>La Couleur</mat-label>
-                              <input
-                              (blur)="onBlurColor($event)"
-                               matInput
-                                aria-label="State"
-                                [matAutocomplete]="color"
-                                [formControl]="colorCtrl"
-                              >
-                                <mat-autocomplete #color="matAutocomplete">
-                                  <mat-option *ngFor="let state of filtredColor | async" [value]="state.name">
-                                    <span>{{state.name}}</span>
-                                  </mat-option>
-                                </mat-autocomplete>
-                       
-                            </mat-form-field>
-                          </form>
-                        </div>
-                      
-                        
-                        
-                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
-                        <button  type="button" class="btn btn-danger" (click)="filterItems()">Chercher</button>
-                  
-                        </div>
-                        </div>
-                    </form>
-                  
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle" #whatSectionTitle>
-        </div>
-     
-      </div>
-      
-<div class="row categorySection d-bloc d-xs-block d-sm-block">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-12 sectionTitle contentmiddle" >
-    
-    <h2  class="titre-ligne "><strong>Découvrez Notre selection des voitures
-    </strong></h2>
-     <p style="color: white;">BIENVENUE DANS NOTRE ESPACE VOITURES NEUVES ET D'OCCASIONS CREE DEPUIS 2009 à  GAMBITTA
-     </p>
-    
-
-    
-</div>
-<div class="card-parent row" id="cars">
-    <div class="card content_card col-lg-4 col-md-6 col-12" *ngFor="let car of selectedCars">
-     
-      <div class="card-body">
-        <h5 class="card-title"><strong>{{car.carModel}}</strong> </h5>
-        <p class="card-text">{{car.carDescription}}</p>
-        <div class="row">
-        
-        <img class=" col-6 card-img-top" [src]="car.carPicture[0]?.imageRef" (click)="openPictures(car.carPicture)" alt="Card image cap">
-        <div class="col-6"> 
-            
-            <p class="card-text"><i class="fas fa-car" style="font-size:16px ;color:#b20101"></i> {{car.carMarque}}</p>
-            <p class="card-text"><i class="fas fa-shield-alt" style="font-size:16px ;color:#b20101"></i>  {{car.carModel}}</p>
-            <p class="card-text"><i class="fas fa-calendar" style="font-size:16px ;color:#b20101"></i>  {{car.carYear}}</p>
-            <p class="card-text"><i class="fas fa-paint-brush" style="font-size:16px ;color:#b20101"></i> {{car.carColor}}</p>
-            <p class="card-text"><i class="fas fa-tachometer-alt" style="font-size:16px ;color:#b20101"></i>  {{car.carMileage}}</p>
-        </div>
-
+        <div class="copyright-area">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+                <div class="copyright-text">
+                  <p>Copyright &copy; 2023,Tous droits réservés.</p>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+                <div class="footer-menu">
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
- <!-- Footer-->
-
- <footer  class="footer-section">
-    <div  name="footer" id="footer" class="container">
-        <div class="row d-bloc d-xs-block d-sm-block">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12 " >
-        <div class="footer-cta pt-5 pb-5">
-            <div class="row">
-                <div class="col-xl-4 col-md-4 mb-30">
-                    <div class="single-cta">
-                        <i class="fas fa-map-marker-alt" style="color:#b20101"></i>
-                        <div class="cta-text">
-                            <h4>Trouvez Nous</h4>
-                            <span>à coté de hôpital pédiatre Canstal ORAN </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4 mb-30">
-                    <div class="single-cta">
-                        <i class="fas fa-phone"style="color:#b20101"></i>
-                        <div class="cta-text">
-                            <h4>Appelez Nous</h4>
-                            <span>+213 551 41 98 12<br>+213 661 49 51 18 </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4 mb-30">
-                    <div class="single-cta">
-                        <i class="far fa-envelope-open" style="color:#b20101"></i>
-                        <div class="cta-text">
-                            <h4>Contactez Nous</h4>
-                            <span>commercial@ziani-auto.com <br> info@ziani-auto.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-content pt-5 pb-5">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 mb-50">
-                    <div class="footer-widget">
-                        <div class="footer-logo">
-                            <a href="index.html"><img src="/assets/photos/logo.png" class="img-fluid" alt="logo"></a>
-                        </div>
-                        <div class="footer-text">
-                            <p>La société Ziani-Automobiles, accompagne particuliers et entreprises sur 
-                                leurs projets d'achat mais aussi assure la vente et le reprise de votre voitures, toutes les marques et selon la disponibilité.   
-                                 L’Equipe Ziani-Automobiles, avec ses commerciales, reste a votre entière disposition pour toutes informations complémentaire </p>
-                        </div>
-                        <div class="footer-social-icon">
-                            <span>Suivez Nous sur</span>
-                            <a href="https://web.facebook.com/zianiautomobile?_rdc=1&_rdr" target="_blank"><i class="fab fa-facebook-f "style="font-size:36px;color:#b20101"></i></a>
-                            <a href="https://www.instagram.com/ziani_auto_31/" target="_blank"><i class="fab fa-instagram "style="font-size:36px;color:#b20101"></i></a>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                    <div class="footer-widget">
-                        <div class="footer-widget-heading">
-                            <h3>informations</h3>
-                        </div>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#cars">Nos voitures</a></li>
-                            <li><a href="#footer">Contact</a></li> 
-                            <li><a href="#footer">À propos de nous</a></li>
-                            
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
-                    <div class="footer-widget">
-                      
-                        <div class="footer-text mb-25">
-                            <p>Pour plus d'informations,Contactez nous</p>
-                        </div>
-                        <div class="subscribe-form">
-                            <form action="#">
-                                <input type="text" placeholder="Envoyer Message">
-                                <button><i class="fab fa-telegram-plane"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="copyright-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 text-center text-lg-left">
-                    <div class="copyright-text">
-                        <p>Copyright &copy; 2023,Tous droits réservés.</p>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-                    <div class="footer-menu">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</footer>
+  </footer>

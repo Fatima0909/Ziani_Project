@@ -15,6 +15,9 @@ import { DisableControlDirective } from './directive/disable-control.directive';
 import { PictureCarouselComponent } from '../picture-carousel/picture-carousel.component';
 import { MatSelectModule } from '@angular/material/select';
 import { SpinnerComponent } from '../spinner/spinner.component';
+import { YearPickerComponent } from './components/year-picker/year-picker.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 const modules = [
   MatFormFieldModule,
@@ -35,18 +38,22 @@ const modules = [
 @NgModule({
   declarations: [
     PictureCarouselComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    YearPickerComponent
   ],
   imports: [
     CommonModule,
     FormsModule ,
     ReactiveFormsModule,
-    modules
+    modules,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   exports: [
     modules,
     PictureCarouselComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    YearPickerComponent
   ],
   providers: []
 })
