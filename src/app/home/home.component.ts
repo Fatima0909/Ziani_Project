@@ -109,7 +109,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   modelCtrl = new FormControl('', null);
   colorCtrl = new FormControl('');
   mileageCtrl = new FormControl('');
-  isUpdateDisabled: any;
+  isUpdateDisabled: boolean;
   userImage: any;
   selectedTown: string = "";
   selectedTowns = "";
@@ -137,7 +137,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   models: any;
   minYear = 1950;
   maxYear: number;
-
+  valeurInput1: string = '';
+  valeurInput2: string = '';
+  valeurSelect: string = '';
   constructor(fb: FormBuilder, private dialog: MatDialog,
     private carService: CarService) {
     this.labelForm = fb.group({
@@ -161,7 +163,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.slideshowAnimation();
     this.maxYear = new Date().getFullYear();
   }
+  champ1: string = '';
+  champ2: string = '';
 
+  verifierChamps() {
+   
+    
+    this.champ2 = this.champ1 === '' ? '' : this.champ2;
+  }
 
   get maxMinYear() {
     return this.maxYearCtrl.value || this.maxYear;
@@ -171,7 +180,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     return this.minYearCtrl.value || this.minYear;
   }
 
-
+ 
 
   toggleNav() {
     this.isNavActive = !this.isNavActive;

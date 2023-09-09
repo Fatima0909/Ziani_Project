@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { DetailsComponent } from './details/details.component';
 
+import { FormsModule } from '@angular/forms'; // Importez FormsModule
 
 firebase.initializeApp(environment.firebase);
 @NgModule({
@@ -21,7 +22,9 @@ firebase.initializeApp(environment.firebase);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule ,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
