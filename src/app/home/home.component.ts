@@ -398,6 +398,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.selectedBrand = this.selectedBrands[0];
         this.brandCtrl.setValue(this.selectedBrand);
         this.initModels(this.selectedBrand);
+        this.modelCtrl.setValue('');
       }
     }, 200);
   }
