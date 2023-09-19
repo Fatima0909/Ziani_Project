@@ -405,6 +405,10 @@ export class ProductDialogComponent implements OnInit {
     const carFormData = this.docForm.getRawValue();
     console.log('setNewSpaceValues', this.docForm.getRawValue());
     this.carToSave.carMileage = carFormData.carMileage;
+    this.carToSave.carEnergie = carFormData.carEnergie;
+    this.carToSave.carColor = carFormData.carColor;
+    this.carToSave.Transmission = carFormData.Transmission;
+    this.carToSave.carMoteur = carFormData.Transmission;
     if (carFormData.carDescription) {
       this.carToSave.carDescription = carFormData.carDescription;
     }
